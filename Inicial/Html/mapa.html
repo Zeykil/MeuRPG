@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldria RPG - Mapa do Mundo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/styles.css">
+    <link rel="stylesheet" href="../Css/personagem.css">
+     <link rel="stylesheet" href="../Css/mapa.css">
+    <link rel="icon" href="../Fotos/logo.png" sizes="64x64" type="image/png">
+
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="pixel-corner-top"></div>
+                <h1>ELDRIA</h1>
+                <div class="pixel-divider"></div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home pixel-icon"></i> INÍCIO</a></li>
+                    <li><a href="personagens.html"><i class="fas fa-users pixel-icon"></i> PERSONAGENS</a></li>
+                    <li><a href="monstro.html"><i class="fas fa-paw pixel-icon"></i> MONSTROS</a></li>
+                    <li><a href="rpg.html"><i class="fas fa-dice-d20 pixel-icon"></i> SALA DE RPG</a></li>
+                    <li class="active"><a href="mapa.html"><i class="fas fa-map pixel-icon"></i> MAPA</a></li> 
+                    <li><a href="historia.html"><i class="fas fa-book pixel-icon"></i> HISTÓRIA</a></li>
+                    <li><a href="dashboard.html"><i class="fas fa-chart-line pixel-icon"></i> PAINEL</a></li>
+                </ul>
+            </nav>
+             <div class="sidebar-footer">
+                  </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-panel pixel-panel">
+                <div class="pixel-corner-top"></div>
+                <div class="panel-header">
+                    <h2>MAPA DO MUNDO</h2>
+                    <div class="pixel-divider"></div>
+                </div>
+
+                <div class="panel-body map-page-content">
+                    <div class="map-interactive-area">
+                        <div class="map-image-container pixel-border">
+                            <img src="../Fotos/Mapa.png" alt="Mapa do Mundo de Eldria" class="world-map-image">
+
+                            <button class="map-point pixel-button--square" data-point="ponto-01" data-name="Cidade de Eldoria" data-description="A vibrante capital do reino, centro de comércio e conhecimento." style="left: 45%; top: 35%;">
+                                <i class="fas fa-map-marker-alt"></i> </button>
+                            <button class="map-point pixel-button--square" data-point="ponto-02" data-name="Ruínas Antigas" data-description="Vestígios de uma civilização esquecida, repletos de perigos e tesouros." style="left: 60%; top: 55%;">
+                                 <i class="fas fa-dungeon"></i> </button>
+                             <button class="map-point pixel-button--square" data-point="ponto-03" data-name="Floresta Sombria" data-description="Uma floresta densa e perigosa, lar de criaturas sinistras." style="left: 25%; top: 70%;">
+                                 <i class="fas fa-tree"></i> </button>
+                            <button class="map-point pixel-button--square" data-point="ponto-04" data-name="Porto da Costa" data-description="Um movimentado porto comercial que liga Eldria aos mares do sul." style="left: 75%; top: 85%;">
+                                 <i class="fas fa-anchor"></i> </button>
+                            </div>
+
+                        <div class="point-info-panel pixel-panel">
+                             <div class="pixel-corner-top"></div>
+                             <div class="panel-header">
+                                 <h3 id="point-info-name" class="pixel-text-shadow">SELECIONE UM LOCAL</h3>
+                                 <div class="pixel-divider"></div>
+                             </div>
+                             <div class="panel-body">
+                                 <p id="point-info-description">Clique em um ponto marcado no mapa para descobrir mais sobre este lugar no mundo de Eldria.</p>
+
+                                 </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bottom-decoration-bar pixel-panel-deco"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../script/mapa.js"></script>
+     </body>
+</html>

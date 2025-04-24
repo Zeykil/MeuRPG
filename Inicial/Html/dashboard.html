@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldria RPG - Bem-vindo!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Inicial/Css/dashboard.css"> <!-- Assuming dashboard-specific styles -->
+    <link rel="stylesheet" href="/Inicial/Css/content-pages.css">
+    <link rel="stylesheet" href="/Inicial/Css/animaçao.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" href="/Inicial/Fotos/logo.png" sizes="64x64" type="image/png">
+
+</head>
+<body>
+    <div class="app-container">
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="pixel-corner-top"></div>
+                <h1>ELDRIA</h1>
+                <div class="pixel-divider"></div>
+            </div>
+
+
+            <!-- Navegação Principal -->
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home pixel-icon"></i> INÍCIO</a></li>
+                    <li><a href="personagens.html"><i class="fas fa-users pixel-icon"></i> PERSONAGENS</a></li>
+                    <li><a href="monstro.html"><i class="fas fa-paw pixel-icon"></i> MONSTROS</a></li>
+                    <li><a href="historia.html"><i class="fas fa-book pixel-icon"></i> HISTÓRIA</a></li>
+                    <li><a href="regras.html"><i class="fas fa-dice pixel-icon"></i> REGRAS</a></li>
+                    <li><a href="contato.html"><i class="fas fa-envelope pixel-icon"></i> CONTATO</a></li>
+                    <!-- Adicione ou ajuste outros links de navegação conforme necessário -->
+                    <li class="active"><a href="dashboard.html"><i class="fas fa-chart-line pixel-icon"></i> PAINEL</a></li>
+                </ul>
+            </nav>
+
+            <!-- Você pode adicionar outras áreas na sidebar aqui, se necessário -->
+             <div class="login-area">
+                <div class="pixel-divider"></div>
+                <h3>STATUS</h3>
+                 <p id="userTitlePlaceholder">Conectado</p> <!-- Placeholder for user title/status -->
+            </div>
+
+
+            <div class="pixel-corner-bottom"></div>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <div id="dashboard">
+                <h1>Bem-vindo ao Eldria RPG</h1>
+                <!-- O conteúdo do dashboard pode vir aqui -->
+                <p>Este é o seu painel. Aqui você pode ver informações sobre sua conta e atividades recentes.</p>
+
+                <!-- Seções de exemplo do dashboard original -->
+                <section class="recent-activity-section">
+                    <h2>ATIVIDADE RECENTE</h2>
+                    <p>Últimas sessões, conquistas, etc.</p>
+                </section>
+
+                 <section class="quests-section">
+                    <h2>SUAS AVENTURAS</h2>
+                     <p>Quests ativas, próximos desafios.</p>
+                 </section>
+
+                <section class="community-section">
+                    <h2>JUNTE-SE À COMUNIDADE</h2>
+                    <p>Conecte-se com outros jogadores, faça perguntas e compartilhe suas experiências!</p>
+                    <div class="community-links">
+                        <a href="#" class="pixel-button discord"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="#" class="pixel-button forum"><i class="fas fa-comments"></i> Fórum</a>
+                    </div>
+                </section>
+
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/Inicial/script/auth.js"></script>
+    <script type="module" src="/Inicial/script/dashboard.js"></script> <!-- Novo script para dashboard -->
+    <script src="/Inicial/script/animaçoes.js"></script>
+</body>
+</html>

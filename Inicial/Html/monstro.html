@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldria RPG - Monstros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../Css/animaçao.css">
+    <link rel="stylesheet" href="../Css/personagem.css">
+    <link rel="stylesheet" href="../Css/monstro.css"> <link rel="icon" href="/Inicial/Fotos/logo.png" sizes="64x64" type="image/png">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="pixel-corner-top"></div>
+                <h1>RPG</h1>
+                <div class="pixel-divider"></div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../../index.html"><i class="fas fa-home pixel-icon"></i> INÍCIO</a></li>
+                    <li><a href="personagens.html"><i class="fas fa-users pixel-icon"></i> PERSONAGENS</a></li>
+                    <li class="active"><a href="monstros.html"><i class="fas fa-paw pixel-icon"></i> MONSTROS</a></li>
+                    <li><a href="rpg.html"><i class="fas fa-dice-d20 pixel-icon"></i> SALA DE RPG</a></li>
+                    <li><a href="mapa.html"><i class="fas fa-map pixel-icon"></i> MAPA</a></li>
+                    <li><a href="historia.html"><i class="fas fa-book pixel-icon"></i> HISTÓRIA</a></li>
+                     <li><a href="dashboard.html"><i class="fas fa-chart-line pixel-icon"></i> PAINEL</a></li>
+                     </ul>
+            </nav>
+
+
+
+            <div class="pixel-corner-bottom"></div>
+        </aside>
+
+        <main class="main-content">
+            <div class="monster-gallery"> <div class="monster-filters"> <input type="text" placeholder="BUSCAR MONSTRO..." class="search-input pixel-input">
+                    </div>
+
+                <div class="monster-cards-container"> <div class="monster-card" data-id="voraxxis"> <div class="card-header">
+                            <div class="monster-name-container"> <h2>VORAXSIS</h2>
+                                <div class="name-decoration"></div>
+                            </div>
+                            </div>
+
+                        <div class="card-image">
+                            <div class="pixel-frame">
+                                <img src="/Inicial/Fotos/Voraxxis.jpg" alt="Voraxxis" class="monster-img"> </div>
+                            <div class="stats-bars">
+                                <div class="hp-bar">
+                                    <div class="bar-label">HP</div>
+                                    <div class="bar-container">
+                                        <div class="hp-fill" style="width: 100%;"></div>
+                                        <span class="hp-text">1100/1100</span> </div>
+                                    <input type="number" class="stat-input hp-input" min="0" value="1100" data-max="1100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <button class="toggle-btn toggle-attributes"> <span class="btn-text">MOSTRAR ATRIBUTOS</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="attributes-section"> <div class="attributes-grid"> <div class="attribute">
+                                        <div class="attr-name">FOR</div>
+                                        <div class="attr-value">250</div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">AGI</div>
+                                        <div class="attr-value">180</div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">INT</div>
+                                        <div class="attr-value">70</div>
+                                    </div>
+                                     <div class="attribute">
+                                        <div class="attr-name">CAR</div>
+                                        <div class="attr-value">60</div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">RES</div>
+                                        <div class="attr-value">160</div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">VEL</div>
+                                        <div class="attr-value">150</div>
+                                    </div>
+                                     </div>
+                            </div>
+
+                             <button class="toggle-btn toggle-abilities"> <span class="btn-text">MOSTRAR ESPECIAIS / PODERES</span>
+                                 <i class="fas fa-chevron-down"></i>
+                             </button>
+
+                             <div class="abilities-section"> <div class="ability"> <h3 class="ability-title">PERCEPÇÃO SENSORIAL</h3>
+                                     <p class="ability-desc">VALOR: 190</p> </div>
+                                 </div>
+
+                             <button class="toggle-btn toggle-description"> <span class="btn-text">MOSTRAR DESCRIÇÃO</span>
+                                 <i class="fas fa-chevron-down"></i>
+                             </button>
+
+                             <div class="description-section abilities-section"> <div class="ability">
+                                     <h3 class="ability-title">DESCRIÇÃO</h3>
+                                     <p class="ability-desc">
+                                        Uma silhueta imensa com porte de 3,5 metros de altura. Quebra árvores com brutalidade e velocidade absurda, deixando um rastro de destruição. É astuta, usando garras afiadas para cravar-se nas pedras. Emite um grito gutural profundo e investigativo. Pode sangrar sangue espesso de feridas.
+                                     </p>
+                                 </div>
+                             </div>
+
+                        </div>
+                    </div>
+
+                    <div class="monster-card" data-id="hordlings">
+                         <div class="card-header">
+                             <div class="monster-name-container">
+                                 <h2>HORDLINGS</h2>
+                                 <div class="name-decoration"></div>
+                             </div>
+                         </div>
+
+                         <div class="card-image">
+                             <div class="pixel-frame">
+                                 <img src="/Inicial/Fotos/hordlings.jpg" alt="Hordlings" class="monster-img">
+                             </div>
+                             <div class="stats-bars">
+                                 <div class="hp-bar">
+                                     <div class="bar-label">HP</div>
+                                     <div class="bar-container">
+                                         <div class="hp-fill" style="width: 100%;"></div>
+                                         <span class="hp-text">100/100</span>
+                                     </div>
+                                     <input type="number" class="stat-input hp-input" min="0" value="100" data-max="100">
+                                 </div>
+                             </div>
+                         </div>
+
+                         <div class="card-body">
+                             <button class="toggle-btn toggle-attributes">
+                                 <span class="btn-text">MOSTRAR ATRIBUTOS</span>
+                                 <i class="fas fa-chevron-down"></i>
+                             </button>
+
+                             <div class="attributes-section">
+                                 <div class="attributes-grid">
+                                     <div class="attribute">
+                                         <div class="attr-name">FOR</div>
+                                         <div class="attr-value">16</div>
+                                     </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">AGI</div>
+                                         <div class="attr-value">24</div>
+                                     </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">INT</div>
+                                         <div class="attr-value">10</div>
+                                     </div>
+                                      <div class="attribute">
+                                         <div class="attr-name">CAR</div>
+                                         <div class="attr-value">0</div>
+                                     </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">RES</div>
+                                         <div class="attr-value">18</div>
+                                     </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">VEL</div>
+                                         <div class="attr-value">20</div>
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <button class="toggle-btn toggle-abilities">
+                                 <span class="btn-text">MOSTRAR ESPECIAIS / PODERES</span>
+                                 <i class="fas fa-chevron-down"></i>
+                             </button>
+
+                             <div class="abilities-section">
+                                  <div class="ability">
+                                      <h3 class="ability-title">HOSTILIDADE</h3>
+                                      <p class="ability-desc">VALOR: 25</p>
+                                  </div>
+                                   <div class="ability">
+                                       <h3 class="ability-title">INSTINTO DE BANDO</h3>
+                                       <p class="ability-desc">VALOR: 30</p>
+                                   </div>
+                                   <div class="ability">
+                                       <h3 class="ability-title">PERCEPÇÃO SENSORIAL</h3>
+                                       <p class="ability-desc">VALOR: 24</p>
+                                   </div>
+                             </div>
+
+                              <button class="toggle-btn toggle-description">
+                                  <span class="btn-text">MOSTRAR DESCRIÇÃO</span>
+                                  <i class="fas fa-chevron-down"></i>
+                              </button>
+
+                              <div class="description-section abilities-section">
+                                  <div class="ability">
+                                      <h3 class="ability-title">DESCRIÇÃO</h3>
+                                      <p class="ability-desc">
+                                        Monstros selvagens, ferozes e numerosos que atacam em bando. Podem desviar de ataques rapidamente. Um deles foi descrito erguendo um porrete rústico para desferir um golpe. São encontrados em cavernas subterrâneas improvisadas. Ficam arrepiados e com medo de magia de grande intensidade. Emitem guinchos.
+                                      </p>
+                                  </div>
+                              </div>
+                         </div>
+                     </div>
+
+                     <div class="monster-card" data-id="umbra-lupinus">
+                          <div class="card-header">
+                              <div class="monster-name-container">
+                                  <h2>UMBRA LUPINUS</h2>
+                                  <div class="name-decoration"></div>
+                              </div>
+                          </div>
+
+                          <div class="card-image">
+                              <div class="pixel-frame">
+                                  <img src="/Inicial/Fotos/umbra-lupinus.jpg" alt="Umbra Lupinus" class="monster-img">
+                              </div>
+                              <div class="stats-bars">
+                                  <div class="hp-bar">
+                                      <div class="bar-label">HP</div>
+                                      <div class="bar-container">
+                                          <div class="hp-fill" style="width: 100%;"></div>
+                                          <span class="hp-text">120/120</span>
+                                      </div>
+                                      <input type="number" class="stat-input hp-input" min="0" value="120" data-max="120">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="card-body">
+                              <button class="toggle-btn toggle-attributes">
+                                  <span class="btn-text">MOSTRAR ATRIBUTOS</span>
+                                  <i class="fas fa-chevron-down"></i>
+                              </button>
+
+                              <div class="attributes-section">
+                                  <div class="attributes-grid">
+                                      <div class="attribute">
+                                          <div class="attr-name">FOR</div>
+                                          <div class="attr-value">30</div>
+                                      </div>
+                                      <div class="attribute">
+                                          <div class="attr-name">AGI</div>
+                                          <div class="attr-value">28</div>
+                                      </div>
+                                      <div class="attribute">
+                                          <div class="attr-name">INT</div>
+                                          <div class="attr-value">11</div>
+                                      </div>
+                                       <div class="attribute">
+                                          <div class="attr-name">CAR</div>
+                                          <div class="attr-value">0</div>
+                                      </div>
+                                      <div class="attribute">
+                                          <div class="attr-name">RES</div>
+                                          <div class="attr-value">28</div>
+                                      </div>
+                                      <div class="attribute">
+                                          <div class="attr-name">VEL</div>
+                                          <div class="attr-value">24</div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <button class="toggle-btn toggle-abilities">
+                                  <span class="btn-text">MOSTRAR ESPECIAIS / PODERES</span>
+                                  <i class="fas fa-chevron-down"></i>
+                              </button>
+
+                              <div class="abilities-section">
+                                   <div class="ability">
+                                       <h3 class="ability-title">HOSTILIDADE</h3>
+                                       <p class="ability-desc">VALOR: 35</p>
+                                   </div>
+                              </div>
+
+                               <button class="toggle-btn toggle-description">
+                                   <span class="btn-text">MOSTRAR DESCRIÇÃO</span>
+                                   <i class="fas fa-chevron-down"></i>
+                               </button>
+
+                               <div class="description-section abilities-section">
+                                   <div class="ability">
+                                       <h3 class="ability-title">DESCRIÇÃO</h3>
+                                        <p class="ability-desc">
+                                            Não há descrição narrativa específica fornecida para este monstro no texto.
+                                        </p>
+                                   </div>
+                               </div>
+                          </div>
+                      </div>
+
+                     <div class="monster-card" data-id="fulgoritas">
+                         <div class="card-header">
+                             <div class="monster-name-container">
+                                 <h2>FULGORITAS</h2>
+                                 <div class="name-decoration"></div>
+                             </div>
+                         </div>
+
+                         <div class="card-image">
+                             <div class="pixel-frame">
+                                 <img src="/Inicial/Fotos/fulgoritas.jpg" alt="Fulgoritas" class="monster-img">
+                             </div>
+                              </div>
+
+                         <div class="card-body">
+                             <button class="toggle-btn toggle-attributes">
+                                 <span class="btn-text">MOSTRAR ATRIBUTOS</span>
+                                 <i class="fas fa-chevron-down"></i>
+                             </button>
+
+                             <div class="attributes-section">
+                                 <div class="attributes-grid">
+                                     <div class="attribute">
+                                         <div class="attr-name">FOR</div>
+                                         <div class="attr-value">2</div>
+                                     </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">AGI</div>
+                                         <div class="attr-value">15</div>
+                                     </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">INT</div>
+                                         <div class="attr-value">2</div>
+                                     </div>
+                                      <div class="attribute">
+                                         <div class="attr-name">RES</div>
+                                         <div class="attr-value">X</div> </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">VEL</div>
+                                         <div class="attr-value">16</div>
+                                     </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">ATAQUE</div> <div class="attr-value">1</div>
+                                     </div>
+                                     <div class="attribute">
+                                         <div class="attr-name">DEFESA</div> <div class="attr-value">3</div>
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <button class="toggle-btn toggle-abilities">
+                                 <span class="btn-text">MOSTRAR ESPECIAIS / PODERES</span>
+                                 <i class="fas fa-chevron-down"></i>
+                             </button>
+
+                             <div class="abilities-section">
+                                   <div class="ability">
+                                       <h3 class="ability-title">POTENCIAL DE EXPLOSÃO</h3>
+                                       <p class="ability-desc">VALOR: 20</p>
+                                   </div>
+                                    <div class="ability">
+                                        <h3 class="ability-title">BIOLUMINESCÊNCIA</h3>
+                                        <p class="ability-desc">VALOR: 15</p>
+                                    </div>
+                             </div>
+
+                             <button class="toggle-btn toggle-description">
+                                 <span class="btn-text">MOSTRAR DESCRIÇÃO</span>
+                                 <i class="fas fa-chevron-down"></i>
+                             </button>
+
+                             <div class="description-section abilities-section">
+                                 <div class="ability">
+                                     <h3 class="ability-title">DESCRIÇÃO</h3>
+                                     <p class="ability-desc">
+                                        Pequenos pontos de luz, minúsculos insetos bioluminescentes, lentos, etéreos, quase belos — mas cada um carregava uma microcarga de energia instável. Podem se aproximar e pousar sobre a pele, causando uma minúscula explosão. Reagem a predadores tentando se livrar deles girando e se debatendo. Podem causar dor intensa como fogo. Pairam além das paredes da torre, instintivamente evitando-a, talvez por desinteresse ou porque a torre, desprovida de energia ativa, é apenas pedra morta para eles. São naturais deste lugar, perigosos como predadores, e andam em enxame.
+                                     </p>
+                                 </div>
+                             </div>
+
+                         </div>
+                     </div>
+
+                    <div class="monster-card" data-id="voidbringer">
+                          <div class="card-header">
+                              <div class="monster-name-container">
+                                  <h2>VOIDBRINGER</h2>
+                                  <div class="name-decoration"></div>
+                              </div>
+                          </div>
+
+                          <div class="card-image">
+                              <div class="pixel-frame">
+                                  <img src="/Inicial/Fotos/monstros/voidbringer.jpg" alt="Voidbringer" class="monster-img">
+                              </div>
+                               </div>
+
+                          <div class="card-body">
+                              <button class="toggle-btn toggle-characteristics">
+                                   <span class="btn-text">MOSTRAR CARACTERÍSTICAS</span>
+                                   <i class="fas fa-chevron-down"></i>
+                              </button>
+
+                              <div class="characteristics-section abilities-section"> <div class="ability">
+                                       <h3 class="ability-title">TAMANHO</h3>
+                                       <p class="ability-desc">15,75 metros de altura</p>
+                                   </div>
+                                    <div class="ability">
+                                       <h3 class="ability-title">PESO ESTIMADO</h3>
+                                       <p class="ability-desc">47,25 toneladas</p>
+                                   </div>
+                                    </div>
+
+
+                              <button class="toggle-btn toggle-description">
+                                  <span class="btn-text">MOSTRAR DESCRIÇÃO</span>
+                                  <i class="fas fa-chevron-down"></i>
+                              </button>
+
+                              <div class="description-section abilities-section">
+                                  <div class="ability">
+                                      <h3 class="ability-title">DESCRIÇÃO</h3>
+                                      <p class="ability-desc">
+                                          Uma criatura colossal. Emite um rugido estrondoso. Seu peso devastador (47,25 toneladas) pode esmagar a fundação subterrânea e matar Hordlings com ondas de choque. É o maior predador de Vhar-Zul’Aketh. Descrito emergindo de uma entrada aberta de seu impacto. Desaparece de volta na escuridão do túnel.
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                     </div>
+
+
+                    </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../script/animaçoes.js"></script>
+    <script src="../script/monstros.js"></script>
+    <script src="../script/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,4173 @@
+/* VARIÁVEIS DE ESTILO PIXEL ART */
+:root {
+    /* Cores Principais */
+    --pixel-dark: #1a1a2e;
+    --pixel-darker: #0f0f1a;
+    --pixel-primary: #4a2d8a;
+    --pixel-primary-light: #6a4dab;
+    --pixel-secondary: #8a2d5a;
+    --pixel-accent: #d32f2f; /* Cor vermelha para HP */
+    --pixel-accent2: #1976d2; /* Cor azul para Mana */
+    --pixel-text: #e6e6fa;
+
+    /* Cores de Destaque */
+    --pixel-fire: #ff5722;
+    --pixel-poison: #9c27b0;
+    --pixel-ice: #00bcd4;
+    --pixel-nature: #1976d2; /* Cor verde para Estamina? */
+    --pixel-shadow: #4a148c;
+
+    /* Bordas e Efeitos */
+    --pixel-border: 3px solid var(--pixel-primary);
+    --pixel-shadow: 4px 4px 0 var(--pixel-darker);
+    --pixel-inset-shadow: inset 3px 3px 0 var(--pixel-darker);
+    --pixel-text-shadow: 2px 2px 0 var(--pixel-darker);
+    --pixel-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+     /* Cor específica para Estamina */
+     --pixel-stamina: var(--pixel-nature); /* Usando a cor verde */
+
+     /* Cor para Pontos */
+     --pixel-points: #ffeb3b; /* Amarelo para pontos */
+}
+
+/* RESET E ESTILOS GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    line-height: 1.6;
+    background-image:
+      linear-gradient(transparent 95%, rgba(74, 45, 138, 0.3) 95%),
+      linear-gradient(90deg, transparent 95%, rgba(74, 45, 138, 0.3) 95%);
+    background-size: 20px 20px;
+    overflow-x: hidden;
+}
+
+/* LAYOUT PRINCIPAL */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* BARRA LATERAL - PIXEL ART STYLE */
+.sidebar {
+    width: 260px;
+    background-color: var(--pixel-dark);
+    padding: 20px 15px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    border-right: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    z-index: 10;
+}
+
+.sidebar-header {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.sidebar-header h1 {
+    color: var(--pixel-primary-light);
+    font-size: 1.8rem;
+    text-shadow: var(--pixel-text-shadow);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.sidebar-header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--pixel-primary);
+    box-shadow: 0 4px 0 var(--pixel-darker);
+}
+
+.pixel-corner-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--pixel-primary);
+    box-shadow:
+      4px 0 0 var(--pixel-darker),
+      0 4px 0 var(--pixel-darker),
+      4px 4px 0 var(--pixel-darker);
+}
+
+.pixel-corner-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--pixel-primary);
+    box-shadow:
+      4px 0 0 var(--pixel-darker),
+      0 4px 0 var(--pixel-darker),
+      4px 4px 0 var(--pixel-darker);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.sidebar-nav li {
+    margin-bottom: 12px;
+}
+
+.sidebar-nav a {
+    color: var(--pixel-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    font-size: 0.75rem;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    transition: var(--pixel-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-nav a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(106, 77, 171, 0.4), transparent);
+    transition: var(--pixel-transition);
+}
+
+.sidebar-nav a:hover::before {
+    left: 100%;
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.sidebar-nav .active a {
+    background-color: var(--pixel-primary);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+    transform: translate(2px, 2px);
+}
+
+.sidebar-nav .active a::after {
+    content: ">";
+    position: absolute;
+    right: 15px;
+    animation: blink 1s infinite;
+}
+
+.pixel-icon {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--pixel-primary-light);
+}
+
+/* CONTEÚDO PRINCIPAL */
+.main-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 30px;
+    background-color: rgba(15, 15, 26, 0.9);
+    min-height: 100vh;
+}
+
+.character-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* FILTROS PIXEL ART */
+.character-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background-color: var(--pixel-dark);
+    padding: 15px;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    position: relative;
+}
+
+.character-filters::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(106, 77, 171, 0.3);
+    pointer-events: none;
+}
+
+/* Estilo base para inputs e selects */
+.pixel-input, .pixel-select {
+    padding: 12px 15px;
+    border: var(--pixel-border);
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    font-family: 'Press Start 2P', cursive, sans-serif; /* Garante a fonte pixelada */
+    font-size: 0.7rem;
+    outline: none;
+    box-shadow: var(--pixel-shadow);
+    transition: var(--pixel-transition);
+    text-transform: uppercase;
+    image-rendering: pixelated; /* Tenta aplicar para a caixa, mas o texto é o importante */
+}
+
+.search-input, .filter-select {
+   flex: 1;
+   min-width: 200px;
+}
+
+
+.pixel-input::placeholder {
+    color: rgba(230, 230, 250, 0.6);
+}
+
+.pixel-input:focus, .pixel-select:focus {
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+    transform: translate(2px, 2px);
+    background-color: rgba(26, 26, 46, 0.8);
+}
+
+
+/* CARDS DE PERSONAGENS - ESTILO PIXEL ART RPG */
+.character-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.character-card {
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    position: relative;
+    transition: var(--pixel-transition);
+    overflow: hidden;
+}
+
+.character-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      linear-gradient(135deg, transparent 48%, rgba(106, 77, 171, 0.1) 49%, rgba(106, 77, 171, 0.1) 51%, transparent 52%),
+      linear-gradient(-135deg, transparent 48%, rgba(106, 77, 171, 0.1) 49%, rgba(106, 77, 171, 0.1) 51%, transparent 52%);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.character-card:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.card-header {
+    background-color: var(--pixel-primary);
+    padding: 15px 20px;
+    display: flex;
+    /* Ajustado para permitir que a área de level/pontos se alinhe verticalmente */
+    flex-direction: column; /* Empilha nome e level/pontos */
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha à esquerda */
+    border-bottom: var(--pixel-border);
+    position: relative;
+}
+
+.card-header::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--pixel-primary-light);
+}
+
+.character-name-container {
+    position: relative;
+    flex: 1;
+    width: 100%; /* Ocupa a largura total no flex-direction: column */
+    margin-bottom: 10px; /* Espaço entre o nome e a área de level/pontos */
+}
+
+.character-name-container h2 {
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+    text-shadow: var(--pixel-text-shadow);
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+.name-decoration {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--pixel-accent);
+    z-index: 1;
+    box-shadow: 0 3px 0 var(--pixel-darker);
+}
+
+/* Área de Nível e Pontos */
+.level-points-area {
+    width: 100%; /* Ocupa a largura total */
+    display: flex;
+    justify-content: space-between; /* Espalha level/pontos e controles */
+    align-items: center;
+    font-size: 0.7rem;
+    flex-wrap: wrap; /* Permite quebrar em telas menores */
+}
+
+.level-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre botões e texto */
+}
+
+.character-level {
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    border: 2px solid var(--pixel-primary-light);
+    box-shadow: var(--pixel-shadow);
+    /* Removido margin-left: 15px; */
+    text-align: center;
+}
+
+/* Estilo base para botões de level e atributo */
+.level-btn,
+.attr-btn {
+    display: inline-flex; /* Permite ícone/texto e alinhamento */
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: var(--pixel-transition);
+    /* Estilos de pixel art para botões pequenos */
+    background-color: var(--pixel-dark); /* Fundo escuro */
+    color: var(--pixel-text);
+    border-top: 2px solid var(--pixel-primary-light);
+    border-left: 2px solid var(--pixel-primary-light);
+    border-bottom: 2px solid var(--pixel-darker);
+    border-right: 2px solid var(--pixel-darker);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor */
+    user-select: none; /* Evita seleção de texto ao clicar rápido */
+    flex-shrink: 0; /* Não permite que o botão diminua */
+}
+
+.level-btn:hover,
+.attr-btn:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(1px, 1px); /* Movimento menor no hover */
+    box-shadow: 0 0 0 var(--pixel-darker); /* Remove sombra no hover */
+    border-bottom: 1px solid var(--pixel-darker);
+    border-right: 1px solid var(--pixel-darker);
+}
+
+.level-btn:active,
+.attr-btn:active {
+    transform: translate(2px, 2px); /* Pressiona mais */
+    box-shadow: 0 0 0 var(--pixel-darker);
+    border-bottom: 0px solid var(--pixel-darker);
+    border-right: 0px solid var(--pixel-darker);
+    border-top: 2px solid var(--pixel-darker); /* Borda de "dentro" */
+    border-left: 2px solid var(--pixel-darker); /* Borda de "dentro" */
+}
+
+
+/* Tamanho específico para botões de level */
+.level-btn {
+    padding: 4px 8px; /* Padding menor */
+    font-size: 0.6rem; /* Fonte menor */
+}
+
+
+/* Tamanho específico para botões de atributo */
+.attr-btn {
+    padding: 1px 3px; /* Padding bem pequeno */
+    font-size: 0.5rem; /* Fonte bem pequena */
+    width: 20px; /* Largura fixa pequena */
+    height: 20px; /* Altura fixa pequena */
+}
+
+/* Cor para o botão de diminuir atributo (vermelho/secundário) */
+.attr-btn.decrease-attr {
+    background-color: var(--pixel-secondary);
+    border-top-color: #9a3d6a; /* Adaptação da borda */
+    border-left-color: #9a3d6a; /* Adaptação da borda */
+}
+.attr-btn.decrease-attr:hover {
+    background-color: #b04d7a; /* Hover mais claro */
+}
+.attr-btn.decrease-attr:active {
+     border-top-color: var(--pixel-darker); /* Borda de "dentro" */
+     border-left-color: var(--pixel-darker); /* Borda de "dentro" */
+}
+
+
+/* Estado desabilitado para botões (nível/atributo) */
+.level-btn:disabled,
+.attr-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none; /* Remove o movimento no hover */
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Mantém a sombra padrão */
+    border-top: 2px solid var(--pixel-primary-light);
+    border-left: 2px solid var(--pixel-primary-light);
+    border-bottom: 2px solid var(--pixel-darker);
+    border-right: 2px solid var(--pixel-darker);
+     /* Opcional: Mudar cor de fundo para indicar desabilitado */
+    background-color: var(--pixel-dark);
+}
+
+/* Garante que o botão de diminuir atributo desabilitado tenha a cor correta */
+.attr-btn.decrease-attr:disabled {
+     border-top-color: #9a3d6a; /* Adaptação da borda */
+     border-left-color: #9a3d6a; /* Adaptação da borda */
+}
+
+
+.points-display {
+    color: var(--pixel-points); /* Cor para o texto de pontos */
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+    font-weight: bold;
+    /* Adiciona margem superior em telas menores se wrapar */
+    margin-top: 5px;
+}
+
+.card-image {
+    position: relative;
+    border-bottom: var(--pixel-border);
+}
+
+.pixel-frame {
+    padding: 10px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    margin: 10px;
+    box-shadow: var(--pixel-inset-shadow);
+}
+
+.character-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%) brightness(0.9) saturate(1.1);
+    border: 2px solid var(--pixel-primary);
+    image-rendering: pixelated;
+}
+
+.stats-bars {
+    padding: 0 15px 15px;
+}
+
+/* Container para cada barra de stat (HP, Mana, Estamina) */
+.hp-bar,
+.mana-bar,
+.estamina-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px; /* Espaço entre o label, a barra e o input */
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    width: 50px; /* Largura fixa para os labels (HP, MANA, EST) */
+    text-shadow: var(--pixel-text-shadow);
+    flex-shrink: 0; /* Não permite que o label diminua */
+}
+
+.bar-container {
+    flex: 1; /* Ocupa o espaço restante */
+    height: 20px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Permite posicionar o texto e talvez outros elementos internos */
+    align-items: center; /* Centraliza o texto verticalmente */
+}
+
+/* Inputs de edição de status */
+.stat-input {
+    width: 60px; /* Largura para o input */
+    padding: 4px 6px; /* Padding menor */
+    font-size: 0.6rem; /* Fonte menor */
+    border: 2px solid var(--pixel-primary-light); /* Borda diferente */
+    background-color: var(--pixel-dark); /* Fundo mais escuro */
+    color: var(--pixel-text);
+    box-shadow: var(--pixel-shadow); /* Sombra externa */
+    text-align: center; /* Centraliza o texto */
+    -moz-appearance: textfield; /* Remove as setas no Firefox */
+    flex-shrink: 0; /* Não permite que o input diminua */
+}
+
+/* Remove as setas no Chrome, Safari, Edge, Opera */
+.stat-input::-webkit-outer-spin-button,
+.stat-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input:focus {
+    outline: none;
+    border-color: var(--pixel-accent);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor no focus */
+    transform: translate(1px, 1px);
+}
+
+.hp-fill,
+.mana-fill,
+.estamina-fill {
+    height: 100%;
+    transition: width 0.3s ease; /* Transição na largura */
+    position: absolute; /* Permite que o texto fique por cima */
+    top: 0;
+    left: 0;
+}
+
+.hp-fill {
+    background-color: var(--pixel-accent); /* Cor vermelha */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.mana-fill {
+    background-color: var(--pixel-accent2); /* Cor azul */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.estamina-fill {
+    background-color: var(--pixel-stamina); /* Cor verde */
+     background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.hp-text,
+.mana-text,
+.estamina-text {
+    position: relative; /* Para ficar sobre o fill */
+    z-index: 2; /* Garante que fique sobre o fill */
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    margin: auto; /* Centraliza o texto na barra */
+}
+
+
+/* Animações (mantidas do original) */
+/* Efeitos de dano e cura */
+.damage-effect {
+    animation: damagePulse 0.5s ease-out;
+}
+
+.heal-effect {
+    animation: healPulse 0.5s ease-out; /* Removi healGlow pois pode interferir com a cor do fill */
+}
+
+@keyframes damagePulse {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes healPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* A animação de brilho no fill pode ser mantida, se desejar */
+.hp-fill::after,
+.mana-fill::after,
+.estamina-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%);
+  opacity: 0.5;
+  animation: hpShine 2s infinite linear; /* Pode renomear para statShine */
+}
+
+@keyframes hpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* Remover estilos relacionados ao slider/drag não mais usados */
+/* .hp-value-indicator, .hp-slider, .fill-hp-btn */
+
+
+/* O restante do CSS (card-body, toggle-btn, attributes-section, etc.) permanece igual */
+.card-body {
+    padding: 15px;
+}
+
+.basic-info {
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--pixel-primary-light);
+    min-width: 80px;
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.info-value {
+    flex: 1;
+}
+
+.toggle-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--pixel-transition);
+    font-size: 0.7rem;
+    box-shadow: var(--pixel-shadow);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-btn:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.toggle-btn i {
+    transition: transform 0.3s;
+}
+
+.toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.attributes-section,
+.abilities-section {
+    margin: 15px 0;
+    background-color: rgba(45, 45, 45, 0.6);
+    padding: 15px;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-inset-shadow);
+    display: none;
+}
+
+.attributes-section.active,
+.abilities-section.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.attribute {
+    background-color: var(--pixel-darker);
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    display: flex; /* Usa flex para alinhar nome e valor/controles */
+    flex-direction: column; /* Empilha nome e valor/controles */
+    align-items: center; /* Centraliza o conteúdo */
+    justify-content: space-between; /* Espalha o nome e o controle verticalmente */
+}
+
+.attribute::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--pixel-primary-light);
+}
+
+.attr-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--pixel-primary-light);
+    margin-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow);
+    text-transform: uppercase;
+}
+
+.attr-value-control {
+    display: flex; /* Usa flex para alinhar valor e botões */
+    align-items: center;
+    gap: 3px; /* Espaço entre o valor e os botões */
+    justify-content: center; /* Centraliza o valor e botões horizontalmente */
+    width: 100%; /* Garante que ocupe a largura do pai para centralizar */
+}
+
+.attr-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    /* Removido display: block; */
+}
+
+
+/* Cor para o botão de diminuir atributo (vermelho/secundário) */
+.attr-btn.decrease-attr {
+    background-color: var(--pixel-secondary);
+    border-top-color: #9a3d6a; /* Adaptação da borda */
+    border-left-color: #9a3d6a; /* Adaptação da borda */
+}
+.attr-btn.decrease-attr:hover {
+    background-color: #b04d7a; /* Hover mais claro */
+}
+.attr-btn.decrease-attr:active {
+     border-top-color: var(--pixel-darker); /* Borda de "dentro" */
+     border-left-color: var(--pixel-darker); /* Borda de "dentro" */
+}
+
+
+/* Estado desabilitado para botões (nível/atributo) */
+.level-btn:disabled,
+.attr-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none; /* Remove o movimento no hover */
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Mantém a sombra padrão */
+    border-top: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-left: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-bottom: 2px solid var(--pixel-darker);
+    border-right: 2px solid var(--pixel-darker);
+     /* Opcional: Mudar cor de fundo para indicar desabilitado */
+    background-color: var(--pixel-darker); /* Fundo mais escuro para desabilitado */
+    color: rgba(230, 230, 250, 0.5); /* Texto mais claro */
+}
+
+/* Garante que o botão de diminuir atributo desabilitado tenha a cor correta */
+.attr-btn.decrease-attr:disabled {
+     border-top-color: var(--pixel-dark); /* Borda escura para desabilitado */
+     border-left-color: var(--pixel-dark); /* Borda escura para desabilitado */
+}
+
+
+.points-display {
+    color: var(--pixel-points); /* Cor para o texto de pontos */
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+    font-weight: bold;
+    /* Adiciona margem superior em telas menores se wrapar */
+    margin-top: 5px;
+}
+
+.card-image {
+    position: relative;
+    border-bottom: var(--pixel-border);
+}
+
+.pixel-frame {
+    padding: 10px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    margin: 10px;
+    box-shadow: var(--pixel-inset-shadow);
+}
+
+.character-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%) brightness(0.9) saturate(1.1);
+    border: 2px solid var(--pixel-primary);
+    image-rendering: pixelated;
+}
+
+.stats-bars {
+    padding: 0 15px 15px;
+}
+
+/* Container para cada barra de stat (HP, Mana, Estamina) */
+.hp-bar,
+.mana-bar,
+.estamina-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px; /* Espaço entre o label, a barra e o input */
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    width: 50px; /* Largura fixa para os labels (HP, MANA, EST) */
+    text-shadow: var(--pixel-text-shadow);
+    flex-shrink: 0; /* Não permite que o label diminua */
+}
+
+.bar-container {
+    flex: 1; /* Ocupa o espaço restante */
+    height: 20px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Permite posicionar o texto e talvez outros elementos internos */
+    align-items: center; /* Centraliza o texto verticalmente */
+}
+
+/* Inputs de edição de status */
+.stat-input {
+    width: 60px; /* Largura para o input */
+    padding: 4px 6px; /* Padding menor */
+    font-size: 0.6rem; /* Fonte menor */
+    border: 2px solid var(--pixel-primary-light); /* Borda diferente */
+    background-color: var(--pixel-dark); /* Fundo mais escuro */
+    color: var(--pixel-text);
+    box-shadow: var(--pixel-shadow); /* Sombra externa */
+    text-align: center; /* Centraliza o texto */
+    -moz-appearance: textfield; /* Remove as setas no Firefox */
+    flex-shrink: 0; /* Não permite que o input diminua */
+}
+
+/* Remove as setas no Chrome, Safari, Edge, Opera */
+.stat-input::-webkit-outer-spin-button,
+.stat-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input:focus {
+    outline: none;
+    border-color: var(--pixel-accent);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor no focus */
+    transform: translate(1px, 1px);
+}
+
+.hp-fill,
+.mana-fill,
+.estamina-fill {
+    height: 100%;
+    transition: width 0.3s ease; /* Transição na largura */
+    position: absolute; /* Permite que o texto fique por cima */
+    top: 0;
+    left: 0;
+}
+
+.hp-fill {
+    background-color: var(--pixel-accent); /* Cor vermelha */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.mana-fill {
+    background-color: var(--pixel-accent2); /* Cor azul */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.estamina-fill {
+    background-color: var(--pixel-stamina); /* Cor verde */
+     background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.hp-text,
+.mana-text,
+.estamina-text {
+    position: relative; /* Para ficar sobre o fill */
+    z-index: 2; /* Garante que fique sobre o fill */
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    margin: auto; /* Centraliza o texto na barra */
+}
+
+
+/* Animações (mantidas do original) */
+/* Efeitos de dano e cura */
+.damage-effect {
+    animation: damagePulse 0.5s ease-out;
+}
+
+.heal-effect {
+    animation: healPulse 0.5s ease-out; /* Removi healGlow pois pode interferir com a cor do fill */
+}
+
+@keyframes damagePulse {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes healPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* A animação de brilho no fill pode ser mantida, se desejar */
+.hp-fill::after,
+.mana-fill::after,
+.estamina-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%);
+  opacity: 0.5;
+  animation: hpShine 2s infinite linear; /* Pode renomear para statShine */
+}
+
+@keyframes hpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* Remover estilos relacionados ao slider/drag não mais usados */
+/* .hp-value-indicator, .hp-slider, .fill-hp-btn */
+
+
+/* O restante do CSS (card-body, toggle-btn, attributes-section, etc.) permanece igual */
+.card-body {
+    padding: 15px;
+}
+
+.basic-info {
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--pixel-primary-light);
+    min-width: 80px;
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.info-value {
+    flex: 1;
+}
+
+.toggle-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--pixel-transition);
+    font-size: 0.7rem;
+    box-shadow: var(--pixel-shadow);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-btn:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.toggle-btn i {
+    transition: transform 0.3s;
+}
+
+.toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.attributes-section,
+.abilities-section {
+    margin: 15px 0;
+    background-color: rgba(45, 45, 45, 0.6);
+    padding: 15px;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-inset-shadow);
+    display: none;
+}
+
+.attributes-section.active,
+.abilities-section.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.attribute {
+    background-color: var(--pixel-darker);
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    display: flex; /* Usa flex para alinhar nome e valor/controles */
+    flex-direction: column; /* Empilha nome e valor/controles */
+    align-items: center; /* Centraliza o conteúdo */
+    justify-content: space-between; /* Espalha o nome e o controle verticalmente */
+    min-height: 60px; /* Altura mínima para garantir espaço */
+}
+
+.attribute::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--pixel-primary-light);
+}
+
+.attr-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--pixel-primary-light);
+    margin-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow);
+    text-transform: uppercase;
+}
+
+.attr-value-control {
+    display: flex; /* Usa flex para alinhar valor e botões */
+    align-items: center;
+    gap: 3px; /* Espaço entre o valor e os botões */
+    justify-content: center; /* Centraliza o valor e botões horizontalmente */
+    width: 100%; /* Garante que ocupe a largura do pai para centralizar */
+    flex-grow: 1; /* Permite que este container ocupe o espaço restante */
+}
+
+.attr-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    /* Removido display: block; */
+}
+
+
+/* Cor para o botão de diminuir atributo (vermelho/secundário) */
+.attr-btn.decrease-attr {
+    background-color: var(--pixel-secondary);
+    border-top-color: #9a3d6a; /* Adaptação da borda */
+    border-left-color: #9a3d6a; /* Adaptação da borda */
+}
+.attr-btn.decrease-attr:hover {
+    background-color: #b04d7a; /* Hover mais claro */
+}
+.attr-btn.decrease-attr:active {
+     border-top-color: var(--pixel-darker); /* Borda de "dentro" */
+     border-left-color: var(--pixel-darker); /* Borda de "dentro" */
+}
+
+
+/* Estado desabilitado para botões (nível/atributo) */
+.level-btn:disabled,
+.attr-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none; /* Remove o movimento no hover */
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Mantém a sombra padrão */
+    border-top: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-left: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-bottom: 2px solid var(--pixel-darker);
+    border-right: 2px solid var(--pixel-darker);
+     /* Opcional: Mudar cor de fundo para indicar desabilitado */
+    background-color: var(--pixel-darker); /* Fundo mais escuro para desabilitado */
+    color: rgba(230, 230, 250, 0.5); /* Texto mais claro */
+}
+
+/* Garante que o botão de diminuir atributo desabilitado tenha a cor correta */
+.attr-btn.decrease-attr:disabled {
+     border-top-color: var(--pixel-dark); /* Borda escura para desabilitado */
+     border-left-color: var(--pixel-dark); /* Borda escura para desabilitado */
+}
+
+
+.points-display {
+    color: var(--pixel-points); /* Cor para o texto de pontos */
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+    font-weight: bold;
+    /* Adiciona margem superior em telas menores se wrapar */
+    margin-top: 5px;
+}
+
+.card-image {
+    position: relative;
+    border-bottom: var(--pixel-border);
+}
+
+.pixel-frame {
+    padding: 10px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    margin: 10px;
+    box-shadow: var(--pixel-inset-shadow);
+}
+
+.character-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%) brightness(0.9) saturate(1.1);
+    border: 2px solid var(--pixel-primary);
+    image-rendering: pixelated;
+}
+
+.stats-bars {
+    padding: 0 15px 15px;
+}
+
+/* Container para cada barra de stat (HP, Mana, Estamina) */
+.hp-bar,
+.mana-bar,
+.estamina-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px; /* Espaço entre o label, a barra e o input */
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    width: 50px; /* Largura fixa para os labels (HP, MANA, EST) */
+    text-shadow: var(--pixel-text-shadow);
+    flex-shrink: 0; /* Não permite que o label diminua */
+}
+
+.bar-container {
+    flex: 1; /* Ocupa o espaço restante */
+    height: 20px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Permite posicionar o texto e talvez outros elementos internos */
+    align-items: center; /* Centraliza o texto verticalmente */
+}
+
+/* Inputs de edição de status */
+.stat-input {
+    width: 60px; /* Largura para o input */
+    padding: 4px 6px; /* Padding menor */
+    font-size: 0.6rem; /* Fonte menor */
+    border: 2px solid var(--pixel-primary-light); /* Borda diferente */
+    background-color: var(--pixel-dark); /* Fundo mais escuro */
+    color: var(--pixel-text);
+    box-shadow: var(--pixel-shadow); /* Sombra externa */
+    text-align: center; /* Centraliza o texto */
+    -moz-appearance: textfield; /* Remove as setas no Firefox */
+    flex-shrink: 0; /* Não permite que o input diminua */
+}
+
+/* Remove as setas no Chrome, Safari, Edge, Opera */
+.stat-input::-webkit-outer-spin-button,
+.stat-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input:focus {
+    outline: none;
+    border-color: var(--pixel-accent);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor no focus */
+    transform: translate(1px, 1px);
+}
+
+.hp-fill,
+.mana-fill,
+.estamina-fill {
+    height: 100%;
+    transition: width 0.3s ease; /* Transição na largura */
+    position: absolute; /* Permite que o texto fique por cima */
+    top: 0;
+    left: 0;
+}
+
+.hp-fill {
+    background-color: var(--pixel-accent); /* Cor vermelha */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.mana-fill {
+    background-color: var(--pixel-accent2); /* Cor azul */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.estamina-fill {
+    background-color: var(--pixel-stamina); /* Cor verde */
+     background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.hp-text,
+.mana-text,
+.estamina-text {
+    position: relative; /* Para ficar sobre o fill */
+    z-index: 2; /* Garante que fique sobre o fill */
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    margin: auto; /* Centraliza o texto na barra */
+}
+
+
+/* Animações (mantidas do original) */
+/* Efeitos de dano e cura */
+.damage-effect {
+    animation: damagePulse 0.5s ease-out;
+}
+
+.heal-effect {
+    animation: healPulse 0.5s ease-out; /* Removi healGlow pois pode interferir com a cor do fill */
+}
+
+@keyframes damagePulse {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes healPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* A animação de brilho no fill pode ser mantida, se desejar */
+.hp-fill::after,
+.mana-fill::after,
+.estamina-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%);
+  opacity: 0.5;
+  animation: hpShine 2s infinite linear; /* Pode renomear para statShine */
+}
+
+@keyframes hpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* Remover estilos relacionados ao slider/drag não mais usados */
+/* .hp-value-indicator, .hp-slider, .fill-hp-btn */
+
+
+/* O restante do CSS (card-body, toggle-btn, attributes-section, etc.) permanece igual */
+.card-body {
+    padding: 15px;
+}
+
+.basic-info {
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--pixel-primary-light);
+    min-width: 80px;
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.info-value {
+    flex: 1;
+}
+
+.toggle-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--pixel-transition);
+    font-size: 0.7rem;
+    box-shadow: var(--pixel-shadow);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-btn:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.toggle-btn i {
+    transition: transform 0.3s;
+}
+
+.toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.attributes-section,
+.abilities-section {
+    margin: 15px 0;
+    background-color: rgba(45, 45, 45, 0.6);
+    padding: 15px;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-inset-shadow);
+    display: none;
+}
+
+.attributes-section.active,
+.abilities-section.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.attribute {
+    background-color: var(--pixel-darker);
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    display: flex; /* Usa flex para alinhar nome e valor/controles */
+    flex-direction: column; /* Empilha nome e valor/controles */
+    align-items: center; /* Centraliza o conteúdo */
+    justify-content: space-between; /* Espalha o nome e o controle verticalmente */
+    min-height: 60px; /* Altura mínima para garantir espaço */
+}
+
+.attribute::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--pixel-primary-light);
+}
+
+.attr-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--pixel-primary-light);
+    margin-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow);
+    text-transform: uppercase;
+}
+
+.attr-value-control {
+    display: flex; /* Usa flex para alinhar valor e botões */
+    align-items: center;
+    gap: 3px; /* Espaço entre o valor e os botões */
+    justify-content: center; /* Centraliza o valor e botões horizontalmente */
+    width: 100%; /* Garante que ocupe a largura do pai para centralizar */
+    flex-grow: 1; /* Permite que este container ocupe o espaço restante */
+}
+
+.attr-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    /* Removido display: block; */
+}
+
+
+/* Cor para o botão de diminuir atributo (vermelho/secundário) */
+.attr-btn.decrease-attr {
+    background-color: var(--pixel-secondary);
+    border-top-color: #9a3d6a; /* Adaptação da borda */
+    border-left-color: #9a3d6a; /* Adaptação da borda */
+}
+.attr-btn.decrease-attr:hover {
+    background-color: #b04d7a; /* Hover mais claro */
+}
+.attr-btn.decrease-attr:active {
+     border-top-color: var(--pixel-darker); /* Borda de "dentro" */
+     border-left-color: var(--pixel-darker); /* Borda de "dentro" */
+}
+
+
+/* Estado desabilitado para botões (nível/atributo) */
+.level-btn:disabled,
+.attr-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none; /* Remove o movimento no hover */
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Mantém a sombra padrão */
+    border-top: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-left: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-bottom: 2px solid var(--pixel-darker);
+    border-right: 2px solid var(--pixel-darker);
+     /* Opcional: Mudar cor de fundo para indicar desabilitado */
+    background-color: var(--pixel-darker); /* Fundo mais escuro para desabilitado */
+    color: rgba(230, 230, 250, 0.5); /* Texto mais claro */
+}
+
+/* Garante que o botão de diminuir atributo desabilitado tenha a cor correta */
+.attr-btn.decrease-attr:disabled {
+     border-top-color: var(--pixel-dark); /* Borda escura para desabilitado */
+     border-left-color: var(--pixel-dark); /* Borda escura para desabilitado */
+}
+
+
+.points-display {
+    color: var(--pixel-points); /* Cor para o texto de pontos */
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+    font-weight: bold;
+    /* Adiciona margem superior em telas menores se wrapar */
+    margin-top: 5px;
+}
+
+.card-image {
+    position: relative;
+    border-bottom: var(--pixel-border);
+}
+
+.pixel-frame {
+    padding: 10px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    margin: 10px;
+    box-shadow: var(--pixel-inset-shadow);
+}
+
+.character-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%) brightness(0.9) saturate(1.1);
+    border: 2px solid var(--pixel-primary);
+    image-rendering: pixelated;
+}
+
+.stats-bars {
+    padding: 0 15px 15px;
+}
+
+/* Container para cada barra de stat (HP, Mana, Estamina) */
+.hp-bar,
+.mana-bar,
+.estamina-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px; /* Espaço entre o label, a barra e o input */
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    width: 50px; /* Largura fixa para os labels (HP, MANA, EST) */
+    text-shadow: var(--pixel-text-shadow);
+    flex-shrink: 0; /* Não permite que o label diminua */
+}
+
+.bar-container {
+    flex: 1; /* Ocupa o espaço restante */
+    height: 20px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Permite posicionar o texto e talvez outros elementos internos */
+    align-items: center; /* Centraliza o texto verticalmente */
+}
+
+/* Inputs de edição de status */
+.stat-input {
+    width: 60px; /* Largura para o input */
+    padding: 4px 6px; /* Padding menor */
+    font-size: 0.6rem; /* Fonte menor */
+    border: 2px solid var(--pixel-primary-light); /* Borda diferente */
+    background-color: var(--pixel-dark); /* Fundo mais escuro */
+    color: var(--pixel-text);
+    box-shadow: var(--pixel-shadow); /* Sombra externa */
+    text-align: center; /* Centraliza o texto */
+    -moz-appearance: textfield; /* Remove as setas no Firefox */
+    flex-shrink: 0; /* Não permite que o input diminua */
+}
+
+/* Remove as setas no Chrome, Safari, Edge, Opera */
+.stat-input::-webkit-outer-spin-button,
+.stat-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input:focus {
+    outline: none;
+    border-color: var(--pixel-accent);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor no focus */
+    transform: translate(1px, 1px);
+}
+
+.hp-fill,
+.mana-fill,
+.estamina-fill {
+    height: 100%;
+    transition: width 0.3s ease; /* Transição na largura */
+    position: absolute; /* Permite que o texto fique por cima */
+    top: 0;
+    left: 0;
+}
+
+.hp-fill {
+    background-color: var(--pixel-accent); /* Cor vermelha */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.mana-fill {
+    background-color: var(--pixel-accent2); /* Cor azul */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.estamina-fill {
+    background-color: var(--pixel-stamina); /* Cor verde */
+     background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.hp-text,
+.mana-text,
+.estamina-text {
+    position: relative; /* Para ficar sobre o fill */
+    z-index: 2; /* Garante que fique sobre o fill */
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    margin: auto; /* Centraliza o texto na barra */
+}
+
+
+/* Animações (mantidas do original) */
+/* Efeitos de dano e cura */
+.damage-effect {
+    animation: damagePulse 0.5s ease-out;
+}
+
+.heal-effect {
+    animation: healPulse 0.5s ease-out; /* Removi healGlow pois pode interferir com a cor do fill */
+}
+
+@keyframes damagePulse {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes healPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* A animação de brilho no fill pode ser mantida, se desejar */
+.hp-fill::after,
+.mana-fill::after,
+.estamina-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%);
+  opacity: 0.5;
+  animation: hpShine 2s infinite linear; /* Pode renomear para statShine */
+}
+
+@keyframes hpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* Remover estilos relacionados ao slider/drag não mais usados */
+/* .hp-value-indicator, .hp-slider, .fill-hp-btn */
+
+
+/* O restante do CSS (card-body, toggle-btn, attributes-section, etc.) permanece igual */
+.card-body {
+    padding: 15px;
+}
+
+.basic-info {
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--pixel-primary-light);
+    min-width: 80px;
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.info-value {
+    flex: 1;
+}
+
+.toggle-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--pixel-transition);
+    font-size: 0.7rem;
+    box-shadow: var(--pixel-shadow);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-btn:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.toggle-btn i {
+    transition: transform 0.3s;
+}
+
+.toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.attributes-section,
+.abilities-section {
+    margin: 15px 0;
+    background-color: rgba(45, 45, 45, 0.6);
+    padding: 15px;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-inset-shadow);
+    display: none;
+}
+
+.attributes-section.active,
+.abilities-section.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.attribute {
+    background-color: var(--pixel-darker);
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    display: flex; /* Usa flex para alinhar nome e valor/controles */
+    flex-direction: column; /* Empilha nome e valor/controles */
+    align-items: center; /* Centraliza o conteúdo */
+    justify-content: space-between; /* Espalha o nome e o controle verticalmente */
+    min-height: 60px; /* Altura mínima para garantir espaço */
+}
+
+.attribute::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--pixel-primary-light);
+}
+
+.attr-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--pixel-primary-light);
+    margin-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow);
+    text-transform: uppercase;
+}
+
+.attr-value-control {
+    display: flex; /* Usa flex para alinhar valor e botões */
+    align-items: center;
+    gap: 3px; /* Espaço entre o valor e os botões */
+    justify-content: center; /* Centraliza o valor e botões horizontalmente */
+    width: 100%; /* Garante que ocupe a largura do pai para centralizar */
+    flex-grow: 1; /* Permite que este container ocupe o espaço restante */
+}
+
+.attr-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    /* Removido display: block; */
+}
+
+
+/* Cor para o botão de diminuir atributo (vermelho/secundário) */
+.attr-btn.decrease-attr {
+    background-color: var(--pixel-secondary);
+    border-top-color: #9a3d6a; /* Adaptação da borda */
+    border-left-color: #9a3d6a; /* Adaptação da borda */
+}
+.attr-btn.decrease-attr:hover {
+    background-color: #b04d7a; /* Hover mais claro */
+}
+.attr-btn.decrease-attr:active {
+     border-top-color: var(--pixel-darker); /* Borda de "dentro" */
+     border-left-color: var(--pixel-darker); /* Borda de "dentro" */
+}
+
+
+/* Estado desabilitado para botões (nível/atributo) */
+.level-btn:disabled,
+.attr-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none; /* Remove o movimento no hover */
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Mantém a sombra padrão */
+    border-top: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-left: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-bottom: 2px solid var(--pixel-darker);
+    border-right: 2px solid var(--pixel-darker);
+     /* Opcional: Mudar cor de fundo para indicar desabilitado */
+    background-color: var(--pixel-darker); /* Fundo mais escuro para desabilitado */
+    color: rgba(230, 230, 250, 0.5); /* Texto mais claro */
+}
+
+/* Garante que o botão de diminuir atributo desabilitado tenha a cor correta */
+.attr-btn.decrease-attr:disabled {
+     border-top-color: var(--pixel-dark); /* Borda escura para desabilitado */
+     border-left-color: var(--pixel-dark); /* Borda escura para desabilitado */
+}
+
+
+.points-display {
+    color: var(--pixel-points); /* Cor para o texto de pontos */
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+    font-weight: bold;
+    /* Adiciona margem superior em telas menores se wrapar */
+    margin-top: 5px;
+}
+
+.card-image {
+    position: relative;
+    border-bottom: var(--pixel-border);
+}
+
+.pixel-frame {
+    padding: 10px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    margin: 10px;
+    box-shadow: var(--pixel-inset-shadow);
+}
+
+.character-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%) brightness(0.9) saturate(1.1);
+    border: 2px solid var(--pixel-primary);
+    image-rendering: pixelated;
+}
+
+.stats-bars {
+    padding: 0 15px 15px;
+}
+
+/* Container para cada barra de stat (HP, Mana, Estamina) */
+.hp-bar,
+.mana-bar,
+.estamina-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px; /* Espaço entre o label, a barra e o input */
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    width: 50px; /* Largura fixa para os labels (HP, MANA, EST) */
+    text-shadow: var(--pixel-text-shadow);
+    flex-shrink: 0; /* Não permite que o label diminua */
+}
+
+.bar-container {
+    flex: 1; /* Ocupa o espaço restante */
+    height: 20px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Permite posicionar o texto e talvez outros elementos internos */
+    align-items: center; /* Centraliza o texto verticalmente */
+}
+
+/* Inputs de edição de status */
+.stat-input {
+    width: 60px; /* Largura para o input */
+    padding: 4px 6px; /* Padding menor */
+    font-size: 0.6rem; /* Fonte menor */
+    border: 2px solid var(--pixel-primary-light); /* Borda diferente */
+    background-color: var(--pixel-dark); /* Fundo mais escuro */
+    color: var(--pixel-text);
+    box-shadow: var(--pixel-shadow); /* Sombra externa */
+    text-align: center; /* Centraliza o texto */
+    -moz-appearance: textfield; /* Remove as setas no Firefox */
+    flex-shrink: 0; /* Não permite que o input diminua */
+}
+
+/* Remove as setas no Chrome, Safari, Edge, Opera */
+.stat-input::-webkit-outer-spin-button,
+.stat-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input:focus {
+    outline: none;
+    border-color: var(--pixel-accent);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor no focus */
+    transform: translate(1px, 1px);
+}
+
+.hp-fill,
+.mana-fill,
+.estamina-fill {
+    height: 100%;
+    transition: width 0.3s ease; /* Transição na largura */
+    position: absolute; /* Permite que o texto fique por cima */
+    top: 0;
+    left: 0;
+}
+
+.hp-fill {
+    background-color: var(--pixel-accent); /* Cor vermelha */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.mana-fill {
+    background-color: var(--pixel-accent2); /* Cor azul */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.estamina-fill {
+    background-color: var(--pixel-stamina); /* Cor verde */
+     background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.hp-text,
+.mana-text,
+.estamina-text {
+    position: relative; /* Para ficar sobre o fill */
+    z-index: 2; /* Garante que fique sobre o fill */
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    margin: auto; /* Centraliza o texto na barra */
+}
+
+
+/* Animações (mantidas do original) */
+/* Efeitos de dano e cura */
+.damage-effect {
+    animation: damagePulse 0.5s ease-out;
+}
+
+.heal-effect {
+    animation: healPulse 0.5s ease-out; /* Removi healGlow pois pode interferir com a cor do fill */
+}
+
+@keyframes damagePulse {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes healPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* A animação de brilho no fill pode ser mantida, se desejar */
+.hp-fill::after,
+.mana-fill::after,
+.estamina-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%);
+  opacity: 0.5;
+  animation: hpShine 2s infinite linear; /* Pode renomear para statShine */
+}
+
+@keyframes hpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* Remover estilos relacionados ao slider/drag não mais usados */
+/* .hp-value-indicator, .hp-slider, .fill-hp-btn */
+
+
+/* O restante do CSS (card-body, toggle-btn, attributes-section, etc.) permanece igual */
+.card-body {
+    padding: 15px;
+}
+
+.basic-info {
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--pixel-primary-light);
+    min-width: 80px;
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.info-value {
+    flex: 1;
+}
+
+.toggle-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--pixel-transition);
+    font-size: 0.7rem;
+    box-shadow: var(--pixel-shadow);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-btn:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.toggle-btn i {
+    transition: transform 0.3s;
+}
+
+.toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.attributes-section,
+.abilities-section {
+    margin: 15px 0;
+    background-color: rgba(45, 45, 45, 0.6);
+    padding: 15px;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-inset-shadow);
+    display: none;
+}
+
+.attributes-section.active,
+.abilities-section.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.attribute {
+    background-color: var(--pixel-darker);
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    display: flex; /* Usa flex para alinhar nome e valor/controles */
+    flex-direction: column; /* Empilha nome e valor/controles */
+    align-items: center; /* Centraliza o conteúdo */
+    justify-content: space-between; /* Espalha o nome e o controle verticalmente */
+    min-height: 60px; /* Altura mínima para garantir espaço */
+}
+
+.attribute::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--pixel-primary-light);
+}
+
+.attr-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--pixel-primary-light);
+    margin-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow);
+    text-transform: uppercase;
+}
+
+.attr-value-control {
+    display: flex; /* Usa flex para alinhar valor e botões */
+    align-items: center;
+    gap: 3px; /* Espaço entre o valor e os botões */
+    justify-content: center; /* Centraliza o valor e botões horizontalmente */
+    width: 100%; /* Garante que ocupe a largura do pai para centralizar */
+    flex-grow: 1; /* Permite que este container ocupe o espaço restante */
+}
+
+.attr-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    /* Removido display: block; */
+}
+
+
+/* Cor para o botão de diminuir atributo (vermelho/secundário) */
+.attr-btn.decrease-attr {
+    background-color: var(--pixel-secondary);
+    border-top-color: #9a3d6a; /* Adaptação da borda */
+    border-left-color: #9a3d6a; /* Adaptação da borda */
+}
+.attr-btn.decrease-attr:hover {
+    background-color: #b04d7a; /* Hover mais claro */
+}
+.attr-btn.decrease-attr:active {
+     border-top-color: var(--pixel-darker); /* Borda de "dentro" */
+     border-left-color: var(--pixel-darker); /* Borda de "dentro" */
+}
+
+
+/* Estado desabilitado para botões (nível/atributo) */
+.level-btn:disabled,
+.attr-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none; /* Remove o movimento no hover */
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Mantém a sombra padrão */
+    border-top: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-left: 2px solid var(--pixel-dark); /* Borda escura para desabilitado */
+    border-bottom: 2px solid var(--pixel-darker);
+    border-right: 2px solid var(--pixel-darker);
+     /* Opcional: Mudar cor de fundo para indicar desabilitado */
+    background-color: var(--pixel-darker); /* Fundo mais escuro para desabilitado */
+    color: rgba(230, 230, 250, 0.5); /* Texto mais claro */
+}
+
+/* Garante que o botão de diminuir atributo desabilitado tenha a cor correta */
+.attr-btn.decrease-attr:disabled {
+     border-top-color: var(--pixel-dark); /* Borda escura para desabilitado */
+     border-left-color: var(--pixel-dark); /* Borda escura para desabilitado */
+}
+
+
+.points-display {
+    color: var(--pixel-points); /* Cor para o texto de pontos */
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+    font-weight: bold;
+    /* Adiciona margem superior em telas menores se wrapar */
+    margin-top: 5px;
+}
+
+.card-image {
+    position: relative;
+    border-bottom: var(--pixel-border);
+}
+
+.pixel-frame {
+    padding: 10px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    margin: 10px;
+    box-shadow: var(--pixel-inset-shadow);
+}
+
+.character-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%) brightness(0.9) saturate(1.1);
+    border: 2px solid var(--pixel-primary);
+    image-rendering: pixelated;
+}
+
+.stats-bars {
+    padding: 0 15px 15px;
+}
+
+/* Container para cada barra de stat (HP, Mana, Estamina) */
+.hp-bar,
+.mana-bar,
+.estamina-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px; /* Espaço entre o label, a barra e o input */
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    width: 50px; /* Largura fixa para os labels (HP, MANA, EST) */
+    text-shadow: var(--pixel-text-shadow);
+    flex-shrink: 0; /* Não permite que o label diminua */
+}
+
+.bar-container {
+    flex: 1; /* Ocupa o espaço restante */
+    height: 20px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Permite posicionar o texto e talvez outros elementos internos */
+    align-items: center; /* Centraliza o texto verticalmente */
+}
+
+/* Inputs de edição de status */
+.stat-input {
+    width: 60px; /* Largura para o input */
+    padding: 4px 6px; /* Padding menor */
+    font-size: 0.6rem; /* Fonte menor */
+    border: 2px solid var(--pixel-primary-light); /* Borda diferente */
+    background-color: var(--pixel-dark); /* Fundo mais escuro */
+    color: var(--pixel-text);
+    box-shadow: var(--pixel-shadow); /* Sombra externa */
+    text-align: center; /* Centraliza o texto */
+    -moz-appearance: textfield; /* Remove as setas no Firefox */
+    flex-shrink: 0; /* Não permite que o input diminua */
+}
+
+/* Remove as setas no Chrome, Safari, Edge, Opera */
+.stat-input::-webkit-outer-spin-button,
+.stat-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input:focus {
+    outline: none;
+    border-color: var(--pixel-accent);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor no focus */
+    transform: translate(1px, 1px);
+}
+
+.hp-fill,
+.mana-fill,
+.estamina-fill {
+    height: 100%;
+    transition: width 0.3s ease; /* Transição na largura */
+    position: absolute; /* Permite que o texto fique por cima */
+    top: 0;
+    left: 0;
+}
+
+.hp-fill {
+    background-color: var(--pixel-accent); /* Cor vermelha */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.mana-fill {
+    background-color: var(--pixel-accent2); /* Cor azul */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.estamina-fill {
+    background-color: var(--pixel-stamina); /* Cor verde */
+     background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.hp-text,
+.mana-text,
+.estamina-text {
+    position: relative; /* Para ficar sobre o fill */
+    z-index: 2; /* Garante que fique sobre o fill */
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    margin: auto; /* Centraliza o texto na barra */
+}
+
+
+/* Animações (mantidas do original) */
+/* Efeitos de dano e cura */
+.damage-effect {
+    animation: damagePulse 0.5s ease-out;
+}
+
+.heal-effect {
+    animation: healPulse 0.5s ease-out; /* Removi healGlow pois pode interferir com a cor do fill */
+}
+
+@keyframes damagePulse {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes healPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* A animação de brilho no fill pode ser mantida, se desejar */
+.hp-fill::after,
+.mana-fill::after,
+.estamina-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%);
+  opacity: 0.5;
+  animation: hpShine 2s infinite linear; /* Pode renomear para statShine */
+}
+
+@keyframes hpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* Remover estilos relacionados ao slider/drag não mais usados */
+/* .hp-value-indicator, .hp-slider, .fill-hp-btn */
+
+
+/* O restante do CSS (card-body, toggle-btn, attributes-section, etc.) permanece igual */
+.card-body {
+    padding: 15px;
+}
+
+.basic-info {
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--pixel-primary-light);
+    min-width: 80px;
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.info-value {
+    flex: 1;
+}
+
+.toggle-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    cursor: pointer;
+    display: flex; /* Continua daqui */
+    justify-content: space-between; /* Espalha o texto e o ícone */
+    align-items: center; /* Centraliza verticalmente */
+    transition: var(--pixel-transition); /* Efeito de transição */
+    font-size: 0.7rem; /* Tamanho da fonte */
+    box-shadow: var(--pixel-shadow); /* Sombra */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    position: relative; /* Para o pseudo-elemento de brilho */
+    overflow: hidden; /* Esconde o pseudo-elemento inicialmente */
+    }
+    
+    /* Efeito de brilho no hover (mantido do original) */
+    /* O JS precisa definir as variáveis --x e --y no mousemove */
+    .toggle-btn::before {
+      content: "";
+      position: absolute;
+      top: var(--y, 0);
+      left: var(--x, 0);
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: radial-gradient(rgba(255, 255, 255, 0.3), transparent, transparent);
+      opacity: 0;
+      transition: width 0s, height 0s, opacity 0.6s ease; /* Animação apenas na opacidade */
+    }
+    
+    .toggle-btn:hover::before {
+      width: 200px; /* Tamanho do brilho no hover */
+      height: 200px; /* Tamanho do brilho no hover */
+      opacity: 1; /* Mostra o brilho */
+    }
+    
+    
+    .toggle-btn:hover {
+        background-color: var(--pixel-primary); /* Muda cor de fundo no hover */
+        transform: translate(2px, 2px); /* Move um pouco no hover */
+        box-shadow: 2px 2px 0 var(--pixel-darker); /* Muda a sombra no hover */
+    }
+    
+    /* Rotação do ícone (seta) */
+    .toggle-btn i {
+        transition: transform 0.3s;
+    }
+    
+    .toggle-btn.active i {
+        transform: rotate(180deg); /* Gira o ícone quando ativo */
+    }
+    
+    .btn-text {
+        position: relative;
+        z-index: 2; /* Garante que o texto fique acima do brilho */
+    }
+    
+    
+    /* Seções de Atributos e Habilidades */
+    .attributes-section,
+    .abilities-section {
+        margin: 15px 0;
+        background-color: rgba(45, 45, 45, 0.6); /* Fundo semi-transparente */
+        padding: 15px;
+        border: var(--pixel-border); /* Borda do tema */
+        box-shadow: var(--pixel-inset-shadow); /* Sombra interna */
+        display: none; /* Oculta por padrão */
+    }
+    
+    /* Mostra a seção quando tem a classe 'active' (controlada pelo JS) */
+    .attributes-section.active,
+    .abilities-section.active {
+        display: block;
+        animation: fadeIn 0.3s ease-out; /* Animação de fade-in */
+    }
+    
+    /* Grid para os atributos */
+    .attributes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas de largura igual */
+        gap: 10px; /* Espaço entre os itens do grid */
+        margin-bottom: 15px;
+    }
+    
+    /* Cada item de atributo no grid */
+    .attribute {
+        background-color: var(--pixel-darker); /* Fundo */
+        padding: 10px;
+        text-align: center;
+        border: 2px solid var(--pixel-primary); /* Borda */
+        box-shadow: var(--pixel-inset-shadow); /* Sombra interna */
+        position: relative;
+        display: flex; /* Usa flex para alinhar nome e valor/controles */
+        flex-direction: column; /* Empilha nome e valor/controles */
+        align-items: center; /* Centraliza o conteúdo */
+    }
+    
+    /* Linha superior decorativa no atributo */
+    .attribute::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: var(--pixel-primary-light);
+    }
+    
+    /* Nome do atributo (FOR, AGI, etc.) */
+    .attr-name {
+        display: block;
+        font-size: 0.7rem;
+        color: var(--pixel-primary-light); /* Cor */
+        margin-bottom: 5px;
+        text-shadow: var(--pixel-text-shadow); /* Sombra no texto */
+        text-transform: uppercase; /* Texto em maiúsculas */
+    }
+    
+    /* Contêiner para o valor do atributo e os botões */
+    .attr-value-control {
+        display: flex; /* Usa flex para alinhar valor e botões */
+        align-items: center;
+        gap: 5px; /* Espaço entre o valor e os botões */
+    }
+    
+    /* Valor numérico do atributo */
+    .attr-value {
+        font-size: 1rem;
+        font-weight: bold;
+        color: white; /* Cor branca */
+        /* Removido display: block; */
+    }
+    
+    /* Botões de controle de atributo (+/-) */
+    .attr-btn {
+         /* Adaptação do pixel-button para botões de atributo */
+        display: inline-flex; /* Permite ícone/texto e alinhamento */
+        align-items: center;
+        justify-content: center;
+        padding: 2px 4px; /* Padding bem pequeno */
+        font-size: 0.5rem; /* Fonte bem pequena */
+        width: 20px; /* Largura fixa pequena */
+        height: 20px; /* Altura fixa pequena */
+        min-width: auto; /* Remove min-width do pixel-button */
+        border: 2px solid var(--pixel-primary-light); /* Borda para botões pequenos */
+        background-color: var(--pixel-dark); /* Fundo escuro */
+        color: var(--pixel-text);
+        box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor */
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: var(--pixel-transition);
+    }
+    
+    .attr-btn:hover {
+        background-color: var(--pixel-primary); /* Muda cor de fundo no hover */
+        transform: translate(1px, 1px); /* Movimento menor no hover */
+        box-shadow: 0 0 0 var(--pixel-darker); /* Remove sombra no hover */
+    }
+    
+    /* Cor para o botão de diminuir atributo */
+    .attr-btn.decrease-attr {
+        background-color: var(--pixel-secondary); /* Cor secundária */
+        border-color: #9a3d6a; /* Borda um pouco mais escura */
+    }
+    .attr-btn.decrease-attr:hover {
+        background-color: #b04d7a; /* Cor mais clara no hover */
+    }
+    
+    /* Estilo para botão desabilitado (sem pontos, por exemplo) */
+    .attr-btn:disabled,
+    .level-btn:disabled {
+        opacity: 0.5; /* Diminui a opacidade */
+        cursor: not-allowed; /* Muda o cursor */
+        box-shadow: none; /* Remove sombra */
+        transform: none; /* Remove transformação */
+        pointer-events: none; /* Desabilita eventos de mouse */
+    }
+    
+    
+    /* Área de cálculo de HP/Stats (texto informativo) */
+    .hp-calculation {
+        font-size: 0.7rem;
+        color: #aaa; /* Cor cinza */
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente */
+        border: 1px solid var(--pixel-primary); /* Borda */
+    }
+    
+    /* Estilos para Habilidades */
+    .ability {
+        margin-bottom: 15px;
+    }
+    
+    .ability:last-child {
+        margin-bottom: 0;
+    }
+    
+    .ability-title {
+        font-size: 0.8rem;
+        color: var(--pixel-primary-light); /* Cor */
+        margin-bottom: 8px;
+        border-bottom: 2px solid var(--pixel-primary); /* Linha inferior */
+        padding-bottom: 5px;
+        text-shadow: var(--pixel-text-shadow); /* Sombra no texto */
+        text-transform: uppercase; /* Texto em maiúsculas */
+    }
+    
+    .ability-desc,
+    .ability-list {
+        font-size: 0.65rem;
+        line-height: 1.6; /* Espaçamento de linha */
+        margin-left: 10px; /* Indentação */
+    }
+    
+    .ability-list {
+        list-style-type: none; /* Remove marcadores de lista padrão */
+    }
+    
+    .ability-list li {
+        position: relative;
+        padding-left: 15px;
+        margin-bottom: 5px;
+    }
+    
+    /* Marcador de lista customizado */
+    .ability-list li::before {
+        content: "■"; /* Quadrado pixelado */
+        position: absolute;
+        left: 0;
+        color: var(--pixel-primary-light); /* Cor do tema */
+        font-size: 0.5rem;
+        top: 4px; /* Ajuste vertical */
+    }
+    
+    
+    /* ANIMAÇÕES */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+    
+    /* RESPONSIVIDADE */
+    /* Para telas entre 769px e 992px */
+    @media (max-width: 992px) {
+        .attributes-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+        }
+    }
+    
+    /* Para telas menores que 768px (geralmente tablets e celulares) */
+    @media (max-width: 768px) {
+        .app-container {
+            flex-direction: column; /* Empilha sidebar e main-content */
+        }
+    
+        .sidebar {
+            width: 100%; /* Sidebar ocupa largura total */
+            position: relative; /* Deixa de ser fixa */
+            height: auto; /* Altura automática */
+        }
+    
+        .main-content {
+            margin-left: 0; /* Remove a margem para a sidebar */
+            padding: 20px 10px; /* Aumenta o padding lateral */
+            min-height: calc(100vh - 20px); /* Ajusta altura mínima */
+        }
+    
+        .character-filters {
+            flex-direction: column; /* Empilha filtros */
+        }
+    
+         /* Ajusta layout das barras de stats em telas menores */
+         .hp-bar,
+         .mana-bar,
+         .estamina-bar {
+             flex-direction: column; /* Empilha label, barra e input */
+             align-items: flex-start;
+             gap: 5px;
+         }
+    
+         .bar-label {
+            width: auto; /* Remove largura fixa */
+            margin-bottom: 5px;
+         }
+    
+         .bar-container {
+            width: 100%; /* Ocupa toda a largura disponível */
+            flex: none; /* Remove flex-grow */
+         }
+    
+         .stat-input {
+             width: 100px; /* Ajusta largura do input */
+             margin-top: 5px;
+         }
+    
+         /* Ajusta layout do header em telas menores */
+         .card-header {
+             flex-direction: column; /* Empilha */
+             align-items: center;
+             text-align: center;
+         }
+    
+         .character-name-container {
+             margin-bottom: 15px;
+             text-align: center;
+         }
+    
+         /* Ajusta área de nível e pontos em telas menores */
+         .level-points-area {
+             flex-direction: column; /* Empilha controles e pontos */
+             align-items: center;
+             gap: 10px; /* Espaço entre level controls e points display */
+             margin-top: 10px; /* Espaço acima */
+         }
+    
+         .level-controls {
+            justify-content: center; /* Centraliza botões de level */
+         }
+    
+         .points-display {
+             margin-top: 0; /* Remove margem superior extra */
+         }
+    
+         /* Ajusta layout do atributo em telas menores */
+         .attribute {
+             flex-direction: row; /* Alinha nome e valor/controles lado a lado */
+             justify-content: space-between; /* Espalha nome e valor/controles */
+         }
+    
+         .attr-name {
+             margin-bottom: 0; /* Remove margem inferior */
+             margin-right: 10px; /* Espaço entre nome e valor */
+         }
+    
+         .attr-value-control {
+             gap: 3px; /* Reduz espaço entre valor e botões */
+         }
+    }
+    
+    /* Para telas menores que 480px (celulares pequenos) */
+    @media (max-width: 480px) {
+        .sidebar {
+            padding: 15px 10px;
+        }
+    
+        .sidebar-header h1 {
+            font-size: 1.4rem;
+        }
+    
+        .character-card {
+            min-width: 280px;
+        }
+    
+        .attributes-grid {
+            grid-template-columns: 1fr; /* 1 coluna */
+        }
+    
+         /* Ajusta fonte e padding para elementos menores */
+         .level-points-area {
+             font-size: 0.6rem;
+         }
+    
+         .character-level {
+             padding: 4px 8px;
+             font-size: 0.6rem;
+         }
+    
+         .level-btn {
+            padding: 3px 6px;
+            font-size: 0.5rem;
+            width: 18px;
+            height: 18px;
+         }
+    
+         .attr-name {
+            font-size: 0.6rem;
+         }
+    
+         .attr-value {
+             font-size: 0.9rem;
+         }
+    
+          .attr-btn {
+             padding: 1px 3px;
+             font-size: 0.4rem;
+             width: 16px;
+             height: 16px;
+         }
+    
+         .hp-calculation {
+             font-size: 0.6rem;
+         }
+    }
+
+/* VARIÁVEIS DE ESTILO PIXEL ART */
+:root {
+    /* Cores Principais */
+    --pixel-dark: #1a1a2e;
+    --pixel-darker: #0f0f1a;
+    --pixel-primary: #4a2d8a;
+    --pixel-primary-light: #6a4dab;
+    --pixel-secondary: #8a2d5a;
+    --pixel-accent: #d32f2f; /* Cor vermelha para HP */
+    --pixel-accent2: #1976d2; /* Cor azul para Mana */
+    --pixel-text: #e6e6fa;
+
+    /* Cores de Destaque */
+    --pixel-fire: #ff5722;
+    --pixel-poison: #9c27b0;
+    --pixel-ice: #00bcd4;
+    --pixel-nature: #4caf50; /* Cor verde para Estamina? */
+    --pixel-shadow: #4a148c;
+
+    /* Bordas e Efeitos */
+    --pixel-border: 3px solid var(--pixel-primary);
+    --pixel-shadow: 4px 4px 0 var(--pixel-darker);
+    --pixel-inset-shadow: inset 3px 3px 0 var(--pixel-darker);
+    --pixel-text-shadow: 2px 2px 0 var(--pixel-darker);
+    --pixel-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+     /* Cor específica para Estamina */
+     --pixel-stamina: var(--pixel-nature); /* Usando a cor verde */
+
+     /* Cor para Pontos */
+     --pixel-points: #ffeb3b; /* Amarelo para pontos */
+}
+
+/* RESET E ESTILOS GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    line-height: 1.6;
+    background-image:
+      linear-gradient(transparent 95%, rgba(74, 45, 138, 0.3) 95%),
+      linear-gradient(90deg, transparent 95%, rgba(74, 45, 138, 0.3) 95%);
+    background-size: 20px 20px;
+    overflow-x: hidden;
+}
+
+/* LAYOUT PRINCIPAL */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* BARRA LATERAL - PIXEL ART STYLE */
+.sidebar {
+    width: 260px;
+    background-color: var(--pixel-dark);
+    padding: 20px 15px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    border-right: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    z-index: 10;
+}
+
+.sidebar-header {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.sidebar-header h1 {
+    color: var(--pixel-primary-light);
+    font-size: 1.8rem;
+    text-shadow: var(--pixel-text-shadow);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.sidebar-header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--pixel-primary);
+    box-shadow: 0 4px 0 var(--pixel-darker);
+}
+
+.pixel-corner-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--pixel-primary);
+    box-shadow:
+      4px 0 0 var(--pixel-darker),
+      0 4px 0 var(--pixel-darker),
+      4px 4px 0 var(--pixel-darker);
+}
+
+.pixel-corner-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--pixel-primary);
+    box-shadow:
+      4px 0 0 var(--pixel-darker),
+      0 4px 0 var(--pixel-darker),
+      4px 4px 0 var(--pixel-darker);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.sidebar-nav li {
+    margin-bottom: 12px;
+}
+
+.sidebar-nav a {
+    color: var(--pixel-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    font-size: 0.75rem;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    transition: var(--pixel-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-nav a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(106, 77, 171, 0.4), transparent);
+    transition: var(--pixel-transition);
+}
+
+.sidebar-nav a:hover::before {
+    left: 100%;
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.sidebar-nav .active a {
+    background-color: var(--pixel-primary);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+    transform: translate(2px, 2px);
+}
+
+.sidebar-nav .active a::after {
+    content: ">";
+    position: absolute;
+    right: 15px;
+    animation: blink 1s infinite;
+}
+
+.pixel-icon {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--pixel-primary-light);
+}
+
+/* CONTEÚDO PRINCIPAL */
+.main-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 30px;
+    background-color: rgba(15, 15, 26, 0.9);
+    min-height: 100vh;
+}
+
+.character-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* FILTROS PIXEL ART */
+.character-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background-color: var(--pixel-dark);
+    padding: 15px;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    position: relative;
+}
+
+.character-filters::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(106, 77, 171, 0.3);
+    pointer-events: none;
+}
+
+/* Estilo base para inputs e selects */
+.pixel-input, .pixel-select {
+    padding: 12px 15px;
+    border: var(--pixel-border);
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    font-family: 'Press Start 2P', cursive, sans-serif; /* Garante a fonte pixelada */
+    font-size: 0.7rem;
+    outline: none;
+    box-shadow: var(--pixel-shadow);
+    transition: var(--pixel-transition);
+    text-transform: uppercase;
+    image-rendering: pixelated; /* Tenta aplicar para a caixa, mas o texto é o importante */
+}
+
+.search-input, .filter-select {
+   flex: 1;
+   min-width: 200px;
+}
+
+
+.pixel-input::placeholder {
+    color: rgba(230, 230, 250, 0.6);
+}
+
+.pixel-input:focus, .pixel-select:focus {
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+    transform: translate(2px, 2px);
+    background-color: rgba(26, 26, 46, 0.8);
+}
+
+
+/* CARDS DE PERSONAGENS - ESTILO PIXEL ART RPG */
+.character-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.character-card {
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    position: relative;
+    transition: var(--pixel-transition);
+    overflow: hidden;
+}
+
+.character-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      linear-gradient(135deg, transparent 48%, rgba(106, 77, 171, 0.1) 49%, rgba(106, 77, 171, 0.1) 51%, transparent 52%),
+      linear-gradient(-135deg, transparent 48%, rgba(106, 77, 171, 0.1) 49%, rgba(106, 77, 171, 0.1) 51%, transparent 52%);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.character-card:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.card-header {
+    background-color: var(--pixel-primary);
+    padding: 15px 20px;
+    display: flex;
+    /* Ajustado para permitir que a área de level/pontos se alinhe verticalmente */
+    flex-direction: column; /* Empilha nome e level/pontos */
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha à esquerda */
+    border-bottom: var(--pixel-border);
+    position: relative;
+}
+
+.card-header::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--pixel-primary-light);
+}
+
+.character-name-container {
+    position: relative;
+    flex: 1;
+    width: 100%; /* Ocupa a largura total no flex-direction: column */
+    margin-bottom: 10px; /* Espaço entre o nome e a área de level/pontos */
+}
+
+.character-name-container h2 {
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+    text-shadow: var(--pixel-text-shadow);
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+.name-decoration {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--pixel-accent);
+    z-index: 1;
+    box-shadow: 0 3px 0 var(--pixel-darker);
+}
+
+/* Área de Nível e Pontos */
+.level-points-area {
+    width: 100%; /* Ocupa a largura total */
+    display: flex;
+    justify-content: space-between; /* Espalha level/pontos e controles */
+    align-items: center;
+    font-size: 0.7rem;
+    flex-wrap: wrap; /* Permite quebrar em telas menores */
+}
+
+.level-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre botões e texto */
+}
+
+.character-level {
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    border: 2px solid var(--pixel-primary-light);
+    box-shadow: var(--pixel-shadow);
+    /* Removido margin-left: 15px; */
+    text-align: center;
+}
+
+.level-btn {
+    padding: 4px 8px; /* Padding menor para botões de level */
+    font-size: 0.6rem;
+}
+
+.points-display {
+    color: var(--pixel-points); /* Cor para o texto de pontos */
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+    font-weight: bold;
+    /* Adiciona margem superior em telas menores se wrapar */
+    margin-top: 5px;
+}
+
+.card-image {
+    position: relative;
+    border-bottom: var(--pixel-border);
+}
+
+.pixel-frame {
+    padding: 10px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    margin: 10px;
+    box-shadow: var(--pixel-inset-shadow);
+}
+
+.character-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%) brightness(0.9) saturate(1.1);
+    border: 2px solid var(--pixel-primary);
+    image-rendering: pixelated;
+}
+
+.stats-bars {
+    padding: 0 15px 15px;
+}
+
+/* Container para cada barra de stat (HP, Mana, Estamina) */
+.hp-bar,
+.mana-bar,
+.estamina-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px; /* Espaço entre o label, a barra e o input */
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    width: 50px; /* Largura fixa para os labels (HP, MANA, EST) */
+    text-shadow: var(--pixel-text-shadow);
+    flex-shrink: 0; /* Não permite que o label diminua */
+}
+
+.bar-container {
+    flex: 1; /* Ocupa o espaço restante */
+    height: 20px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--pixel-primary);
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Permite posicionar o texto e talvez outros elementos internos */
+    align-items: center; /* Centraliza o texto verticalmente */
+}
+
+/* Inputs de edição de status */
+.stat-input {
+    width: 60px; /* Largura para o input */
+    padding: 4px 6px; /* Padding menor */
+    font-size: 0.6rem; /* Fonte menor */
+    border: 2px solid var(--pixel-primary-light); /* Borda diferente */
+    background-color: var(--pixel-dark); /* Fundo mais escuro */
+    color: var(--pixel-text);
+    box-shadow: var(--pixel-shadow); /* Sombra externa */
+    text-align: center; /* Centraliza o texto */
+    -moz-appearance: textfield; /* Remove as setas no Firefox */
+    flex-shrink: 0; /* Não permite que o input diminua */
+}
+
+/* Remove as setas no Chrome, Safari, Edge, Opera */
+.stat-input::-webkit-outer-spin-button,
+.stat-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input:focus {
+    outline: none;
+    border-color: var(--pixel-accent);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor no focus */
+    transform: translate(1px, 1px);
+}
+
+.hp-fill,
+.mana-fill,
+.estamina-fill {
+    height: 100%;
+    transition: width 0.3s ease; /* Transição na largura */
+    position: absolute; /* Permite que o texto fique por cima */
+    top: 0;
+    left: 0;
+}
+
+.hp-fill {
+    background-color: var(--pixel-accent); /* Cor vermelha */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.mana-fill {
+    background-color: var(--pixel-accent2); /* Cor azul */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.estamina-fill {
+    background-color: var(--pixel-stamina); /* Cor verde */
+     background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.hp-text,
+.mana-text,
+.estamina-text {
+    position: relative; /* Para ficar sobre o fill */
+    z-index: 2; /* Garante que fique sobre o fill */
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    margin: auto; /* Centraliza o texto na barra */
+}
+
+
+/* Animações (mantidas do original) */
+/* Efeitos de dano e cura */
+.damage-effect {
+    animation: damagePulse 0.5s ease-out;
+}
+
+.heal-effect {
+    animation: healPulse 0.5s ease-out; /* Removi healGlow pois pode interferir com a cor do fill */
+}
+
+@keyframes damagePulse {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes healPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* A animação de brilho no fill pode ser mantida, se desejar */
+.hp-fill::after,
+.mana-fill::after,
+.estamina-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%);
+  opacity: 0.5;
+  animation: hpShine 2s infinite linear; /* Pode renomear para statShine */
+}
+
+@keyframes hpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* Remover estilos relacionados ao slider/drag não mais usados */
+/* .hp-value-indicator, .hp-slider, .fill-hp-btn */
+
+
+/* O restante do CSS (card-body, toggle-btn, attributes-section, etc.) permanece igual */
+.card-body {
+    padding: 15px;
+}
+
+.basic-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--pixel-primary-light);
+    min-width: 80px;
+    text-shadow: var(--pixel-text-shadow);
+}
+
+.info-value {
+    flex: 1;
+}
+
+.toggle-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    cursor: pointer;
+    display: flex; /* Continua daqui */
+    justify-content: space-between; /* Espalha o texto e o ícone */
+    align-items: center; /* Centraliza verticalmente */
+    transition: var(--pixel-transition); /* Efeito de transição */
+    font-size: 0.7rem; /* Tamanho da fonte */
+    box-shadow: var(--pixel-shadow); /* Sombra */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    position: relative; /* Para o pseudo-elemento de brilho */
+    overflow: hidden; /* Esconde o pseudo-elemento inicialmente */
+}
+
+/* Efeito de brilho no hover (mantido do original) */
+/* O JS precisa definir as variáveis --x e --y no mousemove */
+.toggle-btn::before {
+  content: "";
+  position: absolute;
+  top: var(--y, 0);
+  left: var(--x, 0);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(rgba(255, 255, 255, 0.3), transparent, transparent);
+  opacity: 0;
+  transition: width 0s, height 0s, opacity 0.6s ease; /* Animação apenas na opacidade */
+}
+
+.toggle-btn:hover::before {
+  width: 200px; /* Tamanho do brilho no hover */
+  height: 200px; /* Tamanho do brilho no hover */
+  opacity: 1; /* Mostra o brilho */
+}
+
+
+.toggle-btn:hover {
+    background-color: var(--pixel-primary); /* Muda cor de fundo no hover */
+    transform: translate(2px, 2px); /* Move um pouco no hover */
+    box-shadow: 2px 2px 0 var(--pixel-darker); /* Muda a sombra no hover */
+}
+
+/* Rotação do ícone (seta) */
+.toggle-btn i {
+    transition: transform 0.3s;
+}
+
+.toggle-btn.active i {
+    transform: rotate(180deg); /* Gira o ícone quando ativo */
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2; /* Garante que o texto fique acima do brilho */
+}
+
+
+/* Seções de Atributos e Habilidades */
+.attributes-section,
+.abilities-section {
+    margin: 15px 0;
+    background-color: rgba(45, 45, 45, 0.6); /* Fundo semi-transparente */
+    padding: 15px;
+    border: var(--pixel-border); /* Borda do tema */
+    box-shadow: var(--pixel-inset-shadow); /* Sombra interna */
+    display: none; /* Oculta por padrão */
+}
+
+/* Mostra a seção quando tem a classe 'active' (controlada pelo JS) */
+.attributes-section.active,
+.abilities-section.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out; /* Animação de fade-in */
+}
+
+/* Grid para os atributos */
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas de largura igual */
+    gap: 10px; /* Espaço entre os itens do grid */
+    margin-bottom: 15px;
+}
+
+/* Cada item de atributo no grid */
+.attribute {
+    background-color: var(--pixel-darker); /* Fundo */
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--pixel-primary); /* Borda */
+    box-shadow: var(--pixel-inset-shadow); /* Sombra interna */
+    position: relative;
+    display: flex; /* Usa flex para alinhar nome e valor/controles */
+    flex-direction: column; /* Empilha nome e valor/controles */
+    align-items: center; /* Centraliza o conteúdo */
+    /* Adicionado para garantir que o conteúdo interno não force o overflow inicial */
+    min-width: 0; /* Permite que o item do grid encolha */
+}
+
+/* Linha superior decorativa no atributo */
+.attribute::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--pixel-primary-light);
+}
+
+/* Nome do atributo (FOR, AGI, etc.) */
+.attr-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--pixel-primary-light); /* Cor */
+    margin-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow); /* Sombra no texto */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    /* Adicionado para flexbox na versão mobile */
+    flex-shrink: 0; /* Não permite que o nome encolha na versão row */
+}
+
+/* Contêiner para o valor do atributo e os botões */
+.attr-value-control {
+    display: flex; /* Usa flex para alinhar valor e botões */
+    align-items: center;
+    gap: 5px; /* Espaço entre o valor e os botões */
+    /* Adicionado para flexbox na versão mobile */
+    flex-shrink: 0; /* Não permite que os controles encolham na versão row */
+}
+
+/* Valor numérico do atributo */
+.attr-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white; /* Cor branca */
+    /* Removido display: block; */
+    /* Adicionado para flexbox */
+    flex-shrink: 0; /* Não permite que o valor numérico encolha */
+}
+
+/* Botões de controle de atributo (+/-) */
+.attr-btn {
+     /* Adaptação do pixel-button para botões de atributo */
+    display: inline-flex; /* Permite ícone/texto e alinhamento */
+    align-items: center;
+    justify-content: center;
+    padding: 2px 4px; /* Padding bem pequeno */
+    font-size: 0.5rem; /* Fonte bem pequena */
+    width: 20px; /* Largura fixa pequena */
+    height: 20px; /* Altura fixa pequena */
+    min-width: auto; /* Remove min-width do pixel-button */
+    border: 2px solid var(--pixel-primary-light); /* Borda para botões pequenos */
+    background-color: var(--pixel-dark); /* Fundo escuro */
+    color: var(--pixel-text);
+    box-shadow: 1px 1px 0 var(--pixel-darker); /* Sombra menor */
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: var(--pixel-transition);
+    /* Adicionado para flexbox */
+    flex-shrink: 0; /* Não permite que os botões encolham */
+}
+
+.attr-btn:hover {
+    background-color: var(--pixel-primary); /* Muda cor de fundo no hover */
+    transform: translate(1px, 1px); /* Movimento menor no hover */
+    box-shadow: 0 0 0 var(--pixel-darker); /* Remove sombra no hover */
+}
+
+/* Cor para o botão de diminuir atributo */
+.attr-btn.decrease-attr {
+    background-color: var(--pixel-secondary); /* Cor secundária */
+    border-color: #9a3d6a; /* Borda um pouco mais escura */
+}
+.attr-btn.decrease-attr:hover {
+    background-color: #b04d7a; /* Cor mais clara no hover */
+}
+
+/* Estilo para botão desabilitado (sem pontos, por exemplo) */
+.attr-btn:disabled,
+.level-btn:disabled {
+    opacity: 0.5; /* Diminui a opacidade */
+    cursor: not-allowed; /* Muda o cursor */
+    box-shadow: none; /* Remove sombra */
+    transform: none; /* Remove transformação */
+    pointer-events: none; /* Desabilita eventos de mouse */
+}
+
+
+/* Área de cálculo de HP/Stats (texto informativo) */
+.hp-calculation {
+    font-size: 0.7rem;
+    color: #aaa; /* Cor cinza */
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente */
+    border: 1px solid var(--pixel-primary); /* Borda */
+}
+
+/* Estilos para Habilidades */
+.ability {
+    margin-bottom: 15px;
+}
+
+.ability:last-child {
+    margin-bottom: 0;
+}
+
+.ability-title {
+    font-size: 0.8rem;
+    color: var(--pixel-primary-light); /* Cor */
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--pixel-primary); /* Linha inferior */
+    padding-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow); /* Sombra no texto */
+    text-transform: uppercase; /* Texto em maiúsculas */
+}
+
+.ability-desc,
+.ability-list {
+    font-size: 0.65rem;
+    line-height: 1.6; /* Espaçamento de linha */
+    margin-left: 10px; /* Indentação */
+}
+
+.ability-list {
+    list-style-type: none; /* Remove marcadores de lista padrão */
+}
+
+.ability-list li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 5px;
+}
+
+/* Marcador de lista customizado */
+.ability-list li::before {
+    content: "■"; /* Quadrado pixelado */
+    position: absolute;
+    left: 0;
+    color: var(--pixel-primary-light); /* Cor do tema */
+    font-size: 0.5rem;
+    top: 4px; /* Ajuste vertical */
+}
+
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* RESPONSIVIDADE */
+/* Para telas entre 769px e 992px */
+@media (max-width: 992px) {
+    .attributes-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    }
+}
+
+/* Para telas menores que 768px (geralmente tablets e celulares) */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column; /* Empilha sidebar e main-content */
+    }
+
+    .sidebar {
+        width: 100%; /* Sidebar ocupa largura total */
+        position: relative; /* Deixa de ser fixa */
+        height: auto; /* Altura automática */
+    }
+
+    .main-content {
+        margin-left: 0; /* Remove a margem para a sidebar */
+        padding: 20px 10px; /* Aumenta o padding lateral */
+        min-height: calc(100vh - 20px); /* Ajusta altura mínima */
+    }
+
+    .character-filters {
+        flex-direction: column; /* Empilha filtros */
+    }
+
+     /* Ajusta layout das barras de stats em telas menores */
+     .hp-bar,
+     .mana-bar,
+     .estamina-bar {
+         flex-direction: column; /* Empilha label, barra e input */
+         align-items: flex-start;
+         gap: 5px;
+     }
+
+     .bar-label {
+        width: auto; /* Remove largura fixa */
+        margin-bottom: 5px;
+     }
+
+     .bar-container {
+        width: 100%; /* Ocupa toda a largura disponível */
+        flex: none; /* Remove flex-grow */
+     }
+
+     .stat-input {
+         width: 100px; /* Ajusta largura do input */
+         margin-top: 5px;
+     }
+
+     /* Ajusta layout do header em telas menores */
+     .card-header {
+         flex-direction: column; /* Empilha */
+         align-items: center;
+         text-align: center;
+     }
+
+     .character-name-container {
+         margin-bottom: 15px;
+         text-align: center;
+     }
+
+     /* Ajusta área de nível e pontos em telas menores */
+     .level-points-area {
+         flex-direction: column; /* Empilha controles e pontos */
+         align-items: center;
+         gap: 10px; /* Espaço entre level controls e points display */
+         margin-top: 10px; /* Espaço acima */
+         width: 100%; /* Garante que ocupe a largura total disponível */
+     }
+
+     .level-controls {
+        justify-content: center; /* Centraliza botões de level */
+     }
+
+     .points-display {
+         margin-top: 0; /* Remove margem superior extra */
+     }
+
+     /* Ajusta layout do atributo em telas menores */
+     .attribute {
+         flex-direction: row; /* Alinha nome e valor/controles lado a lado */
+         justify-content: space-between; /* Espalha nome e valor/controles */
+         align-items: center; /* Centraliza verticalmente */
+         flex-wrap: nowrap; /* Tenta evitar quebra de linha dentro do atributo */
+         min-width: 0; /* Permite encolher se necessário */
+         /* Removido text-align: center; que pode conflitar com justify-content */
+         text-align: left; /* Alinha o texto dentro do flex item à esquerda */
+     }
+
+     .attr-name {
+         margin-bottom: 0; /* Remove margem inferior */
+         margin-right: 10px; /* Espaço entre nome e valor */
+         /* Flexbox na versão row */
+         flex: 0 1 auto; /* Pode encolher mas não crescer */
+         min-width: 0; /* Permite encolher além do tamanho do conteúdo */
+     }
+
+     .attr-value-control {
+         gap: 3px; /* Reduz espaço entre valor e botões */
+         /* Flexbox na versão row */
+         flex: 0 0 auto; /* Não cresce nem encolhe, usa tamanho do conteúdo */
+         display: flex; /* Garante que continua flex */
+         align-items: center; /* Centraliza verticalmente */
+     }
+
+     .attr-value {
+         /* Flexbox na versão row */
+         flex-shrink: 0; /* Não encolhe */
+     }
+
+     .attr-btn {
+         /* Flexbox na versão row */
+         flex-shrink: 0; /* Não encolhe */
+     }
+}
+
+/* Para telas menores que 480px (celulares pequenos) */
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 15px 10px;
+    }
+
+    .sidebar-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .character-card {
+        min-width: 280px;
+    }
+
+    .attributes-grid {
+        grid-template-columns: 1fr; /* 1 coluna */
+    }
+
+     /* Ajusta fonte e padding para elementos menores */
+     .level-points-area {
+         font-size: 0.6rem;
+     }
+
+     .character-level {
+         padding: 4px 8px;
+         font-size: 0.6rem;
+     }
+
+     .level-btn {
+        padding: 3px 6px;
+        font-size: 0.5rem;
+        width: 18px;
+        height: 18px;
+     }
+
+     .attr-name {
+        font-size: 0.6rem;
+        /* Ajuste de flexbox se necessário em telas muito pequenas */
+        /* flex: 1 1 auto; /* Permite encolher mais se necessário */
+        margin-right: 5px; /* Espaço menor */
+     }
+
+     .attr-value {
+         font-size: 0.9rem;
+     }
+
+      .attr-btn {
+         padding: 1px 3px;
+         font-size: 0.4rem;
+         width: 16px;
+         height: 16px;
+     }
+
+     .attr-value-control {
+         gap: 2px; /* Espaço ainda menor */
+     }
+
+     .hp-calculation {
+         font-size: 0.6rem;
+     }
+}

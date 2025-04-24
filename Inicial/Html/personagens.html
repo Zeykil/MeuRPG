@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu RPG - Personagens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Inicial/Css/personagem.css">
+    <link rel="stylesheet" href="/Inicial/Css/animaçao.css">
+ <link rel="icon" href="/Inicial/Fotos/logo.png" sizes="64x64" type="image/png">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="pixel-corner-top"></div>
+                <h1>RPG</h1>
+                <div class="pixel-divider"></div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../../index.html"><i class="fas fa-home pixel-icon"></i> INÍCIO</a></li>
+                    <li class="active"><a href="#"><i class="fas fa-users pixel-icon"></i> PERSONAGENS</a></li>
+                    <li><a href="monstro.html"><i class="fas fa-paw pixel-icon"></i> MONSTROS</a></li>
+                    <li><a href="rpg.html"><i class="fas fa-dice-d20 pixel-icon"></i> SALA DE RPG</a></li>
+                    <li><a href="mapa.html"><i class="fas fa-map pixel-icon"></i> MAPA</a></li>
+                    <li><a href="historia.html"><i class="fas fa-book pixel-icon"></i> HISTÓRIA</a></li>
+                    <li><a href="dashboard.html"><i class="fas fa-chart-line pixel-icon"></i> PAINEL</a></li> </ul>
+            </nav>
+            <div class="pixel-corner-bottom"></div>
+        </aside>
+
+        <main class="main-content">
+            <div class="character-gallery">
+                <div class="character-filters">
+                    <input type="text" placeholder="BUSCAR PERSONAGEM..." class="search-input pixel-input">
+                    <select class="filter-select pixel-select">
+                        <option value="all">TODAS AS RAÇAS</option>
+                        <option value="drow">DROW</option>
+                        <option value="tiefling">TIEFLING</option>
+                        <option value="human">HUMANO</option>
+                        <option value="elf">ELFO</option>
+                        <option value="half-elf">MEIO-ELFO</option>
+                    </select>
+                </div>
+
+                <div class="character-cards-container">
+                    <div class="character-card" data-race="drow" data-level="1" data-id="lythar" data-current-points="0">
+                        <div class="card-header">
+                            <div class="character-name-container">
+                                <h2>LYTHAR UMBRAXIS</h2>
+                                <div class="name-decoration"></div>
+                            </div>
+                            <div class="level-points-area">
+                                <div class="level-controls">
+                                     <button class="level-btn decrease-level pixel-button small"><i class="fas fa-minus"></i></button>
+                                     <div class="character-level">NÍVEL 0</div> <button class="level-btn increase-level pixel-button small"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="points-display">Pontos: <span class="remaining-points">0</span></div>
+                            </div>
+                        </div>
+
+                        <div class="card-image">
+                            <div class="pixel-frame">
+                                <img src="/Inicial/Fotos/lythar.jpg" alt="Lythar Umbraxis" class="character-img">
+                            </div>
+                            <div class="stats-bars">
+                                <div class="hp-bar">
+                                    <div class="bar-label">HP</div>
+                                    <div class="bar-container">
+                                        <div class="hp-fill" style="width: 97.6%"></div>
+                                        <span class="hp-text">654/670</span>
+                                    </div>
+                                    <input type="number" class="stat-input hp-input" min="0" value="654" data-max="670">
+                                </div>
+                                <div class="mana-bar">
+                                    <div class="bar-label">MANA</div>
+                                    <div class="bar-container">
+                                        <div class="mana-fill" style="width: 77.5%"></div>
+                                        <span class="mana-text">155/200</span>
+                                    </div>
+                                     <input type="number" class="stat-input mana-input" min="0" value="155" data-max="200">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                             <div class="basic-info">
+                                <div class="info-row">
+                                    <span class="info-label">RAÇA:</span>
+                                    <span class="info-value">DROW</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">CLASSE:</span>
+                                    <span class="info-value">CONJURADOR SOMBRIO</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">IDADE:</span>
+                                    <span class="info-value">127 (APARENTA 25)</span>
+                                </div>
+                            </div>
+
+                            <button class="toggle-btn toggle-attributes">
+                                <span class="btn-text">MOSTRAR ATRIBUTOS</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="attributes-section">
+                                <div class="attributes-grid">
+                                    <div class="attribute">
+                                        <div class="attr-name">FOR</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="85">85</span>
+                                            <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">AGI</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="110">110</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">VEL</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="30">30</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">INT</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="150">150</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">RES</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="100">100</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">ESP</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="200">200</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">CAR</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="80">80</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hp-calculation">
+                                    <p>CÁLCULO DE HP: (FOR×2) + (RES×3) + (ESP×1)</p>
+                                </div>
+                            </div>
+
+                            <button class="toggle-btn toggle-abilities">
+                                <span class="btn-text">MOSTRAR HABILIDADES</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="abilities-section">
+                                <div class="ability">
+                                    <h3 class="ability-title">PORTAL DAS SOMBRAS</h3>
+                                    <ul class="ability-list">
+                                        <li>PEQUENO (1M): 10 MANA</li>
+                                        <li>MÉDIO (3M): 25 MANA</li>
+                                        <li>GRANDE (5M+): 50~80 MANA</li>
+                                    </ul>
+                                </div>
+
+                                <div class="ability">
+                                    <h3 class="ability-title">SOMBRAS SERVIS</h3>
+                                    <ul class="ability-list">
+                                        <li>MENOR (ESPIONAR): 15 MANA (20% STATUS)</li>
+                                        <li>BATALHA (ATAQUES): 35 MANA (70% STATUS)</li>
+                                        <li>AVANÇADA (MAGIAS): 50 MANA (200% STATUS, 3 TURNOS)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="ability">
+                                    <h3 class="ability-title">OLHO DO ECLIPSE (PASSIVA)</h3>
+                                    <ul class="ability-list">
+                                        <li>VISÃO NOTURNA TOTAL</li>
+                                        <li>DETECTA ILUSÕES SIMPLES</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="character-card" data-race="tiefling" data-level="0" data-id="draven" data-current-points="0">
+                        <div class="card-header">
+                            <div class="character-name-container">
+                                <h2>DRAVEN KIMORA</h2>
+                                <div class="name-decoration"></div>
+                            </div>
+                            <div class="level-points-area">
+                                <div class="level-controls">
+                                     <button class="level-btn decrease-level pixel-button small"><i class="fas fa-minus"></i></button>
+                                     <div class="character-level">NÍVEL 0</div> <button class="level-btn increase-level pixel-button small"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="points-display">Pontos: <span class="remaining-points">0</span></div>
+                            </div>
+                        </div>
+
+                        <div class="card-image">
+                            <div class="pixel-frame">
+                                <img src="/Inicial/Fotos/draven.jpg" alt="Draven Kimora" class="character-img">
+                            </div>
+                            <div class="stats-bars">
+                                <div class="hp-bar">
+                                    <div class="bar-label">HP</div>
+                                    <div class="bar-container">
+                                        <div class="hp-fill" style="width: 100%"></div>
+                                        <span class="hp-text">700/700</span>
+                                    </div>
+                                    <input type="number" class="stat-input hp-input" min="0" value="700" data-max="700">
+                                </div>
+                                <div class="estamina-bar">
+                                    <div class="bar-label">EST</div>
+                                    <div class="bar-container">
+                                        <div class="estamina-fill" style="width: 100%"></div>
+                                        <span class="estamina-text">500/500</span>
+                                    </div>
+                                    <input type="number" class="stat-input estamina-input" min="0" value="500" data-max="500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="basic-info">
+                                <div class="info-row">
+                                    <span class="info-label">RAÇA:</span>
+                                    <span class="info-value">TIEFLING</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">IDADE:</span>
+                                    <span class="info-value">18</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">PODERES:</span>
+                                    <span class="info-value">CLONAGEM REAL COLETIVA, VISÃO NOTURNA</span>
+                                </div>
+                            </div>
+
+                            <button class="toggle-btn toggle-attributes">
+                                <span class="btn-text">MOSTRAR ATRIBUTOS</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="attributes-section">
+                                <div class="attributes-grid">
+                                    <div class="attribute">
+                                        <div class="attr-name">FOR</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="100">100</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">AGI</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="130">130</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">VEL</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="25">25</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">INT</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="110">110</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">RES</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="130">130</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">ESP</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="110">110</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">CAR</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="95">95</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hp-calculation">
+                                    <p>CÁLCULO DE HP: (FOR×2) + (RES×3) + (ESP×1)</p>
+                                    <p>(+ RESISTÊNCIA INFERNAL = LEVE REDUÇÃO DE DANO MÁGICO E DE FOGO)</p>
+                                </div>
+                            </div>
+
+                            <button class="toggle-btn toggle-abilities">
+                                <span class="btn-text">MOSTRAR HABILIDADES</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="abilities-section">
+                                <div class="ability">
+                                    <h3 class="ability-title">CLONAGEM REAL COLETIVA</h3>
+                                    <p class="ability-desc">DRAVEN PODE CRIAR CLONES DE SI MESMO COM HABILIDADES COMPLETAS</p>
+                                </div>
+
+                                <div class="ability">
+                                    <h3 class="ability-title">AURA DRAGONICA</h3>
+                                    <ul class="ability-list">
+                                        <li>PODE CONTROLAR A FORMA BÁSICA DA AURA</li>
+                                        <li>PODE FORMAR UMA ESPADA CONCENTRANDO EM UMA MÃO</li>
+                                        <li>NÍVEL 5: ARMADURA DE AURA DRAGONICA TEMPORÁRIA</li>
+                                        <li>NÍVEL 15: BASE DA ENERGIA DRAGONICA</li>
+                                        <li>NÍVEL 30: RAIO LASER (DEPENDE DO DOMÍNIO)</li>
+                                        <li>NÍVEL 40: FORMA BESTIAL (3X TODOS OS PONTOS)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="ability">
+                                    <h3 class="ability-title">ECO DA MORTE (LEVEL 15)</h3>
+                                    <p class="ability-desc">QUANDO SOFRE UM GOLPE MORTAL, CORPO DESAPARECE E DEIXA UMA SOMBRA QUE EXPLODE CAUSANDO DANO OU CRIA DISTRAÇÃO PARA FUGA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="character-card" data-race="half-elf" data-level="0" data-id="magolito" data-current-points="0">
+                        <div class="card-header">
+                            <div class="character-name-container">
+                                <h2>MAGOLITO</h2>
+                                <div class="name-decoration"></div>
+                            </div>
+                            <div class="level-points-area">
+                                <div class="level-controls">
+                                     <button class="level-btn decrease-level pixel-button small"><i class="fas fa-minus"></i></button>
+                                     <div class="character-level">NÍVEL 0</div> <button class="level-btn increase-level pixel-button small"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="points-display">Pontos: <span class="remaining-points">0</span></div>
+                            </div>
+                        </div>
+
+                        <div class="card-image">
+                            <div class="pixel-frame">
+                                <img src="/Inicial/Fotos/magolito.jpg" alt="Magolito" class="character-img">
+                            </div>
+                            <div class="stats-bars">
+                                <div class="hp-bar">
+                                    <div class="bar-label">HP</div>
+                                    <div class="bar-container">
+                                        <div class="hp-fill" style="width: 100%"></div>
+                                        <span class="hp-text">560/560</span>
+                                    </div>
+                                    <input type="number" class="stat-input hp-input" min="0" value="560" data-max="560">
+                                </div>
+                                <div class="estamina-bar">
+                                    <div class="bar-label">EST</div>
+                                    <div class="bar-container">
+                                        <div class="estamina-fill" style="width: 100%"></div>
+                                        <span class="estamina-text">450/450</span>
+                                    </div>
+                                     <input type="number" class="stat-input estamina-input" min="0" value="450" data-max="450">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="basic-info">
+                                <div class="info-row">
+                                    <span class="info-label">RAÇA:</span>
+                                    <span class="info-value">HUMANO / MEIO-ELFO</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">CLASSE:</span>
+                                    <span class="info-value">MAGO</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">IDADE:</span>
+                                    <span class="info-value">58 (APARENTA 29)</span>
+                                </div>
+                            </div>
+
+                            <button class="toggle-btn toggle-attributes">
+                                <span class="btn-text">MOSTRAR ATRIBUTOS</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="attributes-section">
+                                <div class="attributes-grid">
+                                    <div class="attribute">
+                                        <div class="attr-name">FOR</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="80">80</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">AGI</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="90">90</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">VEL</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="25">25</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">INT</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="140">140</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">RES</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="90">90</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">ESP</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="130">130</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">CAR</div>
+                                         <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="105">105</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hp-calculation">
+                                    <p>CÁLCULO DE HP: (FOR×2) + (RES×3) + (ESP×1)</p>
+                                </div>
+                            </div>
+
+                            <button class="toggle-btn toggle-abilities">
+                                <span class="btn-text">MOSTRAR HABILIDADES</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="abilities-section">
+                                <div class="ability">
+                                    <h3 class="ability-title">MAGIAS</h3>
+                                    <p class="ability-desc">LITERALMENTE TODAS NO NÍVEL 1 (PARA NÃO FICAR ROUBADO)</p>
+                                </div>
+
+                                <div class="ability">
+                                    <h3 class="ability-title">DESCRIÇÃO</h3>
+                                    <p class="ability-desc">O MAGOLITO É HUMANO-MEIO-ELFO MAGO COM 29 ANOS COM BARBA BRANCA GRANDIOZA UTILIZANDO UM CAJADO.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="character-card" data-race="elf" data-level="0" data-id="gabrielfin" data-current-points="0">
+                         <div class="card-header">
+                            <div class="character-name-container">
+                                <h2>GABRIELFIN</h2>
+                                <div class="name-decoration"></div>
+                            </div>
+                            <div class="level-points-area">
+                                <div class="level-controls">
+                                     <button class="level-btn decrease-level pixel-button small"><i class="fas fa-minus"></i></button>
+                                     <div class="character-level">NÍVEL 0</div> <button class="level-btn increase-level pixel-button small"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <div class="points-display">Pontos: <span class="remaining-points">0</span></div>
+                            </div>
+                        </div>
+
+                        <div class="card-image">
+                            <div class="pixel-frame">
+                                <img src="/Inicial/Fotos/gabrielfin.jpg" alt="Gabrielfin" class="character-img">
+                            </div>
+                            <div class="stats-bars">
+                                <div class="hp-bar">
+                                    <div class="bar-label">HP</div>
+                                    <div class="bar-container">
+                                        <div class="hp-fill" style="width: 100%"></div>
+                                        <span class="hp-text">580/580</span>
+                                    </div>
+                                     <input type="number" class="stat-input hp-input" min="0" value="580" data-max="580">
+                                </div>
+                                <div class="estamina-bar">
+                                    <div class="bar-label">EST</div>
+                                    <div class="bar-container">
+                                        <div class="estamina-fill" style="width: 100%"></div>
+                                        <span class="estamina-text">600/600</span>
+                                    </div>
+                                     <input type="number" class="stat-input estamina-input" min="0" value="600" data-max="600">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="basic-info">
+                                <div class="info-row">
+                                    <span class="info-label">RAÇA:</span>
+                                    <span class="info-value">ELFO</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">CLASSE:</span>
+                                    <span class="info-value">HEALER / CONEXÃO COM A NATUREZA</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">IDADE:</span>
+                                    <span class="info-value">258</span>
+                                </div>
+                            </div>
+
+                            <button class="toggle-btn toggle-attributes">
+                                <span class="btn-text">MOSTRAR ATRIBUTOS</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="attributes-section">
+                                <div class="attributes-grid">
+                                    <div class="attribute">
+                                        <div class="attr-name">FOR</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="70">70</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">AGI</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="95">95</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">VEL</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="30">30</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">INT</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="130">130</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">RES</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="100">100</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">ESP</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="140">140</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="attribute">
+                                        <div class="attr-name">CAR</div>
+                                        <div class="attr-value-control">
+                                            <span class="attr-value" data-base-value="120">120</span>
+                                             <button class="attr-btn decrease-attr pixel-button small">-</button>
+                                            <button class="attr-btn increase-attr pixel-button small">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hp-calculation">
+                                    <p>CÁLCULO DE HP: (FOR×2) + (RES×3) + (ESP×1)</p>
+                                </div>
+                            </div>
+
+                            <button class="toggle-btn toggle-abilities">
+                                <span class="btn-text">MOSTRAR HABILIDADES</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <div class="abilities-section">
+                                <div class="ability">
+                                    <h3 class="ability-title">LORE</h3>
+                                    <p class="ability-desc">EM UMA FLORESTA ENCANTADA, ONDE AS ÁRVORES SUSSURRAVAM SEGREDOS AO VENTO E AS FLORES DANÇAVAM AO RITMO DO SOL, VIVIA UM ELFO CURANDEIRO CHAMADO GABRIELFIN. ELE PASSAVA SEUS DIAS COLETANDO ERVAS, PREPARANDO POÇÕES E ATENDENDO AOS ANIMAIS FERIDOS DA FLORESTA. SUA PRESENÇA ERA UM BÁLSAMO PARA TODOS QUE O RODEAVAM.</p>
+                                </div>
+
+                                <div class="ability">
+                                    <h3 class="ability-title">ITENS</h3>
+                                    <ul class="ability-list">
+                                        <li>UM PAR DE LUVAS MÁGICAS QUE AUXILIA A FAZER AS MAGIAS MAIS RAPIDAMENTE</li>
+                                        <li>ALGUNS FRASCOS DE CURA MÁGICA EM SUA JAQUETA DE COURO</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../script/animaçoes.js"></script>
+    <script src="../script/Salvar.js"></script>
+</body>
+</html>

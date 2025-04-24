@@ -1,0 +1,32 @@
+/* Adicione isso no seu arquivo styles.css */
+.app-container {
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.8s ease-out; /* Transição de 0.8 segundos */
+}
+
+.app-container.fade-in {
+    opacity: 1; /* Torna visível quando a classe 'fade-in' é adicionada pelo JS */
+}
+
+/* Adicione isso no seu styles.css ou css específico dos cards */
+/* Para a animação on scroll */
+.character-card,
+.monster-card,
+.story-segment,
+.calculator-block,
+.dice-roller-section .section-content,
+.pixel-panel-deco {
+    opacity: 0; /* Começa invisível */
+    transform: translateY(20px); /* Começa um pouco abaixo */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transição para opacity e movimento */
+}
+
+.character-card.is-visible,
+.monster-card.is-visible,
+.story-segment.is-visible,
+.calculator-block.is-visible,
+.dice-roller-section .section-content.is-visible,
+.pixel-panel-deco.is-visible {
+    opacity: 1; /* Torna visível */
+    transform: translateY(0); /* Move para a posição original */
+}

@@ -1,0 +1,715 @@
+/* Importa as variáveis de estilo pixel art e estilos gerais */
+/* Certifique-se que o caminho para `personagem.css` está correto */
+@import url("personagem.css");
+
+/* Estilos específicos para a página RPG */
+
+/* Ajusta a margem esquerda do main-content para acomodar a sidebar */
+/* Mantido do css anterior, importante para o layout */
+.main-content {
+    margin-left: 260px; /* Ajuste se a largura da sua sidebar for diferente */
+    padding: 30px; /* Mantém o padding interno */
+    background-color: rgba(15, 15, 26, 0.9); /* Fundo semi-transparente escuro */
+    min-height: 100vh;
+    flex-grow: 1;
+    position: relative; /* Necessário para posicionar as barras de decoração */
+    z-index: 1; /* Garante que o conteúdo fique acima das barras */
+     /* Adiciona um padrão sutil ao fundo do main content - Padrão do body no styles.css */
+    background-image:
+        linear-gradient(transparent 95%, rgba(74, 45, 138, 0.3) 95%),
+        linear-gradient(90deg, transparent 95%, rgba(74, 45, 138, 0.3) 95%);
+    background-size: 20px 20px;
+    background-repeat: repeat;
+}
+
+/* Container principal da área de RPG (equivalente ao .character-gallery ou .monster-gallery) */
+.rpg-area {
+    max-width: 1100px; /* Aumentado um pouco a largura máxima */
+    margin: 0 auto;
+    position: relative; /* Para z-index */
+    z-index: 2; /* Garante que a área de conteúdo fique acima */
+}
+
+/* Barras de Decoração no Topo e Base (inspirado nas bordas e sombras) */
+.pixel-panel-deco {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 15px; /* Altura das barras de decoração */
+    background-color: var(--pixel-primary); /* Cor principal */
+    border: 2px solid var(--pixel-primary-light);
+    box-shadow: inset 0 0 8px var(--pixel-darker); /* Sombra interna */
+     z-index: 0; /* Garante que fiquem atrás do conteúdo principal */
+     /* Adiciona um padrão pixelado sutil */
+     background-image:
+         linear-gradient(45deg, var(--pixel-primary-light) 25%, transparent 25%, transparent 75%, var(--pixel-primary-light) 75%, var(--pixel-primary-light)),
+         linear-gradient(-45deg, var(--pixel-primary-light) 25%, transparent 25%, transparent 75%, var(--pixel-primary-light) 75%, var(--pixel-primary-light));
+     background-size: 8px 8px;
+     opacity: 0.5;
+}
+
+.top-decoration-bar {
+    top: 0; /* Fixa no topo */
+}
+
+.bottom-decoration-bar {
+    bottom: 0; /* Fixa na base */
+}
+
+/* Cabeçalho da área de RPG (inspirado no .card-header ou .section-header) */
+.rpg-header {
+    background-color: var(--pixel-primary);
+    padding: 15px 20px;
+    margin-bottom: 25px; /* Aumenta um pouco a margem inferior */
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    position: relative;
+    text-align: center;
+     z-index: 1; /* Garante que o cabeçalho fique acima das decorações */
+     /* Adiciona um padrão sutil */
+      background-image:
+         linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1)),
+         linear-gradient(-45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1));
+      background-size: 10px 10px;
+}
+
+.rpg-header h2 {
+    margin: 0;
+    font-size: 1.5rem; /* Fonte maior */
+    color: white;
+    text-shadow: var(--pixel-text-shadow);
+    letter-spacing: 3px; /* Espaçamento maior */
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+}
+
+.rpg-header .header-decoration {
+    position: absolute;
+    bottom: -8px; /* Ajusta a posição */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Decoração mais larga */
+    max-width: 500px; /* Largura máxima */
+    height: 6px; /* Mais grossa */
+    background-color: var(--pixel-accent);
+    z-index: 1;
+    box-shadow: 0 4px 0 var(--pixel-darker); /* Sombra ajustada */
+}
+
+
+/* Contêiner principal das ferramentas (Agora é o pixel-panel) */
+/* Usa os estilos do .pixel-panel e adiciona layout */
+.tools-container.pixel-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Espaço entre as seções de calculadoras e dados */
+    width: 100%;
+     max-width: 960px; /* Largura máxima ajustada para os painéis */
+     margin: 0 auto; /* Centraliza o painel de ferramentas */
+     padding: 20px; /* Padding interno */
+     background-color: var(--pixel-dark); /* Fundo escuro do painel */
+     border: var(--pixel-border); /* Borda do painel */
+     box-shadow: var(--pixel-shadow); /* Sombra do painel */
+     /* Adiciona um padrão diagonal sutil ao fundo */
+    background-image:
+      linear-gradient(135deg, transparent 48%, rgba(106, 77, 171, 0.08) 49%, rgba(106, 77, 171, 0.08) 51%, transparent 52%),
+      linear-gradient(-135deg, transparent 48%, rgba(106, 77, 171, 0.08) 49%, rgba(106, 77, 171, 0.08) 51%, transparent 52%);
+    background-size: 25px 25px; /* Tamanho do padrão */
+    background-repeat: repeat;
+}
+
+/* Cabeçalho do Painel de Ferramentas */
+.panel-header {
+    background-color: var(--pixel-primary); /* Cor primária para o cabeçalho do painel */
+    padding: 10px 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: var(--pixel-text-shadow);
+    color: white;
+    border: 2px solid var(--pixel-primary-light);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+    margin-bottom: 20px; /* Espaço abaixo do cabeçalho do painel */
+    text-align: center;
+     /* Adiciona um padrão sutil */
+     background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(0,0,0,0.1) 5px, rgba(0,0,0,0.1) 10px);
+     background-size: 20px 20px;
+}
+
+
+/* O grid interno para organizar calculadoras e dados */
+.tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide em duas colunas: Calculadoras e Dados */
+    gap: 25px; /* Espaço entre as colunas */
+}
+
+/* Estilo dos cabeçalhos de Seção (Calculadoras, Dados) - Inspirado no .ability-title */
+.section-header {
+    background-color: var(--pixel-darker); /* Fundo escuro */
+    padding: 8px 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+    color: var(--pixel-primary-light); /* Cor clara */
+    border-bottom: 2px solid var(--pixel-primary); /* Borda inferior */
+    padding-bottom: 5px;
+    margin-bottom: 15px; /* Espaço abaixo do cabeçalho da seção */
+}
+
+.section-content {
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: var(--pixel-text);
+}
+
+
+/* --- Estilos das Calculadoras --- */
+.calculators-section .section-content p {
+    margin-bottom: 10px;
+}
+
+/* Blocos individuais de calculadora (HP, Redução de Dano) */
+/* Usa estilos do .attribute ou .abilities-section */
+.calculator-block.pixel-block {
+     background-color: var(--pixel-dark); /* Fundo escuro */
+    border: var(--pixel-border); /* Borda */
+    box-shadow: var(--pixel-shadow); /* Sombra externa */
+    margin-bottom: 20px; /* Espaço entre os blocos de calculadora */
+    padding: 15px;
+     position: relative;
+     overflow: hidden;
+     /* Adiciona um padrão de fundo sutil */
+     background-image: radial-gradient(rgba(106, 77, 171, 0.12) 10%, transparent 10%);
+     background-size: 15px 15px;
+     background-repeat: repeat;
+}
+/* Pseudo-elemento para a borda interna (inspirado em .character-filters::before) */
+.calculator-block.pixel-block::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(106, 77, 171, 0.3);
+    pointer-events: none;
+}
+
+
+.calculator-block .block-title {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--pixel-accent2); /* Cor azul para títulos de bloco (exemplo) */
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(25, 118, 210, 0.5); /* Linha azul sutil */
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.calculator-block .block-content {
+    font-size: 0.7rem;
+    color: var(--pixel-text);
+}
+
+.calculator-block .formula {
+    font-style: italic;
+    margin-bottom: 8px;
+    color: #aaa; /* Cor mais clara para fórmulas */
+}
+
+.calculator-block .formula-list {
+     list-style: disc; /* Bolinhas */
+     margin-left: 20px; /* Indentação */
+     margin-bottom: 10px;
+}
+.calculator-block .formula-list li {
+     margin-bottom: 4px;
+     font-size: 0.65rem; /* Fonte um pouco menor nas regras */
+}
+
+
+.calculator-block .input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* Permite quebrar */
+}
+
+.calculator-block label.pixel-label {
+     flex-shrink: 0; /* Não encolhe */
+     /* Adiciona estilos do pixel-label */
+     font-size: 0.7rem; /* Tamanho da fonte */
+     color: var(--pixel-primary-light); /* Cor do tema */
+     text-transform: uppercase;
+     text-shadow: var(--pixel-text-shadow); /* Sombra no texto */
+}
+
+/* Estilo específico para o select de personagem */
+/* Usa o estilo base .pixel-select */
+#character-select.pixel-select.small {
+    flex-grow: 1; /* Permite crescer */
+    min-width: 150px; /* Largura mínima */
+     /* Herda estilos de .pixel-select.small */
+     padding: 5px 8px;
+     font-size: 0.6rem;
+}
+
+/* Estilo para inputs de número na calculadora (RES, DANO) */
+/* Usa o estilo base .pixel-input */
+.calculator-block input.pixel-input.small {
+    width: 80px;
+    padding: 5px 8px;
+    font-size: 0.6rem;
+     flex-grow: 0; /* Não cresce */
+     /* Herda estilos de .pixel-input.small */
+}
+
+
+/* Estilo para exibir os atributos do personagem selecionado */
+.selected-character-stats {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(106, 77, 171, 0.3); /* Linha sutil */
+    font-size: 0.7rem;
+    color: var(--pixel-text);
+    width: 100%; /* Ocupa a largura total */
+}
+
+.selected-character-stats p {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--pixel-primary-light);
+}
+
+.selected-character-stats .stats-display {
+     display: flex;
+     gap: 15px; /* Espaço entre os atributos */
+     flex-wrap: wrap;
+}
+
+.selected-character-stats .stat-item {
+    font-weight: normal;
+    color: var(--pixel-text);
+}
+
+.selected-character-stats .stat-item span {
+    font-weight: bold;
+    color: var(--pixel-points); /* Cor amarela para os valores */
+    margin-left: 5px;
+}
+
+
+/* Botão de Calcular HP Base e Redução de Dano */
+/* Usa o estilo base .pixel-button.small */
+.calculator-block button.pixel-button.small {
+     padding: 5px 10px;
+     font-size: 0.6rem;
+     margin-top: 5px; /* Espaço acima do botão */
+     width: auto; /* Ajusta largura ao texto */
+     /* Herda estilos de .pixel-button.small */
+}
+
+
+.calculator-block .calculation-result {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--pixel-points);
+    margin-top: 15px; /* Aumenta um pouco a margem */
+    border-top: 1px dashed rgba(255, 235, 59, 0.3);
+    padding-top: 10px;
+    text-align: center; /* Centraliza o resultado */
+}
+
+
+/* --- Estilos do Rolador de Dados --- */
+.dice-roller-section .section-content {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}
+
+.dice-roller-section .section-content > p {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.dice-images {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dice-image {
+    width: 55px;
+    height: 55px;
+    image-rendering: pixelated;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    filter: grayscale(70%);
+    opacity: 0.7;
+     /* Adiciona um padrão sutil ao redor */
+     outline: 2px dashed transparent;
+     outline-offset: 4px;
+     transition: outline-color 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.dice-image:hover {
+    border-color: var(--pixel-primary-light);
+    transform: scale(1.1);
+    filter: grayscale(0%);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(106, 77, 171, 0.5);
+     outline-color: var(--pixel-primary-light);
+}
+
+.dice-image.selected {
+    border-color: var(--pixel-accent);
+    box-shadow: 0 0 12px var(--pixel-accent);
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+     outline-color: var(--pixel-accent); /* Borda tracejada vermelha */
+}
+
+
+.dice-controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control-group {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+}
+
+/* Inputs de Quantidade e Modificador de Dados */
+/* Usa o estilo base .pixel-input.small */
+.dice-controls input.pixel-input.small {
+    width: 70px; /* Ajustado levemente */
+     padding: 5px 8px;
+     font-size: 0.6rem;
+     /* Herda estilos de .pixel-input.small */
+}
+
+
+/* Botão Rolar Dados */
+/* Usa o estilo base .pixel-button */
+.roll-dice-button.pixel-button {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    background-color: var(--pixel-accent); /* Cor de destaque */
+    border-color: #ff5722; /* Borda da cor de destaque */
+    box-shadow: 4px 4px 0 #d32f2f; /* Sombra */
+     /* Herda estilos de .pixel-button e adiciona cor específica */
+}
+
+.roll-dice-button.pixel-button:hover {
+    background-color: #e53935; /* Cor de destaque mais clara no hover */
+    border-color: #f4511e;
+    box-shadow: 2px 2px 0 #d32f2f;
+    transform: translate(2px, 2px);
+}
+
+.roll-dice-button.pixel-button:active {
+    background-color: #c62828; /* Cor de destaque mais escura no active */
+    box-shadow: none;
+    transform: translate(4px, 4px);
+}
+
+
+.roll-output {
+    width: 100%;
+    text-align: center;
+     border-top: 2px solid var(--pixel-darker); /* Linha divisória */
+     padding-top: 15px;
+     margin-top: 15px;
+}
+
+.roll-result {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--pixel-points);
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.roll-details {
+     font-size: 0.7rem;
+     color: #aaa;
+     margin-bottom: 10px;
+     font-style: italic;
+}
+
+.roll-history {
+    font-size: 0.6rem;
+    color: #aaa;
+}
+
+#roll-history-list {
+    font-style: normal;
+    color: #ccc;
+}
+
+
+/* RESPONSIVIDADE para a página RPG */
+
+/* Para telas menores que 992px */
+@media (max-width: 992px) {
+    .tools-grid {
+        grid-template-columns: 1fr; /* Uma única coluna */
+    }
+
+     .tools-container.pixel-panel {
+         max-width: 95%; /* Permite que o painel principal ocupe mais largura */
+         padding: 15px; /* Reduz padding */
+     }
+
+     .panel-header {
+         font-size: 0.7rem;
+         margin-bottom: 15px;
+     }
+
+     .section-header {
+         font-size: 0.7rem;
+         margin-bottom: 10px;
+     }
+
+     .dice-images {
+         gap: 10px;
+     }
+     .dice-image {
+         width: 45px;
+         height: 45px;
+     }
+      .dice-controls {
+          flex-direction: row; /* Mantém lado a lado se couber */
+          gap: 15px;
+          justify-content: center; /* Centraliza */
+      }
+      .control-group {
+           justify-content: flex-start; /* Alinha à esquerda */
+           width: auto;
+      }
+       .pixel-label {
+            width: auto; /* Volta a ser automático */
+            text-align: left;
+       }
+        .pixel-input.small,
+        .pixel-select.small {
+             width: 60px; /* Ajuste geral */
+        }
+         .calculator-block input.pixel-input.small {
+             width: 80px; /* Mantém inputs da calculadora um pouco maiores */
+        }
+
+       .calculator-block .input-group {
+            flex-wrap: nowrap; /* Evita quebra nos grupos de input da calculadora */
+             align-items: flex-start; /* Alinha labels e inputs */
+       }
+       .calculator-block label.pixel-label {
+            width: 120px; /* Largura fixa para labels da calculadora em coluna */
+            text-align: right;
+       }
+
+       .selected-character-stats .stats-display {
+            flex-direction: column; /* Empilha os stats */
+            gap: 5px;
+       }
+
+}
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+     .main-content {
+         margin-left: 0; /* Sidebar empilha */
+         padding: 20px 10px;
+     }
+     .rpg-header h2 {
+         font-size: 1.2rem; /* Fonte menor */
+         letter-spacing: 2px;
+     }
+     .rpg-header .header-decoration {
+          bottom: -6px;
+          height: 5px;
+     }
+     .tools-container.pixel-panel {
+          padding: 10px;
+     }
+     .panel-header, .section-header {
+          font-size: 0.7rem;
+     }
+      .panel-header {
+           margin: -10px -10px 10px -10px; /* Ajusta margem para "colar" na borda do painel */
+      }
+       .section-header {
+           margin-bottom: 10px;
+       }
+
+      .dice-images {
+          gap: 8px;
+      }
+      .dice-image {
+          width: 40px;
+          height: 40px;
+      }
+      .roll-dice-button.pixel-button {
+          padding: 8px 15px;
+          font-size: 0.8rem;
+      }
+      .roll-result {
+          font-size: 1.1rem;
+      }
+       .roll-details,
+       .roll-history {
+           font-size: 0.65rem;
+       }
+        .calculator-block.pixel-block {
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .calculator-block .block-title {
+            font-size: 0.75rem;
+             margin-bottom: 8px;
+        }
+        .calculator-block .block-content {
+            font-size: 0.65rem;
+        }
+         .calculator-block .input-group {
+              gap: 8px;
+              margin-bottom: 8px;
+              flex-wrap: wrap; /* Permite quebrar novamente se o conteúdo for muito grande */
+         }
+
+          .calculator-block input.pixel-input.small,
+          .pixel-input.small,
+          .pixel-select.small {
+             width: 50px; /* Ajuste geral para inputs pequenos */
+          }
+           .calculator-block button.pixel-button.small {
+               padding: 4px 8px;
+               font-size: 0.55rem;
+          }
+           .calculator-block label.pixel-label {
+             width: auto; /* Remove largura fixa */
+             text-align: left;
+          }
+         .calculator-block .formula-list li {
+             font-size: 0.6rem; /* Fonte menor nas regras */
+         }
+
+
+}
+
+/* Para telas menores que 480px */
+@media (max-width: 480px) {
+     .main-content {
+         padding: 15px;
+     }
+     .rpg-header h2 {
+         font-size: 1rem;
+         letter-spacing: 1px;
+     }
+      .rpg-header .header-decoration {
+           bottom: -4px;
+           height: 4px;
+      }
+     .tools-container.pixel-panel {
+         padding: 8px;
+     }
+      .panel-header, .section-header {
+           font-size: 0.6rem;
+      }
+       .panel-header {
+            margin: -8px -8px 10px -8px;
+       }
+        .section-header {
+            margin-bottom: 8px;
+        }
+
+      .dice-images {
+           gap: 5px;
+      }
+       .dice-image {
+           width: 35px;
+           height: 35px;
+       }
+       .roll-dice-button.pixel-button {
+           padding: 6px 10px;
+           font-size: 0.7rem;
+       }
+       .roll-result {
+           font-size: 1rem;
+       }
+        .roll-details,
+        .roll-history {
+            font-size: 0.6rem;
+        }
+         .calculator-block.pixel-block {
+             padding: 8px;
+             margin-bottom: 10px;
+         }
+         .calculator-block .block-title {
+             font-size: 0.7rem;
+             margin-bottom: 6px;
+         }
+          .calculator-block .input-group {
+               gap: 6px;
+               margin-bottom: 6px;
+               flex-direction: column; /* Empilha inputs e labels */
+               align-items: flex-start;
+          }
+
+           .calculator-block input.pixel-input.small,
+           .pixel-input.small,
+           .pixel-select.small {
+              width: 100%; /* Ocupa largura total */
+              max-width: 120px; /* Limita largura máxima em coluna */
+           }
+            .calculator-block button.pixel-button.small {
+               padding: 3px 6px;
+               font-size: 0.55rem;
+               width: 100%; /* Ocupa largura total */
+           }
+           .calculators-content p,
+           .dice-roller-content p {
+               font-size: 0.6rem;
+           }
+           .calculator-example h3 {
+               font-size: 0.7rem;
+           }
+
+           .calculator-block label.pixel-label {
+               width: auto; /* Remove largura fixa */
+               text-align: left;
+               margin-bottom: 3px; /* Espaço menor entre label e input */
+           }
+           .selected-character-stats .stats-display {
+                flex-direction: column; /* Empilha stats */
+                gap: 3px;
+           }
+           .selected-character-stats p {
+                 font-size: 0.65rem;
+           }
+    }
+
+/* Adicione ou modifique esta regra no seu arquivo rpg.css */
+#roll-history-list {
+    white-space: pre-wrap; /* Isso faz com que o navegador respeite as quebras de linha (\n) e espaços em branco */
+    word-break: break-word; /* Ajuda a evitar que linhas muito longas causem overflow */
+    /* Mantenha outros estilos que você já tenha para #roll-history-list aqui */
+    display: block; /* Faz o span se comportar como um bloco para ocupar linhas completas se necessário */
+    margin-top: 5px; /* Adiciona um pequeno espaço acima do histórico */
+}

@@ -1,0 +1,706 @@
+/* ============ VARIÁVEIS DE ESTILO PIXELADO ============ */
+:root {
+    --pixel-dark: #1a1a2e;
+    --pixel-darker: #0f0f1a;
+    --pixel-primary: #4a00e0;
+    --pixel-primary-light: #6a3dff;
+    --pixel-secondary: #8e2de2;
+    --pixel-accent: #ff6b6b;
+    --pixel-text: #e6e6e6;
+    --pixel-border: 4px solid #333;
+    --pixel-shadow: 4px 4px 0 var(--pixel-darker);
+    --pixel-glow: 0 0 8px rgba(106, 61, 255, 0.6);
+  }
+  
+  /* ============ ESTILOS GERAIS PIXELADOS ============ */
+  body {
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    font-family: 'Press Start 2P', cursive;
+    line-height: 1.6;
+    image-rendering: pixelated;
+  }
+  
+  h1, h2, h3, h4 {
+    color: var(--pixel-primary-light);
+    text-shadow: 2px 2px 0 var(--pixel-darker);
+    margin-bottom: 1rem;
+  }
+  
+  .pixel-divider {
+    height: 4px;
+    background-color: var(--pixel-primary);
+    margin: 1rem 0;
+    box-shadow: var(--pixel-shadow);
+  }
+  
+  /* ============ SEÇÃO DE BOAS-VINDAS PIXELADA ============ */
+  .welcome-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .welcome-section::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 4px solid var(--pixel-accent);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .welcome-message {
+    flex: 2;
+    min-width: 300px;
+  }
+  
+  .welcome-message h2 {
+    font-size: 1.5rem;
+    color: var(--pixel-accent);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .welcome-message h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--pixel-primary);
+  }
+  
+  .welcome-message p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+  }
+  
+  .welcome-image {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .welcome-image img {
+    max-width: 100%;
+    height: auto;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    transition: transform 0.3s ease;
+  }
+  
+  .welcome-image:hover img {
+    transform: scale(1.05) rotate(1deg);
+  }
+  
+  /* ============ GUIA DE PRIMEIROS PASSOS PIXELADO ============ */
+  .guide-section {
+    margin-bottom: 3rem;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+    color: var(--pixel-primary-light);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .section-title::before {
+    content: "◆";
+    color: var(--pixel-accent);
+  }
+  
+  .guide-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .guide-card {
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    padding: 1.5rem;
+    position: relative;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .guide-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0 var(--pixel-darker);
+  }
+  
+  .step-number {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--pixel-accent);
+    color: white;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+  }
+  
+  .guide-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--pixel-text);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px dotted var(--pixel-primary);
+  }
+  
+  .guide-card p {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 0 var(--pixel-darker);
+  }
+  
+  /* ============ PERSONAGENS RECOMENDADOS PIXELADOS ============ */
+  .character-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .character-card {
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .character-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0 var(--pixel-darker);
+  }
+  
+  .character-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--pixel-primary);
+  }
+  
+  .character-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: var(--pixel-border);
+    margin-bottom: 1rem;
+    image-rendering: pixelated;
+  }
+  
+  .character-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: var(--pixel-primary-light);
+  }
+  
+  .character-card p {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+  }
+  
+  /* ============ TAGS PIXELADAS ============ */
+  .tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0;
+    border: 2px solid;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .tag.easy {
+    background-color: #4caf50;
+    border-color: #2e7d32;
+    color: white;
+  }
+  
+  .tag.medium {
+    background-color: #ff9800;
+    border-color: #ef6c00;
+    color: white;
+  }
+  
+  .tag.hard {
+    background-color: #f44336;
+    border-color: #c62828;
+    color: white;
+  }
+  
+  /* ============ AVENTURAS PIXELADAS ============ */
+  .quest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .quest-card {
+    display: flex;
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .quest-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0 var(--pixel-darker);
+  }
+  
+  .quest-card img {
+    width: 120px;
+    height: 100%;
+    object-fit: cover;
+    border-right: var(--pixel-border);
+  }
+  
+  .quest-info {
+    flex: 1;
+    padding: 1rem;
+    position: relative;
+  }
+  
+  .quest-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--pixel-accent);
+  }
+  
+  .quest-info p:nth-of-type(1) {
+    font-size: 0.8rem;
+    color: var(--pixel-primary-light);
+    margin-bottom: 0.8rem;
+  }
+  
+  .quest-info p:nth-of-type(2) {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+  }
+  
+  /* ============ COMUNIDADE PIXELADA ============ */
+  .community-section {
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    margin-top: 3rem;
+    position: relative;
+  }
+  
+  .community-section::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--pixel-primary),
+      var(--pixel-primary) 10px,
+      var(--pixel-accent) 10px,
+      var(--pixel-accent) 20px
+    );
+  }
+  
+  .community-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .community-content h2::before,
+  .community-content h2::after {
+    content: "✧";
+    margin: 0 0.8rem;
+    color: var(--pixel-accent);
+  }
+  
+  .community-content p {
+    font-size: 0.9rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .community-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  /* ============ BOTÕES PIXELADOS ============ */
+  .pixel-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--pixel-primary);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+  }
+  
+  .pixel-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--pixel-darker);
+  }
+  
+  .pixel-button:active {
+    transform: translate(0, 0);
+    box-shadow: var(--pixel-shadow);
+  }
+  
+  .pixel-button.discord {
+    background-color: #5865F2;
+    border-color: #3c48c9;
+  }
+  
+  .pixel-button.forum {
+    background-color: var(--pixel-secondary);
+    border-color: #6a1b9a;
+  }
+  
+  /* ============ RESPONSIVIDADE PIXELADA ============ */
+  @media (max-width: 768px) {
+    .quest-card {
+      flex-direction: column;
+    }
+    
+    .quest-card img {
+      width: 100%;
+      height: 120px;
+      border-right: none;
+      border-bottom: var(--pixel-border);
+    }
+    
+    .welcome-section {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .guide-steps,
+    .character-showcase,
+    .quest-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+      font-size: 1rem;
+    }
+    
+    .community-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .pixel-button {
+      width: 100%;
+    }
+  }
+  
+  /* ============ ANIMAÇÕES PIXELADAS ============ */
+  @keyframes pixelPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes pixelGlow {
+    0% { box-shadow: var(--pixel-shadow); }
+    50% { box-shadow: var(--pixel-shadow), var(--pixel-glow); }
+    100% { box-shadow: var(--pixel-shadow); }
+  }
+  
+  .welcome-section,
+  .community-section {
+    animation: pixelPulse 4s infinite;
+  }
+  
+  .guide-card:hover,
+  .character-card:hover,
+  .quest-card:hover {
+    animation: pixelGlow 1.5s infinite;
+  }
+
+/* Adicione este código ao seu arquivo CSS específico do dashboard (ex: dashboard.css) */
+
+/* Garante que as variáveis do tema principal estejam disponíveis */
+/* Embora geralmente definidas em um arquivo global, é bom ter certeza */
+:root {
+    --pixel-dark: #1a1a2e;
+    --pixel-darker: #0f0f1a;
+    --pixel-primary: #4a2d8a;
+    --pixel-primary-light: #6a4dab;
+    --pixel-secondary: #8a2d5a;
+    --pixel-accent: #d32f2f;
+    --pixel-accent2: #1976d2;
+    --pixel-text: #e6e6fa;
+
+    --pixel-border: 3px solid var(--pixel-primary);
+    --pixel-shadow: 4px 4px 0 var(--pixel-darker);
+    --pixel-inset-shadow: inset 3px 3px 0 var(--pixel-darker);
+    --pixel-text-shadow: 2px 2px 0 var(--pixel-darker);
+    --pixel-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estilos Específicos do Dashboard */
+
+/* Seção de Perfil do Usuário na Sidebar */
+.user-profile {
+    padding: 15px;
+    margin-bottom: 30px;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-inset-shadow);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative; /* Para possíveis elementos posicionados */
+}
+
+.avatar-container {
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--pixel-primary-light);
+    box-shadow: 2px 2px 0 var(--pixel-dark);
+    background-color: var(--pixel-dark); /* Cor de fundo caso a imagem não carregue */
+    position: relative;
+    overflow: hidden;
+}
+
+.user-avatar {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated; /* Garante o efeito pixelado na imagem */
+}
+
+/* Se você quiser um indicador de status online, descomente e estilize */
+/*
+.online-status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #4caf50; // Cor verde
+    border-radius: 50%;
+    border: 2px solid var(--pixel-darker);
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+}
+*/
+
+.user-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.clickable-username {
+    font-size: 0.7rem;
+    color: var(--pixel-primary-light);
+    text-shadow: var(--pixel-text-shadow);
+    margin-bottom: 5px;
+    cursor: pointer; /* Indica que é clicável */
+    text-decoration: none; /* Remove underline padrão se for um link */
+    display: inline-block; /* Para que o text-shadow funcione bem */
+}
+
+.clickable-username:hover {
+     text-decoration: underline; /* Adiciona underline no hover */
+     color: var(--pixel-text); /* Muda a cor no hover */
+}
+
+.logout-option {
+    font-size: 0.6rem;
+}
+
+.logout-option a {
+    color: var(--pixel-accent); /* Cor de destaque para "Sair" */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.logout-option a:hover {
+    color: var(--pixel-fire); /* Outra cor de destaque ou mais vibrante no hover */
+    text-decoration: underline;
+}
+
+/* Divisor simples com estilo pixel art */
+.pixel-divider {
+    height: 2px;
+    background-color: var(--pixel-primary);
+    margin: 10px 0;
+    box-shadow: 0 2px 0 var(--pixel-darker);
+}
+
+/* Estilos para as seções de conteúdo no main-content */
+/* Herdam muito do estilo geral, mas podemos adicionar margens e padding */
+.main-content h1 {
+    font-size: 2rem;
+    color: var(--pixel-primary-light);
+    text-shadow: var(--pixel-text-shadow);
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o título principal do dashboard */
+}
+
+.main-content p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+
+.recent-activity-section,
+.quests-section,
+.community-section {
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    padding: 20px;
+    margin-bottom: 30px; /* Espaço entre as seções */
+    position: relative; /* Para o pseudo-elemento de background */
+    overflow: hidden;
+}
+
+/* Adiciona o padrão de fundo pixelado às seções do dashboard */
+.recent-activity-section::before,
+.quests-section::before,
+.community-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(135deg, transparent 48%, rgba(106, 77, 171, 0.1) 49%, rgba(106, 77, 171, 0.1) 51%, transparent 52%),
+        linear-gradient(-135deg, transparent 48%, rgba(106, 77, 171, 0.1) 49%, rgba(106, 77, 171, 0.1) 51%, transparent 52%);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+
+.recent-activity-section h2,
+.quests-section h2,
+.community-section h2 {
+    font-size: 1.2rem;
+    color: var(--pixel-primary-light);
+    text-shadow: var(--pixel-text-shadow);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--pixel-primary); /* Linha sob o título da seção */
+    display: inline-block; /* Faz a linha cobrir apenas o texto */
+}
+
+.community-links {
+    display: flex;
+    gap: 15px; /* Espaço entre os botões */
+    margin-top: 20px;
+    flex-wrap: wrap; /* Permite que os botões quebrem linha em telas menores */
+}
+
+/* Estilo específico para o botão de Fórum (já existe Discord no styles.css) */
+.pixel-button.forum {
+    background-color: var(--pixel-secondary); /* Usando uma cor secundária do tema */
+    border-bottom: 4px solid var(--pixel-darker);
+    border-right: 4px solid var(--pixel-darker);
+    transition: var(--pixel-transition);
+}
+
+.pixel-button.forum:hover {
+     background-color: #9a3d6a; /* Um pouco mais claro no hover */
+     transform: translate(2px, 2px);
+     border-bottom-width: 2px;
+     border-right-width: 2px;
+}
+
+/* Ajuste para o texto de status na área de login/status na sidebar */
+.login-area p {
+    font-size: 0.7rem;
+    text-align: center;
+    color: var(--pixel-text);
+}
+
+
+/* Adicione aqui quaisquer outros estilos específicos que seu dashboard precise */
+
+/* Exemplo de responsividade para elementos específicos do dashboard */
+@media (max-width: 768px) {
+    .user-profile {
+        flex-direction: column; /* Empilha avatar e info em telas menores */
+        text-align: center;
+    }
+
+    .avatar-container {
+        margin-bottom: 10px;
+    }
+
+    .user-info {
+        align-items: center;
+    }
+
+    .community-links {
+        justify-content: center; /* Centraliza os botões */
+    }
+}

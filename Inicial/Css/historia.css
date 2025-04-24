@@ -1,0 +1,402 @@
+/* Adicione este código ao seu historia.css */
+
+/* Importa as variáveis e estilos gerais */
+/* Se suas variáveis já estão em styles.css e styles.css está linkado no HTML antes deste,
+   você não precisa repetir o :root aqui, mas é bom para clareza se este for o arquivo principal */
+/* Exemplo se variáveis estiverem em outro arquivo e linkadas primeiro: */
+/* @import url("styles.css"); */
+
+/* Ou repita as variáveis se este for o único arquivo CSS ou se preferir: */
+:root {
+    /* Cores Principais */
+    --pixel-dark: #1a1a2e;
+    --pixel-darker: #0f0f1a;
+    --pixel-primary: #4a2d8a;
+    --pixel-primary-light: #6a4dab;
+    --pixel-secondary: #8a2d5a;
+    --pixel-accent: #d32f2f;
+    --pixel-accent2: #1976d2;
+    --pixel-text: #e6e6fa;
+
+    /* Cores de Destaque */
+    --pixel-fire: #ff5722;
+    --pixel-poison: #9c27b0;
+    --pixel-ice: #00bcd4;
+    --pixel-nature: #4caf50;
+    --pixel-shadow: #4a148c;
+
+    /* Bordas e Efeitos */
+    --pixel-border: 3px solid var(--pixel-primary);
+    --pixel-shadow: 4px 4px 0 var(--pixel-darker);
+    --pixel-inset-shadow: inset 3px 3px 0 var(--pixel-darker);
+    --pixel-text-shadow: 2px 2px 0 var(--pixel-darker);
+    --pixel-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Estilos para o Conteúdo Principal da História */
+  /* O .main-content já tem estilos gerais, mas pode ser ajustado */
+  .main-content {
+      /* Garante que o conteúdo não fique espremido demais */
+      max-width: 900px; /* Largura máxima para o texto da história */
+      /* Ajuste para centralizar corretamente após a sidebar fixa */
+      margin-left: 260px; /* Espaço para a sidebar */
+      margin-right: auto; /* Centraliza o bloco restante */
+      margin-top: 30px;
+      margin-bottom: 30px;
+      padding: 30px 20px; /* Padding interno */
+      box-sizing: border-box; /* Inclui padding na largura */
+      background-color: rgba(15, 15, 26, 0.9); /* Mantém o fundo semi-transparente */
+      min-height: calc(100vh - 60px); /* Ajusta a altura mínima (100vh - margem topo - margem base) */
+      border: var(--pixel-border); /* Adiciona uma borda ao redor do conteúdo principal */
+      box-shadow: var(--pixel-shadow); /* Adiciona sombra */
+      position: relative; /* Para o pseudo-elemento de fundo */
+      overflow: hidden; /* Garante que o pseudo-elemento não vaze */
+  }
+
+  /* Adiciona o padrão de fundo pixelado ao main-content */
+  .main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(135deg, transparent 48%, rgba(106, 77, 171, 0.1) 49%, rgba(106, 77, 171, 0.1) 51%, transparent 52%),
+        linear-gradient(-135deg, transparent 48%, rgba(106, 77, 171, 0.1) 49%, rgba(106, 77, 171, 0.1) 51%, transparent 52%);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+
+  /* Estilo para o container geral da história */
+  .story-container {
+      padding: 0; /* Removido padding superior/inferior duplicado */
+  }
+
+  /* Estilo para o título principal da página (mantém o estilo de section-header) */
+  .section-header {
+       text-align: center;
+       margin-bottom: 30px;
+       position: relative;
+   }
+
+  .section-header h2 {
+      font-size: 1.5rem;
+      color: var(--pixel-primary-light);
+      text-shadow: var(--pixel-text-shadow);
+      margin-bottom: 15px;
+      display: inline-block;
+      position: relative;
+   }
+
+  .section-header h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px; /* Largura da linha */
+      height: 4px;
+      background-color: var(--pixel-accent);
+      box-shadow: 0 4px 0 var(--pixel-darker);
+  }
+
+
+  /* Estilo para cada seção maior da história (grupo de segmentos) */
+  .story-section {
+      margin-bottom: 30px; /* Espaço entre as grandes seções */
+      padding: 20px;
+      background-color: var(--pixel-dark); /* Fundo para a seção */
+      border: var(--pixel-border);
+      box-shadow: var(--pixel-shadow);
+      position: relative;
+      overflow: hidden;
+      /* Garante que a seção tenha largura flexível dentro do main-content */
+      width: 100%;
+  }
+
+  /* Pseudo-elemento para o padrão de fundo nas story-sections */
+  .story-section::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 1px solid rgba(106, 77, 171, 0.3); /* Borda interna sutil */
+      pointer-events: none;
+  }
+
+
+  /* Estilo para cada segmento editável/excluível da história */
+  .story-segment {
+      margin-bottom: 20px; /* Espaço entre segmentos dentro de uma seção */
+      padding-bottom: 15px;
+      border-bottom: 1px dashed rgba(106, 77, 171, 0.5); /* Linha pontilhada entre segmentos */
+      position: relative;
+      /* Garante que o segmento se ajuste à largura da seção */
+      width: 100%;
+      box-sizing: border-box; /* Inclui padding/border na largura */
+      /* Adicionado padding interno para o texto não tocar as bordas do segmento */
+      padding: 0 10px 15px 10px; /* Topo, Direito, Base, Esquerdo */
+  }
+
+  .story-segment:last-child {
+      border-bottom: none; /* Remove a borda do último segmento da seção */
+      margin-bottom: 0;
+      padding-bottom: 0;
+  }
+
+  /* Título do segmento da história */
+  .story-title {
+      font-size: 1rem;
+      color: var(--pixel-primary-light);
+      text-shadow: var(--pixel-text-shadow);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--pixel-primary); /* Linha sob o título do segmento */
+      display: inline-block; /* Para a linha ficar apenas sob o texto */
+      padding-bottom: 5px;
+      /* Garante que o título se ajuste e quebre se for muito longo */
+      max-width: 100%;
+      word-break: break-word;
+      box-sizing: border-box;
+  }
+
+  /* Parágrafos da história */
+  .story-paragraph {
+      font-size: 0.8rem;
+      line-height: 1.8; /* Espaçamento de linha para melhor leitura */
+      color: var(--pixel-text);
+      margin-bottom: 15px;
+       /* Garante que o parágrafo se ajuste e quebre */
+      width: 100%;
+      word-break: break-word;
+      box-sizing: border-box;
+  }
+
+  /* Container para os botões de ação (Editar/Excluir) */
+  .story-actions {
+      text-align: right; /* Alinha os botões à direita */
+      margin-top: 10px;
+      /* Por padrão, pode estar oculto ou visível dependendo da lógica */
+      /* display: none; */ /* Exemplo de como ocultar inicialmente */
+       width: 100%; /* Ocupa a largura total do segmento */
+       box-sizing: border-box;
+       padding: 0 10px; /* Adiciona padding lateral igual ao do segmento */
+  }
+
+  .story-actions .pixel-button {
+      margin-left: 10px; /* Espaço entre os botões */
+      /* Ajustes específicos para botões de ação se necessário */
+      font-size: 0.6rem; /* Botões menores */
+      padding: 5px 10px;
+  }
+
+  .story-actions .pixel-button i {
+      margin-right: 5px;
+  }
+
+
+  /* Estilo para o botão de adicionar novo segmento */
+  .add-segment-container {
+       text-align: center;
+       margin-top: 40px;
+       /* Garante que o contêiner do botão ocupe a largura total dentro do story-container */
+       width: 100%;
+       box-sizing: border-box;
+       padding: 0 20px; /* Adiciona padding lateral igual ao do main-content */
+   }
+
+  .add-story-segment-btn {
+      /* Usa estilos de pixel-button large definidos em outro lugar */
+      /* Adicione estilos específicos se necessário */
+  }
+
+  /* ============ ESTILOS DO MODAL ============ */
+  .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro semi-transparente */
+      display: flex; /* Usa flexbox para centralizar o conteúdo */
+      justify-content: center; /* Centraliza horizontalmente */
+      align-items: center; /* Centraliza verticalmente */
+      z-index: 100; /* Garante que fique acima de tudo */
+      display: none; /* Oculto por padrão */
+  }
+
+  .modal-content {
+      background-color: var(--pixel-dark); /* Fundo do modal */
+      border: var(--pixel-border); /* Borda pixelada */
+      box-shadow: var(--pixel-shadow); /* Sombra */
+      padding: 20px;
+      max-width: 500px; /* Largura máxima do modal */
+      width: 90%; /* Ocupa 90% da largura em telas menores */
+      position: relative; /* Para o botão fechar */
+      overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+      max-height: 90vh; /* Altura máxima para caber na tela */
+      /* Adicionado para garantir que o conteúdo interno não cause overflow */
+      box-sizing: border-box;
+  }
+
+  .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--pixel-primary);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+  }
+
+  .modal-header h3 {
+      font-size: 1.1rem;
+      color: var(--pixel-primary-light);
+      text-shadow: var(--pixel-text-shadow);
+      /* Garante que o título do modal se ajuste */
+      max-width: 90%;
+      word-break: break-word;
+  }
+
+  .close-modal {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--pixel-text);
+      transition: color 0.2s ease;
+  }
+
+  .close-modal:hover {
+      color: var(--pixel-accent);
+  }
+
+  .modal-body {
+      /* Padding já definido no modal-content */
+  }
+
+  .modal-body .form-group {
+      margin-bottom: 15px;
+  }
+
+  .modal-body label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--pixel-primary-light);
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 0 var(--pixel-darker);
+      text-transform: uppercase;
+  }
+
+  .modal-body .pixel-input {
+      width: 100%; /* Ocupa toda a largura disponível */
+      padding: 10px;
+      font-size: 0.7rem;
+      background-color: var(--pixel-darker);
+      border: 2px solid var(--pixel-primary-light);
+      color: var(--pixel-text);
+      box-shadow: var(--pixel-inset-shadow);
+      outline: none;
+      /* Garante que o texto se ajuste dentro do input/textarea */
+      box-sizing: border-box;
+      word-break: break-word; /* Permite quebrar palavras longas */
+      resize: vertical; /* Permite redimensionar apenas verticalmente (para textarea) */
+  }
+
+   .modal-body .pixel-input:focus {
+      border-color: var(--pixel-accent);
+       box-shadow: inset 2px 2px 0 var(--pixel-darker);
+   }
+
+
+  .modal-body textarea.pixel-input {
+      resize: vertical; /* Permite redimensionar verticalmente */
+      min-height: 100px; /* Altura mínima para o textarea */
+  }
+
+  .modal-actions {
+      text-align: right;
+      margin-top: 20px;
+  }
+
+  .modal-actions .pixel-button {
+      margin-left: 10px;
+      font-size: 0.7rem;
+      padding: 8px 15px;
+  }
+
+
+  /* RESPONSIVIDADE - Ajustes para telas menores */
+  @media (max-width: 768px) {
+      .main-content {
+          margin-left: 0; /* Remove a margem para a sidebar em telas pequenas */
+          margin-right: 0; /* Garante que o auto margin seja removido */
+          padding: 20px 10px; /* Aumenta o padding lateral */
+          margin-top: 20px; /* Ajusta margem topo */
+          margin-bottom: 20px; /* Ajusta margem base */
+          min-height: calc(100vh - 40px); /* Ajusta altura mínima */
+          /* Garante que o main-content use a largura total em telas pequenas */
+          max-width: 100%;
+          width: 100%;
+      }
+
+      .story-title {
+          font-size: 0.9rem; /* Reduz o tamanho do título do segmento */
+      }
+
+      .story-paragraph {
+          font-size: 0.75rem; /* Reduz o tamanho do texto do parágrafo */
+      }
+
+      .story-actions {
+           text-align: center; /* Centraliza botões em telas pequenas */
+           margin-top: 15px;
+            padding: 0 5px; /* Reduz padding lateral dos botões de ação */
+       }
+
+      .story-actions .pixel-button {
+          margin: 5px; /* Ajusta margem entre botões empilhados */
+          width: auto; /* Permite que os botões se ajustem ao conteúdo/tela */
+          display: inline-block; /* Garante que fiquem lado a lado se couber */
+      }
+
+       .add-segment-container {
+            padding: 0 10px; /* Reduz padding lateral do contêiner do botão adicionar */
+       }
+
+
+       .modal-content {
+           padding: 15px; /* Reduz padding do modal */
+       }
+
+       .modal-header h3 {
+           font-size: 1rem; /* Reduz título do modal */
+       }
+
+       .modal-body label,
+       .modal-body .pixel-input,
+       .modal-actions .pixel-button {
+            font-size: 0.65rem; /* Reduz fonte nos inputs e botões do modal */
+       }
+       .modal-actions .pixel-button {
+           padding: 6px 12px;
+       }
+  }
+
+  @media (max-width: 480px) {
+      .section-header h2 {
+          font-size: 1.2rem; /* Reduz título principal */
+      }
+       .modal-content {
+           width: 95%; /* Ocupa mais largura em telas muito pequenas */
+       }
+        .modal-actions {
+           text-align: center; /* Centraliza botões do modal em telas muito pequenas */
+       }
+       .modal-actions .pixel-button {
+           margin: 5px auto; /* Centraliza botões com auto margin */
+           display: block; /* Empilha botões */
+           width: 100%; /* Ocupa largura total */
+       }
+  }

@@ -1,0 +1,257 @@
+/* Estilos para formulários de autenticação */
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+}
+
+.form-control {
+    margin-bottom: 1.5rem;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--pixel-text);
+}
+
+.form-control input {
+    width: 100%;
+    padding: 0.75rem;
+    border: var(--pixel-border);
+    background: var(--pixel-darker);
+    color: var(--pixel-text);
+    font-family: 'Press Start 2P', cursive;
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.is-valid {
+    border-color: #28a745 !important;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.7rem;
+    margin-top: 0.25rem;
+}
+
+.valid-feedback {
+    color: #28a745;
+    font-size: 0.7rem;
+    margin-top: 0.25rem;
+}
+
+.alert {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.btn-primary {
+    background-color: var(--pixel-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--pixel-primary-light);
+}
+
+/* Estilos para o formulário de login */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--pixel-primary-light);
+    font-size: 0.9rem;
+}
+
+.pixel-input {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+}
+
+.pixel-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--pixel-primary-light);
+}
+
+.input-error {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.3) !important;
+    animation: shake 0.5s;
+}
+
+.login-error {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    display: none;
+}
+
+.login-error.active {
+    display: block;
+    color: #ff4444;
+    border: 2px solid #ff4444;
+    background-color: rgba(255, 68, 68, 0.1);
+}
+
+.login-error.success {
+    display: block;
+    color: #00C851;
+    border: 2px solid #00C851;
+    background-color: rgba(0, 200, 81, 0.1);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.8rem;
+}
+
+.login-link a {
+    color: var(--pixel-primary-light);
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para formulário de login */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--pixel-primary-light);
+    font-size: 0.9rem;
+}
+
+.pixel-input {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    color: var(--pixel-text);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+}
+
+.pixel-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--pixel-primary-light);
+}
+
+.input-error {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.3) !important;
+    animation: shake 0.5s;
+}
+
+.login-error {
+    margin: 15px 0;
+    padding: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    display: none;
+    border: 2px solid transparent;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.login-error.active {
+    display: block;
+    color: #ff4444;
+    border-color: #ff4444;
+    background-color: rgba(255, 68, 68, 0.1);
+}
+
+.login-error.success {
+    display: block;
+    color: #00C851;
+    border-color: #00C851;
+    background-color: rgba(0, 200, 81, 0.1);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+/* Estilos para links */
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.8rem;
+}
+
+.login-link a {
+    color: var(--pixel-primary-light);
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}

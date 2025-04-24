@@ -1,0 +1,301 @@
+/* Arquivo: mapa.css - Versão Linda e Pixelada */
+
+/* ==========================================================================
+   Variáveis de Estilo Pixel Art
+   ========================================================================== */
+/* Se estas variáveis já estiverem definidas em um arquivo global (ex: styles.css),
+   você pode remover este bloco :root para evitar repetição.
+   Caso contrário, mantenha para que o CSS do mapa funcione corretamente. */
+/* :root {
+    --pixel-dark: #1a1a2e;
+    --pixel-darker: #0f0f1a;
+    --pixel-primary: #4a2d8a;
+    --pixel-primary-light: #6a4dab;
+    --pixel-secondary: #8a2d5a;
+    --pixel-accent: #d32f2f;
+    --pixel-accent2: #1976d2;
+    --pixel-text: #e6e6fa;
+    --pixel-special-text: #ffeb3b;
+    --pixel-panel-bg: #2a2a4a; -- Exemplo de cor de fundo para painéis
+    --pixel-text-rgb: 230, 230, 250; -- Versão RGB da cor do texto para RGBA
+} */
+
+/* Certifique-se que a fonte 'Press Start 2P' está sendo aplicada globalmente ou em elementos relevantes */
+body, button, input, select, textarea, .pixel-label, .pixel-button {
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+/* ==========================================================================
+   Layout Principal da Página do Mapa
+   ========================================================================== */
+
+.map-page-content {
+    padding: 20px; /* Padding interno da área de conteúdo do mapa */
+    display: flex; /* Usa flexbox para o layout principal */
+    gap: 30px; /* Espaço maior entre o mapa e o painel de info em telas grandes */
+    align-items: flex-start; /* Alinha itens pelo topo */
+    flex-direction: row; /* Layout padrão lado a lado em telas grandes */
+    justify-content: center; /* Centraliza o conteúdo se houver espaço extra */
+    flex-wrap: wrap; /* Permite quebra de linha para layout responsivo em coluna */
+}
+
+.map-interactive-area {
+    display: flex; /* Usa flexbox para o container da imagem + painel */
+    flex-direction: column; /* Empilha verticalmente por padrão (telas pequenas) */
+    gap: 20px; /* Espaço entre a imagem e o painel em modo coluna */
+    width: 100%; /* Ocupa a largura total disponível */
+    max-width: 100%; /* Garante que não transborde */
+    align-items: center; /* Centraliza itens em modo coluna */
+    flex-grow: 1; /* Permite que esta área cresça em modo linha (mapa + info) */
+    /* Limita o tamanho máximo da área interativa em telas muito largas */
+    /* max-width: 1400px; */
+}
+
+
+/* ==========================================================================
+   Container da Imagem do Mapa e Seus Pontos
+   ========================================================================== */
+
+.map-image-container {
+    position: relative; /* Essencial para posicionar os pontos ABSOLUTAMENTE sobre a imagem */
+    width: 100%; /* Ocupa a largura total do flex item */
+    height: auto; /* Altura automática para manter a proporção */
+    overflow: hidden; /* Esconde qualquer coisa que transborde */
+    /* Estilo de borda pixelada e sombra (adaptado de personagem.css/monstro.css) */
+    border: 4px solid var(--pixel-primary, #4a2d8a);
+    /* Sombra mais pronunciada e pixelada */
+    box-shadow: 8px 8px var(--pixel-darker, #0f0f1a),
+                12px 12px var(--pixel-dark, #1a1a2e);
+    flex-shrink: 0; /* Impede que o container da imagem encolha */
+    max-width: 900px; /* Limita o tamanho máximo da imagem/container */
+     /* Pode adicionar um fundo sutil se a imagem do mapa for transparente ou menor */
+     /* background-color: var(--pixel-panel-bg, #2a2a4a); */
+     /* background-image: url('../Fotos/pixel-bg-texture.png'); */
+     /* background-repeat: repeat; */
+}
+
+.world-map-image {
+    display: block; /* Remove espaço extra abaixo da imagem */
+    width: 100%; /* Faz a imagem preencher o container */
+    height: auto; /* Mantém a proporção */
+    pointer-events: none; /* Impede que clicar na imagem selecione/arraste */
+     /* Garante que a imagem não seja afetada pela borda do container se não for necessário */
+     /* box-sizing: border-box; */
+}
+
+/* ==========================================================================
+   Estilos para os Pontos Cliváveis no Mapa
+   ========================================================================== */
+
+.map-point {
+    position: absolute; /* Posiciona o botão ABSOLUTAMENTE dentro do .map-image-container */
+    /* As propriedades 'left' e 'top' são definidas diretamente no HTML (style="left: XX%; top: YY%;") */
+    transform: translate(-50%, -50%); /* Centraliza o ponto no % indicado */
+    width: 30px; /* Tamanho do ponto aumentado para visibilidade */
+    height: 30px; /* Tamanho do ponto aumentado */
+    background-color: var(--pixel-accent, #d32f2f); /* Cor do ponto (vermelho vibrante) */
+    border: 2px solid var(--pixel-text, #e6e6fa); /* Borda do ponto */
+    border-radius: 50%; /* Faz o ponto ser redondo */
+    cursor: pointer; /* Indica que é clicável */
+    z-index: 10; /* Garante que o ponto fique acima da imagem */
+    /* Transições suaves para transform e box-shadow */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+
+    /* Efeito de brilho pixelado inicial (base da animação e estado normal) */
+     box-shadow: 0 0 0px 2px var(--pixel-accent, #d32f2f),
+                 0 0 0px 6px rgba(var(--pixel-text-rgb, 230, 230, 250), 0.6); /* Brilho inicial */
+
+    /* Adicionado: Estilo para o ícone dentro do ponto */
+    display: flex; /* Usa flexbox para centralizar o ícone */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    font-size: 1rem; /* Tamanho do ícone */
+    color: var(--pixel-darker, #0f0f1a); /* Cor do ícone (contraste com o fundo do ponto) */
+}
+
+
+/* Animação de pulso para os pontos */
+@keyframes pulse {
+    0% {
+         box-shadow: 0 0 0px 2px var(--pixel-accent, #d32f2f),
+                     0 0 0px 6px rgba(var(--pixel-text-rgb, 230, 230, 250), 0.6);
+    }
+    50% {
+         box-shadow: 0 0 0px 2px var(--pixel-accent, #d32f2f),
+                     0 0 0px 12px rgba(var(--pixel-text-rgb, 230, 230, 250), 0); /* Brilho se expande e some */
+    }
+    100% {
+         box-shadow: 0 0 0px 2px var(--pixel-accent, #d32f2f),
+                     0 0 0px 6px rgba(var(--pixel-text-rgb, 230, 230, 250), 0.6);
+    }
+}
+
+/* Aplica a animação de pulso por padrão */
+.map-point {
+    animation: pulse 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1); /* Animação mais suave */
+}
+
+
+.map-point:hover {
+    transform: translate(-50%, -50%) scale(1.4); /* Aumenta mais ao passar o mouse */
+     background-color: var(--pixel-accent-light, #ff5252); /* Muda de cor no hover (exemplo) */
+     box-shadow: 0 0 0px 3px var(--pixel-accent-light, #ff5252),
+                 0 0 0px 10px rgba(var(--pixel-text-rgb, 230, 230, 250), 0.9); /* Brilho mais forte no hover */
+    animation: none; /* Para a animação de pulso ao passar o mouse */
+}
+
+.map-point:active {
+    transform: translate(-50%, -50%) scale(0.9); /* Encolhe ligeiramente ao clicar */
+    background-color: var(--pixel-accent-dark, #c62828); /* Muda de cor ao clicar (exemplo) */
+    animation: none; /* Para a animação de pulso ao clicar */
+}
+
+/* Estilo opcional para um ponto "ativo" (selecionado) */
+/* .map-point.active {
+    box-shadow: 0 0 0px 3px var(--pixel-special-text, #ffeb3b),
+                0 0 0px 10px rgba(var(--pixel-special-text-rgb, 255, 235, 59), 0.8);
+    animation: none;
+} */
+
+
+/* ==========================================================================
+   Painel de Informações do Ponto Selecionado
+   ========================================================================== */
+
+.point-info-panel {
+    width: 100%; /* Ocupa a largura total em coluna */
+    max-width: 400px; /* Limita a largura máxima do painel */
+    flex-shrink: 0; /* Impede que o painel encolha em modo linha */
+     /* Usa as classes pixel-panel, pixel-corner-top, panel-header, pixel-divider, panel-body */
+     /* que você já deve ter definido em personagem.css ou styles.css */
+     background-color: var(--pixel-panel-bg, #2a2a4a); /* Fundo do painel */
+
+     .panel-body {
+         overflow-y: auto; /* Adiciona scroll se o conteúdo for muito longo */
+         max-height: 450px; /* Limita a altura máxima do corpo do painel */
+         padding: 15px; /* Padding interno do corpo do painel */
+         color: var(--pixel-text, #e6e6fa); /* Cor do texto no corpo do painel */
+     }
+}
+
+
+/* Estilos para o texto dentro do painel de informações */
+#point-info-name {
+    text-align: center; /* Centraliza o título do local */
+    margin-bottom: 15px; /* Espaço abaixo do título */
+    color: var(--pixel-special-text, var(--pixel-text)); /* Usa cor de texto especial ou padrão */
+    text-shadow: 2px 2px var(--pixel-darker, #0f0f1a); /* Sombra pixelada para o título */
+     font-size: 1.1rem; /* Tamanho da fonte do título */
+}
+
+
+#point-info-description {
+    font-size: 0.9rem; /* Ajusta tamanho da fonte */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    color: var(--pixel-text, #e6e6fa); /* Cor do texto da descrição */
+    white-space: pre-wrap; /* Mantém quebras de linha do texto se houver */
+}
+
+/* ==========================================================================
+   Layout Responsivo
+   ========================================================================== */
+
+/* Layout em telas maiores (Breakpoint de 768px como exemplo) */
+@media (min-width: 768px) {
+    .map-page-content {
+         flex-direction: row; /* Layout horizontal em telas maiores */
+         align-items: flex-start; /* Alinha itens pelo topo */
+         padding: 30px; /* Aumenta padding em telas maiores */
+    }
+
+     .map-interactive-area {
+          flex-direction: row; /* Mapa e painel de info lado a lado */
+          align-items: flex-start; /* Alinha itens pelo topo */
+          gap: 40px; /* Aumenta espaço entre mapa e info em telas maiores */
+     }
+
+     .map-image-container {
+         flex-grow: 1; /* Permite que o container da imagem cresça para ocupar espaço */
+         max-width: 900px; /* Mantém o limite máximo da imagem */
+     }
+
+    .point-info-panel {
+        width: 400px; /* Define uma largura fixa para o painel em telas maiores */
+        max-width: none; /* Remove limite de largura anterior */
+    }
+
+     .point-info-panel .panel-body {
+         max-height: 600px; /* Aumenta a altura máxima do corpo do painel em telas maiores */
+     }
+}
+
+/* Ajustes para telas menores (Breakpoint de 767px para coluna) */
+@media (max-width: 767px) {
+    .map-page-content {
+        flex-direction: column; /* Força layout em coluna em telas menores */
+        align-items: center; /* Centraliza itens em coluna */
+        padding: 15px; /* Ajusta padding */
+        gap: 25px; /* Ajusta espaço entre itens */
+    }
+
+    .map-interactive-area {
+         flex-direction: column; /* Garante que mapa e painel fiquem em coluna */
+         align-items: center; /* Centraliza em coluna */
+         gap: 20px; /* Espaço entre eles */
+    }
+
+    .map-image-container {
+        width: 100%; /* Ocupa a largura total disponível */
+        max-width: 100%; /* Remove limite para telas menores */
+    }
+
+    .point-info-panel {
+        width: 100%; /* Ocupa a largura total em telas menores */
+        max-width: 100%; /* Remove limite para telas menores */
+    }
+
+     .point-info-panel .panel-body {
+         max-height: 350px; /* Limita a altura do corpo do painel para evitar que ocupe tela inteira */
+     }
+}
+
+/* ==========================================================================
+   Estilos de Classes Reutilizáveis (Certifique-se que estão no seu styles.css ou personagem.css)
+   ========================================================================== */
+
+/* Exemplo: Se sua classe .pixel-panel não estiver definida em outro lugar */
+/* .pixel-panel {
+    border: 4px solid var(--pixel-primary);
+    box-shadow: 6px 6px var(--pixel-darker);
+    background-color: var(--pixel-panel-bg);
+}
+.pixel-corner-top { ... }
+.panel-header { ... }
+.pixel-divider { ... }
+.panel-body { ... } */
+
+/* Exemplo: Se sua classe .pixel-button--square não estiver definida em outro lugar */
+/* .pixel-button--square {
+    display: inline-block;
+    padding: 5px;
+    background-color: var(--pixel-secondary);
+    border: 2px solid var(--pixel-dark);
+    box-shadow: 3px 3px var(--pixel-darker);
+    color: var(--pixel-text);
+    text-decoration: none;
+    font-size: 0.8rem;
+    cursor: pointer;
+    position: relative; -- Necessário para o efeito de brilho
+    overflow: hidden; -- Esconde o brilho que transborda
+} */
+
+
+/* Estilos para o rodapé decorativo, se você tiver essa classe */
+.bottom-decoration-bar {
+    height: 10px; /* Altura da barra */
+    width: 100%; /* Ocupa a largura total */
+    background-color: var(--pixel-darker); /* Cor da barra (ajuste) */
+     margin-top: 20px; /* Espaço acima */
+     /* Usa a classe pixel-panel-deco se você a tiver globalmente */
+}

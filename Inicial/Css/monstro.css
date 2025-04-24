@@ -1,0 +1,856 @@
+/* VARIÁVEIS DE ESTILO PIXEL ART (Importar de styles.css ou repetir) */
+:root {
+    /* Cores Principais */
+    --pixel-dark: #1a1a2e;
+    --pixel-darker: #0f0f1a;
+    --pixel-primary: #4a2d8a;
+    --pixel-primary-light: #6a4dab;
+    --pixel-secondary: #8a2d5a;
+    --pixel-accent: #d32f2f; /* Cor vermelha para HP */
+    --pixel-accent2: #1976d2; /* Cor azul, pode ser usada para Mana se monstros tiverem */
+    --pixel-text: #e6e6fa;
+
+    /* Cores de Destaque para Monstros */
+    --monster-border-color: #6a4d2d; /* Exemplo: um marrom terroso */
+    --monster-shadow-color: #3a2c1a; /* Sombra para a cor terrosa */
+    --monster-header-bg: #3a2d1a; /* Fundo do cabeçalho do monstro */
+    --monster-header-line: #5a4020; /* Linha sob o cabeçalho */
+    --monster-special-text: #ffeb3b; /* Amarelo para texto especial/poder */
+    --monster-special-border: #ffc107; /* Amarelo mais forte para borda especial */
+
+
+    /* Bordas e Efeitos */
+    --pixel-border: 3px solid var(--pixel-primary); /* Mantido, mas substituiremos em monster-card */
+    --pixel-shadow: 4px 4px 0 var(--pixel-darker); /* Mantido, mas substituiremos em monster-card */
+    --pixel-inset-shadow: inset 3px 3px 0 var(--pixel-darker);
+    --pixel-text-shadow: 2px 2px 0 var(--pixel-darker);
+    --pixel-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+     /* Cor específica para Estamina (manter se quiser ter a variável) */
+     --pixel-stamina: var(--pixel-nature);
+}
+
+/* RESET E ESTILOS GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    line-height: 1.6;
+    background-image:
+      linear-gradient(transparent 95%, rgba(74, 45, 138, 0.3) 95%),
+      linear-gradient(90deg, transparent 95%, rgba(74, 45, 138, 0.3) 95%);
+    background-size: 20px 20px;
+    overflow-x: hidden;
+}
+
+/* LAYOUT PRINCIPAL */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* BARRA LATERAL - PIXEL ART STYLE (Manter igual ao styles.css ou personagem.css) */
+.sidebar {
+    width: 260px;
+    background-color: var(--pixel-dark);
+    padding: 20px 15px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    border-right: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    z-index: 10;
+}
+
+.sidebar-header {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.sidebar-header h1 {
+    color: var(--pixel-primary-light);
+    font-size: 1.8rem;
+    text-shadow: var(--pixel-text-shadow);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.sidebar-header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--pixel-primary);
+    box-shadow: 0 4px 0 var(--pixel-darker);
+}
+
+.pixel-corner-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--pixel-primary);
+    box-shadow:
+      4px 0 0 var(--pixel-darker),
+      0 4px 0 var(--pixel-darker),
+      4px 4px 0 var(--pixel-darker);
+}
+
+.pixel-corner-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: var(--pixel-primary);
+    box-shadow:
+      4px 0 0 var(--pixel-darker),
+      0 4px 0 var(--pixel-darker),
+      4px 4px 0 var(--pixel-darker);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.sidebar-nav li {
+    margin-bottom: 12px;
+}
+
+.sidebar-nav a {
+    color: var(--pixel-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    font-size: 0.75rem;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    transition: var(--pixel-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-nav a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(106, 77, 171, 0.4), transparent);
+    transition: var(--pixel-transition);
+}
+
+.sidebar-nav a:hover::before {
+    left: 100%;
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--pixel-primary);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+}
+
+.sidebar-nav .active a {
+    background-color: var(--pixel-primary);
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+    transform: translate(2px, 2px);
+}
+
+.sidebar-nav .active a::after {
+    content: ">";
+    position: absolute;
+    right: 15px;
+    animation: blink 1s infinite;
+}
+
+.pixel-icon {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--pixel-primary-light);
+}
+
+/* Área de Login (Manter igual ao styles.css ou personagem.css se existir lá) */
+.user-profile {
+    /* Estilos do user-profile */
+     padding: 15px;
+     margin-bottom: 20px;
+     background-color: var(--pixel-darker);
+     border: var(--pixel-border);
+     box-shadow: var(--pixel-inset-shadow);
+     text-align: center;
+     font-size: 0.7rem;
+     color: var(--pixel-text);
+}
+
+.user-profile .pixel-divider {
+     margin: 15px auto;
+}
+
+.user-profile h3 {
+     font-size: 0.9rem;
+     color: var(--pixel-primary-light);
+     margin-bottom: 10px;
+     text-shadow: var(--pixel-text-shadow);
+}
+
+.avatar-container {
+     position: relative;
+     display: inline-block; /* Para centralizar e posicionar o status online */
+     margin-bottom: 10px;
+}
+
+.user-avatar {
+     width: 60px;
+     height: 60px;
+     border-radius: 50%;
+     border: 3px solid var(--pixel-primary-light);
+     background-color: var(--pixel-dark); /* Fundo caso a imagem não carregue */
+     box-shadow: var(--pixel-shadow);
+     image-rendering: pixelated;
+}
+
+.online-status {
+     position: absolute;
+     bottom: 2px;
+     right: 2px;
+     width: 12px;
+     height: 12px;
+     background-color: var(--pixel-nature); /* Verde para online */
+     border: 2px solid var(--pixel-darker);
+     border-radius: 50%;
+     box-shadow: 0 0 0 2px var(--pixel-dark); /* Sombra para destacar */
+}
+
+.user-info {
+     margin-bottom: 10px;
+}
+
+.clickable-username {
+     cursor: pointer;
+     text-decoration: underline;
+     text-underline-offset: 2px;
+     color: var(--pixel-text);
+}
+
+.logout-option {
+     margin-top: 8px;
+     font-size: 0.65rem;
+}
+
+.logout-option a {
+     color: var(--pixel-secondary); /* Cor de destaque para sair */
+     text-decoration: none;
+     text-shadow: 1px 1px 0 var(--pixel-darker);
+     transition: color 0.2s ease;
+}
+
+.logout-option a:hover {
+     color: var(--pixel-accent); /* Cor de perigo/destaque no hover */
+     text-decoration: underline;
+}
+
+
+.login-area {
+  padding: 15px;
+  margin-top: 20px;
+  background-color: var(--pixel-darker);
+  border: var(--pixel-border);
+  box-shadow: var(--pixel-inset-shadow);
+}
+
+.login-area h3 {
+  font-size: 0.9rem;
+  color: var(--pixel-primary-light);
+  text-align: center;
+  margin-bottom: 15px;
+  text-shadow: var(--pixel-text-shadow);
+}
+
+.pixel-divider {
+  height: 2px;
+  background-color: var(--pixel-primary-light);
+  margin: 20px 0;
+  box-shadow: 0 2px 0 var(--pixel-darker);
+}
+
+
+/* CONTEÚDO PRINCIPAL (Manter igual ao personagem.css para alinhamento com sidebar) */
+.main-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 30px;
+    background-color: rgba(15, 15, 26, 0.9);
+    min-height: 100vh;
+}
+
+/* Galeria de Monstros (Baseado em character-gallery) */
+.monster-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Filtros de Monstros (Baseado em character-filters) */
+.monster-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background-color: var(--pixel-dark);
+    padding: 15px;
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+    position: relative;
+}
+
+.monster-filters::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(106, 77, 171, 0.3);
+    pointer-events: none;
+}
+
+/* Estilo base para inputs e selects (Manter igual ao personagem.css) */
+.pixel-input, .pixel-select {
+    padding: 12px 15px;
+    border: var(--pixel-border);
+    background-color: var(--pixel-darker);
+    color: var(--pixel-text);
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    font-size: 0.7rem;
+    outline: none;
+    box-shadow: var(--pixel-shadow);
+    transition: var(--pixel-transition);
+    text-transform: uppercase;
+    image-rendering: pixelated;
+}
+
+.search-input, .filter-select {
+   flex: 1;
+   min-width: 200px;
+}
+
+
+.pixel-input::placeholder {
+    color: rgba(230, 230, 250, 0.6);
+}
+
+.pixel-input:focus, .pixel-select:focus {
+    box-shadow: 2px 2px 0 var(--pixel-darker);
+    transform: translate(2px, 2px);
+    background-color: rgba(26, 26, 46, 0.8);
+}
+
+
+/* Container dos Cards de Monstros (Baseado em character-cards-container) */
+.monster-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* Cards de Monstros (Baseado em character-card) */
+.monster-card {
+    background-color: var(--pixel-dark);
+    /* Usar borda e sombra temáticas de monstro */
+    border: 3px solid var(--monster-border-color);
+    box-shadow: 4px 4px 0 var(--monster-shadow-color);
+    position: relative;
+    transition: var(--pixel-transition);
+    overflow: hidden;
+    /* Adiciona um padrão sutil de fundo diferente dos personagens */
+    background-image:
+      linear-gradient(135deg, transparent 48%, rgba(106, 77, 171, 0.05) 49%, rgba(106, 77, 171, 0.05) 51%, transparent 52%),
+      linear-gradient(-135deg, transparent 48%, rgba(106, 77, 171, 0.05) 49%, rgba(106, 77, 171, 0.05) 51%, transparent 52%);
+    background-size: 15px 15px; /* Padrão menor */
+    background-color: var(--pixel-dark); /* Fundo base */
+}
+
+.monster-card::before {
+    content: ""; /* Manter o pseudo-elemento para outra camada de efeito, se desejar */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Exemplo: um leve gradiente escuro */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.0));
+    pointer-events: none;
+    z-index: 1; /* Fica abaixo do conteúdo */
+}
+
+.monster-card:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--monster-shadow-color); /* Ajusta sombra no hover */
+}
+
+/* Cabeçalho do Card (Baseado em card-header) */
+.card-header {
+    background-color: var(--monster-header-bg); /* Fundo temático de monstro */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--monster-header-line); /* Borda temática */
+    position: relative;
+     z-index: 2; /* Garante que fique acima do pseudo-elemento do card */
+}
+
+.card-header::after {
+    content: ""; /* Manter pseudo-elemento para a linha inferior */
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--monster-header-line); /* Cor tematica */
+     box-shadow: 0 4px 0 var(--monster-shadow-color); /* Sombra tematica */
+}
+
+/* Container do Nome (Baseado em character-name-container) */
+.monster-name-container {
+    position: relative;
+    flex: 1;
+}
+
+.monster-name-container h2 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--pixel-text); /* Usar cor de texto padrão ou ajustar */
+    text-shadow: var(--pixel-text-shadow);
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+     font-weight: bold;
+}
+
+/* Decoração do Nome (Manter igual) */
+.name-decoration {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--pixel-accent); /* Usar cor accent ou ajustar para tema monstro */
+    z-index: 1;
+    box-shadow: 0 3px 0 var(--monster-shadow-color); /* Sombra tematica */
+}
+
+/* Imagem do Card (Baseado em card-image) */
+.card-image {
+    position: relative;
+    border-bottom: 3px solid var(--monster-border-color); /* Borda tematica */
+     z-index: 2; /* Garante que fique acima do pseudo-elemento do card */
+}
+
+.pixel-frame {
+    padding: 10px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--monster-border-color); /* Borda tematica */
+    margin: 10px;
+    box-shadow: var(--pixel-inset-shadow);
+}
+
+/* Imagem do Monstro (Baseado em character-img) */
+.monster-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(110%) brightness(0.9) saturate(1.1);
+    border: 2px solid var(--monster-border-color); /* Borda tematica */
+    image-rendering: pixelated;
+}
+
+/* Barras de Stats (Baseado em stats-bars) */
+.stats-bars {
+    padding: 0 15px 15px;
+     z-index: 2; /* Garante que fique acima do pseudo-elemento do card */
+     position: relative; /* Para garantir o z-index */
+}
+
+/* Container para cada barra de stat (HP) */
+.hp-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.bar-label {
+    font-size: 0.7rem;
+    width: 50px;
+    text-shadow: var(--pixel-text-shadow);
+    flex-shrink: 0;
+     color: var(--pixel-accent); /* Cor do label HP */
+     font-weight: bold;
+}
+
+.bar-container {
+    flex: 1;
+    height: 20px;
+    background-color: var(--pixel-darker);
+    border: 2px solid var(--monster-border-color); /* Borda tematica */
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hp-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--pixel-accent); /* Cor vermelha padrão */
+    /* Manter ou ajustar o padrão de fundo da barra */
+    background-image: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 75%,
+      transparent 75%);
+    background-size: 10px 10px;
+}
+
+.hp-text {
+    position: relative;
+    z-index: 2;
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    margin: auto;
+    color: white;
+}
+
+/* Animação de brilho no fill (Manter igual) */
+.hp-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.1) 100%);
+  opacity: 0.5;
+  animation: hpShine 2s infinite linear;
+}
+
+@keyframes hpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* Corpo do Card (Manter igual) */
+.card-body {
+    padding: 15px;
+     z-index: 2; /* Garante que fique acima do pseudo-elemento do card */
+     position: relative; /* Para garantir o z-index */
+}
+
+
+/* Botão Toggle (Manter igual) */
+.toggle-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--pixel-darker);
+    border: var(--pixel-border); /* Borda padrão ou temática */
+    color: var(--pixel-text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--pixel-transition);
+    font-size: 0.7rem;
+    box-shadow: var(--pixel-shadow);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-btn:hover {
+    background-color: var(--pixel-primary); /* Pode ajustar para cor temática */
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--pixel-darker); /* Pode ajustar para sombra temática */
+}
+
+.toggle-btn i {
+    transition: transform 0.3s;
+}
+
+.toggle-btn.active i {
+    transform: rotate(180deg);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Seções Ocultáveis (Atributos, Habilidades/Especiais, Descrição) */
+.attributes-section,
+.abilities-section,
+.description-section,
+.characteristics-section { /* Adicionado characteristics-section */
+    margin: 15px 0;
+    background-color: rgba(45, 45, 45, 0.6);
+    padding: 15px;
+    border: var(--pixel-border); /* Borda padrão ou temática */
+    box-shadow: var(--pixel-inset-shadow);
+    display: none; /* Oculto por padrão */
+}
+
+.attributes-section.active,
+.abilities-section.active,
+.description-section.active,
+.characteristics-section.active { /* Adicionado characteristics-section.active */
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Grid de Atributos (Manter igual ou ajustar espaçamento/colunas) */
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Ajustado para melhor fit em telas menores */
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.attribute {
+    background-color: var(--pixel-darker);
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--monster-border-color); /* Borda tematica */
+    box-shadow: var(--pixel-inset-shadow);
+    position: relative;
+}
+
+.attribute::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--monster-header-line); /* Cor tematica */
+}
+
+.attr-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--pixel-primary-light); /* Cor padrão ou ajustar */
+    margin-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow);
+    text-transform: uppercase;
+}
+
+.attr-value {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white; /* Cor padrão */
+}
+
+
+/* Estilos para Habilidades/Especiais e Descrição/Características */
+.ability {
+    margin-bottom: 15px;
+    padding-bottom: 10px; /* Adicionado padding inferior */
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1); /* Linha tracejada sutil */
+}
+
+.ability:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.ability-title {
+    font-size: 0.8rem;
+    color: var(--monster-special-text); /* Cor temática para títulos de habilidades/especiais */
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--monster-special-border); /* Borda temática */
+    padding-bottom: 5px;
+    text-shadow: var(--pixel-text-shadow);
+    text-transform: uppercase;
+}
+
+.ability-desc,
+.ability-list {
+    font-size: 0.7rem; /* Fonte um pouco maior para melhor leitura */
+    line-height: 1.7; /* Espaçamento de linha */
+    margin-left: 10px;
+    color: var(--pixel-text); /* Cor de texto padrão */
+    word-break: break-word; /* Garante que texto longo quebre */
+}
+
+.ability-list {
+    list-style-type: none;
+}
+
+.ability-list li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 5px;
+}
+
+.ability-list li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    color: var(--monster-special-border); /* Cor temática para marcadores de lista */
+    font-size: 0.5rem;
+    top: 4px;
+}
+
+
+/* ANIMAÇÕES (Manter igual) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* RESPONSIVIDADE (Manter igual ou ajustar se necessário) */
+@media (max-width: 992px) {
+    .attributes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px 10px; /* Ajustado padding lateral em telas menores */
+    }
+
+    .monster-filters {
+        flex-direction: column;
+    }
+
+     .hp-bar {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 5px;
+     }
+
+     .bar-label {
+        width: auto;
+        margin-bottom: 5px;
+     }
+
+     .bar-container {
+        width: 100%;
+        flex: none;
+     }
+
+     .attributes-grid {
+         grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Ajuste ainda mais para telas menores */
+     }
+
+     .attribute {
+         padding: 8px; /* Reduz padding do atributo */
+     }
+
+      .attr-name {
+          font-size: 0.6rem; /* Reduz fonte do nome do atributo */
+      }
+
+      .attr-value {
+          font-size: 0.9rem; /* Reduz fonte do valor do atributo */
+      }
+
+      .ability-title {
+          font-size: 0.7rem; /* Reduz fonte dos títulos de habilidade */
+      }
+
+      .ability-desc,
+      .ability-list {
+           font-size: 0.6rem; /* Reduz fonte da descrição/lista */
+      }
+
+      .toggle-btn {
+           font-size: 0.65rem; /* Reduz fonte do botão toggle */
+           padding: 10px;
+      }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 15px 10px;
+    }
+
+    .sidebar-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .monster-card {
+        min-width: auto; /* Permite que o card encolha mais */
+    }
+
+    .attributes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Ajuste final para telas muito pequenas */
+    }
+
+     .attribute {
+         padding: 5px; /* Reduz bastante o padding do atributo */
+     }
+
+}

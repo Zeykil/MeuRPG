@@ -1,0 +1,51 @@
+/* Estilos para a página de Termos de Serviço */
+.terms-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--pixel-dark);
+    border: var(--pixel-border);
+    box-shadow: var(--pixel-shadow);
+}
+
+.terms-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.terms-container h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--pixel-primary-light); /* Cor de destaque para subtítulos */
+}
+
+.terms-container p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--pixel-text);
+}
+
+.terms-container ul,
+.terms-container ol {
+    margin-bottom: 1rem;
+    padding-left: 20px;
+    font-size: 0.9rem;
+    color: var(--pixel-text);
+}
+
+.terms-container li {
+    margin-bottom: 0.5rem;
+}
+
+/* Adicionar estilos responsivos específicos se necessário para .terms-container */
+@media (max-width: 768px) {
+    .terms-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .terms-container {
+        padding: 1rem;
+    }
+}
